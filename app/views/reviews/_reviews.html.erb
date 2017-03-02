@@ -1,0 +1,21 @@
+<% @reviews.each do |review| %>
+<div class='col-md-2 marg-top' id="review_<%= review.id %>"> 
+	<%= image_tag(review.cover_page.url(:medium)) %> <br>
+	<% if review_owner(review) %>
+	<div class='marg-top'>
+		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_review_path(review), class:"btn btn-default", remote: true, id:"edit_review_button", title:"Edit #{review.heading}" %>
+		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, review, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"btn btn-warning", remote: true, title:"Delete #{review.heading}" %>		
+	</div>
+	<% end %>
+	<div class='marg-top marg-bot'>			
+		<h4><%= link_to review.heading, review %></h4>
+		<h6>Book Reviewed: <br><%= link_to review.book.title, review.book %></h6>
+		<h6>Review Status: <% if review.status==0 %> Draft <% else%> Published <% end %> </h6>
+		<% if not review_owner(review) %>
+		<h6>Review Writer: <%= review.user.name %> </h6> <% end %>
+	</div>
+</div>
+<% end %>
+
+<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %> </div>
+<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>

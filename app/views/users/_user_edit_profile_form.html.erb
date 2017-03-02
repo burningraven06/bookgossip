@@ -1,0 +1,44 @@
+<style>	.col-md-6{padding:0;} .col-md-12 {padding:0;} .col-md-3{padding:0} .col-md-9{padding:0}</style>
+<%= form_for(@user, html: { multipart: true }, remote:true) do |f| %>
+<%= render 'common_form_errors/atuser_form_errors' %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<div class=' marg-top'>
+	<h4 class='text-center marg-top'> Personal Information</h4>
+	<div class='col-md-3 marg-top'>	<%= f.label :name, "Full Name" %>	</div>
+	<div class='col-md-9'> <%= f.text_field :name, class:'form-control marg-top', required: true %>	</div>
+
+	<div class='col-md-3 marg-top'>	<%= f.label :email, "Email" %>	</div>
+	<div class='col-md-9'> <%= f.email_field :email, class:'form-control marg-top', required: true %>	</div>
+
+	<div class='col-md-3 marg-top'>	<%= f.label :gender, "Sex" %>	</div>
+	<div class='col-md-9'>
+		<%= f.select :gender, options_for_select([['Male', 'Male'], ['Female', 'Female']], @user.gender), {}, class:"form-control marg-top", required: true %>
+	</div>
+
+	<div class='col-md-3 marg-top'>	<%= f.label :date_of_birth, "Birthday" %>	</div>
+	<div class='col-md-9'> <%= f.date_field :date_of_birth, class:'form-control marg-top', value: @user.date_of_birth, required: true %> </div>
+
+	<div class='col-md-3 marg-top'>	<%= f.label :show_birthday_status, "Privacy Settings" %>	</div>
+	<div class='col-md-9 '>	<%= f.select :show_birthday_status, options_for_select([
+		["Birthdate & Age - #{@user.date_of_birth}, #{age(@user.date_of_birth)} Years", 1], 
+		["Birthdate - #{@user.date_of_birth}", 2], 
+		["Birthday - #{@user.date_of_birth.strftime("%B/%d")}", 3], 
+		["Just Age - #{age(@user.date_of_birth)} Years Old", 4], 
+		["Don't Show Anything", 5]],	@user.show_birthday_status), {}, class:"form-control marg-top", required: true 
+		%>
+	</div>
+
+	<div class='col-md-12 pull-right marg-bot'>
+		<div class='col-md-6 marg-top'>	
+			<div class='col-md-2 marg-top'>	<%= f.check_box(:default_avatar) %>	</div>
+			<div class='col-md-10 marg-top marg-bot'> <%= f.label(:default_avatar, "Default User Avatar") %> </div>
+		</div>
+		<div class='col-md-6 marg-top'>
+			<%= f.label "Custom Avatar", class:" marg-top marg-bot" %>
+			<%= f.file_field :avatar, class:"" %>
+		</div>
+	</div>
+
+	<button type='submit' class='btn btn-primary btn-block'><i class='fa fa-check'></i> Update Profile</button>
+</div>
+<% end %>

@@ -1,0 +1,16 @@
+<% @publishers.each do |publisher| %>
+<div class='col-md-2 marg-top' id="publisher_<%= publisher.id %>"> 
+	<%= image_tag(publisher.cover_page.url(:medium)) %> <br>
+	<div class='marg-top'>
+		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_publisher_path(publisher), class:"btn btn-default", remote: true, id:"edit_publisher_button", title:"Edit #{publisher.name}" %>
+		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, publisher, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"btn btn-warning", remote: true, title:"Delete #{publisher.name}" %>		
+	</div>
+	<div class='marg-top marg-bot'>			
+		<h4><%= link_to publisher.name, publisher %></h4>
+		<h6>Address: <%= publisher.address %></h6>
+		<h6>Books Published: <% if publisher.books.any? %> <%= publisher.books.count%> <% else %> <br>No Books Published Yet <% end %></h6>
+	</div>
+</div>
+<% end %>
+<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @publishers, renderer: BootstrapPagination::Rails %> </div>
+<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>

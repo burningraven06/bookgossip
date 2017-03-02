@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+
+<body>
+	<h1>Hi <%= @user.name %></h1>
+	<h4> Greetings from BookGosp!</h4>
+	<p class='marg-top'> This email is generated to let you activate your account.</p>
+	<p class='marg-bot'> Please click the link below to continue</p>
+	<p style='margin-left: 5%'>
+		<%= link_to "Activate My Account", account_confirmation_user_url(@user.account_confirmation_token) %>
+	</p>
+	<p class='marg-top'> Have a nice day!</p>
+	
+</body>
+</html>

@@ -1,0 +1,36 @@
+<% provide(:title,@book.title)%>
+<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
+<div class='col-md-6 col-md-offset-3' id='book_review_form'></div>
+<div id='show_book'>
+	<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, books_path, class:"btn btn-default pull-right" %>
+	<div class='col-md-4'> 
+		<%= image_tag(@book.cover_page.url(:large)) %>
+		<h3> <%= link_to @book.title, @book %> </h3>
+	</div>
+	<div class='col-md-8'>
+		<div class='col-md-12'>
+			<div class='col-md-3'> <h6>Author: </h6> </div>
+			<div class='col-md-9 marg-bot2'> <%= image_tag(@book.author.avatar.url(:thumb)) %> <%= link_to @book.author.name, @book.author %> </div>
+		</div>
+		<div class='col-md-12'>
+			<div class='col-md-3'> <h6>Publisher: </h6> </div> 
+			<div class='col-md-9 marg-bot2'> <%= image_tag(@book.publisher.cover_page.url(:thumb)) %> <%= link_to @book.publisher.name, @book.publisher %> </div>
+		</div>
+		<div class='col-md-12'>
+			<div class='col-md-3'> <h6>Summary: </h6> </div>
+			<div class='col-md-9 marg-bot2'> <%= @book.book_summary.truncate(250) %> </div>
+		</div>
+		<div class='col-md-12'>
+			<div class='col-md-3'> <h6>Publication Date: </h6> </div>
+			<div class='col-md-9 marg-bot2'> <%= @book.publication_date %> </div>
+		</div>
+		<div class='col-md-12'>
+			<div class='col-md-3'> <h6>Genres: (<%= @genres_of_book.count %> Genres) </h6> </div>
+			<div class='col-md-9' id='book_genres'>  <%= render 'genres_of_book' %></div>
+		</div>
+		<div class='col-md-12'>
+			<div class='col-md-3'> <h6>Reviews: <% if @book.reviews.any? %> <% @book.reviews.count%> <% else %> <br>No Reviews Published Yet <% end %> </h6> </div>
+			<div class='col-md-9' id='book_reviews'> <% if @reviews_of_book %> <%= render 'reviews_of_book' %> <% end %></div>
+		</div>
+	</div>
+</div>

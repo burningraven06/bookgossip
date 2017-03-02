@@ -1,0 +1,13 @@
+<% provide(:title,@publisher.name)%>
+<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, publishers_path, class:"btn btn-default pull-right" %>
+
+<div class='col-md-4'> 
+	<%= image_tag(@publisher.cover_page.url(:large)) %>
+	<h3> <%= link_to @publisher.name, @publisher %> </h3>
+	<h6> Address: <%= @publisher.address %> </h6>
+	<h6> Website: <%= link_to @publisher.website, "http://#{@publisher.website}" %></h6>
+	<h6> Books Published: <% if @publisher.books.any? %> <%= @publisher.books.count%> <% else %> <br>No Books Published Yet <% end %> </h6>
+</div>
+
+<div class='col-md-8 text-center' id= "publisher_books"> <%= render 'books_of_publisher' %> </div>
+

@@ -1,0 +1,8 @@
+<% @genres_of_book.each do |genre| %>
+<div class='col-md-2 text-center'>
+	<%= image_tag(genre.cover_page.url(:thumb)) %>
+	<h6> <%= link_to genre.name, genre %> </h6>
+</div>
+<% end %>
+<div class='col-md-12 marg-top'> <%= will_paginate @genres_of_book, param_name: 'genre_page',renderer: BootstrapPagination::Rails %> </div>
+<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>

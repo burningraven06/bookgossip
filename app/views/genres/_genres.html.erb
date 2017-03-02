@@ -1,0 +1,15 @@
+<% @genres.each do |genre| %>
+<div class='col-md-2 marg-top' id="genre_<%= genre.id %>"> 
+	<%= image_tag(genre.cover_page.url(:medium)) %> <br>
+	<div class='marg-top'>
+		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_genre_path(genre), class:"btn btn-default", remote: true, id:"edit_genre_button", title:"Edit #{genre.name}" %>
+		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, genre, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, title:"Delete #{genre.name}", class:"btn btn-warning", remote: true %>  
+	</div>
+	<div class='marg-top marg-bot'>     
+		<h4><%= link_to genre.name, genre %></h4>
+		<h6>Books: <% if genre.books.any? %> <%= genre.books.count%> <% else %> <br>No Books Available <% end %> </h6>
+	</div>  
+</div>
+<% end %>
+<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @genres, renderer: BootstrapPagination::Rails %> </div>
+<script> $(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>

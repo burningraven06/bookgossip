@@ -1,0 +1,41 @@
+<h1 class='marg-bot text-center' id='form_heading'> </h1> 
+<div class='col-md-4 text-center'> <%= image_tag(@review.cover_page.url(:medium)) %> </div>
+<div class='col-md-4'>
+  <%= form_for(@review, html: {multipart: true}, remote: true) do |f| %>
+  <style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} </style>
+
+  <% render 'common_form_errors/atreview_form_errors' %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+
+  <div class='col-md-3 '> <%= f.label :heading, class:" marg-top" %> </div>
+  <div class='col-md-9'> <%= f.text_field :heading, class:"form-control marg-bot", placeholder: "Review Heading" %> </div>
+
+  <div class='col-md-3'>  <%= f.label :book_id, class:"marg-top"%> </div>
+  <div class='col-md-9'>  <%= f.select(:book_id, Book.all.map {|b| [b.title, b.id]},{},class:"form-control") %> </div>
+
+  <div class='col-md-4 marg-top '> <%= f.label :status, "Review Status" %> </div>
+  <div class='col-md-6 pull-right marg-top '>
+    <%= f.select :status, options_for_select([['Publish', 1], ['Draft', 0]], @review.status), {}, class:"form-control marg-bot" %>
+  </div>
+
+  <div class='col-md-3 marg-top'> <%= f.label :review, class:" marg-top" %> </div>
+  <div class='col-md-9'> <%= f.text_area :review, class:"form-control marg-bot", placeholder: "Review" %> </div>
+
+  <div class='col-md-12 marg-bot'>
+    <div class='col-md-6 '> 
+      <div class='col-md-2 marg-top'> <%= f.check_box(:default_avatar) %> </div>
+      <div class='col-md-10 marg-top marg-bot'> <%= f.label(:default_avatar, "Default Review Avatar") %>  </div>
+    </div>
+    <div class='col-md-6 '>
+      <%= f.label "Custom Avatar", class:"marg-top" %>
+      <%= f.file_field :cover_page, class:"" %>
+    </div>
+  </div>
+  
+  <button type='submit' class='btn btn-default btn-block'> <i class='fa fa-check'></i> Submit</button>
+  <% end %>
+</div>
+<div class='col-md-4'>
+  <%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, reviews_path, class:"btn btn-default pull-right" %>
+</div>

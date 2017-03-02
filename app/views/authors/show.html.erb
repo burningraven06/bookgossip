@@ -1,0 +1,16 @@
+<% provide(:title,@author.name)%>
+<!-- <p id="notice"><%= notice %></h6> -->
+<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, authors_path, class:"btn btn-default pull-right" %>
+
+<div class='col-md-4'> 
+	<%= image_tag(@author.avatar.url(:large)) %>
+	<h3 class='text-center'> <%= link_to @author.name, @author %> </h3> <br>
+	<h6>Name: <%= @author.name %> </h6>
+	<h6>Birthday: <%= @author.date_of_birth %> </h6>
+	<h6>Bio: <%= @author.bio %></h6>
+	<h6>Books Written: <% if @author.books.any? %> <%= @author.books.count%> <% else %> <br>No Books Written Yet <% end %> </h6>
+</div>
+
+<div class='col-md-8 text-center' id= 'author_books'>
+	<% if @books_of_author %>	<%= render 'books_of_author' %> <% end%>
+</div>

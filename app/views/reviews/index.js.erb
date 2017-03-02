@@ -1,0 +1,7 @@
+<% if @reviews.present? %>
+	$("#all_reviews_div").html("<%= j render 'reviews' %>");
+	$("#review_search_textfield").val("");
+<% else %>
+	$("#all_reviews_div").html("<h3 class='text-center'>Found nothing with <strong><%= params[:search] %></strong></h3>");
+	$("#review_search_textfield").val("");
+<% end %>

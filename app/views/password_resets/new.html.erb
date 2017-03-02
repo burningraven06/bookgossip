@@ -1,0 +1,10 @@
+<% provide(:title, "Forgot Password") %>
+<style> .col-md-4{padding: 0} .col-md-8{padding: 0}.col-md-12{padding:0;} </style>
+<div class= 'col-md-4 col-md-offset-4' style='margin-top:10%;'>
+	<%= render 'email_form' %>
+</div>
+<script>
+	$(document).ready(function(){
+		$("#navheader").remove();
+	});
+</script>

@@ -1,0 +1,7 @@
+<%= form_for(@membership, url: create_membership_path, remote: true) do |f| %>
+<% render 'common_form_errors/atmembership_form_errors' %>
+
+<%= hidden_field_tag :group_id, @group.id %>
+
+<button type="submit" class='btn btn-default'> <i class='fa fa-users iconspace'> </i> Join </button> 
+<% end %>

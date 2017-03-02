@@ -1,0 +1,10 @@
+<% provide(:title,"Authors")%>
+<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
+<div class='col-md-12' id='author_forms'></div>
+<div class='col-md-12' id="show_all_authors">
+	<div class='col-md-6 text-center'>
+		<h1 class='marg-zero'><%= link_to "Authors", authors_path, remote: true %> <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_author_path, class:"btn btn-default", remote: true, id:"new_author_button" %> </h1>
+	</div>
+	<div class='col-md-6 '> <%= render 'author_search' %>	</div>
+	<div class='col-md-12' id='all_authors_div'> <%= render 'authors' %>	</div>
+</div>

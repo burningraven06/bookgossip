@@ -1,0 +1,8 @@
+<% @reviews_of_book.each do |review| %>
+<div class='col-md-2 text-center'>
+	<%= image_tag(review.cover_page.url(:thumb)) %>
+	<h6> <%= link_to review.heading, review %> </h6>
+</div>
+<% end %>
+<div class='col-md-12 marg-top'> <%= will_paginate @reviews_of_book, param_name: 'review_page',renderer: BootstrapPagination::Rails %> </div>
+<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>

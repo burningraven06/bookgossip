@@ -1,0 +1,7 @@
+<% if @groups.present? %>
+	$("#all_groups_div").html("<%= j render 'groups' %>");
+	$("#group_search_textfield").val("");
+<% else %>
+	$("#all_groups_div").html("<h3 class='text-center'>Found nothing with <strong><%= params[:search] %></strong></h3>");
+	$("#group_search_textfield").val("");
+<% end %>

@@ -1,0 +1,6 @@
+$("#edit_membership_form").html("<%= j render 'edit_form' %> ");
+$("#edit_membership_button").hide();
+$("#cancel_form_button").click(function(){
+	$("#edit_membership_form").html("");
+	$("#edit_membership_button").show();
+});

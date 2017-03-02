@@ -1,0 +1,7 @@
+<% if @authors.present? %>
+	$("#all_authors_div").html("<%= j render 'authors' %>");
+	$("#author_search_textfield").val("");
+<% else %>
+	$("#all_authors_div").html("<h3 class='text-center'>Found nothing with <strong><%= params[:search] %></strong></h3>");
+	$("#author_search_textfield").val("");
+<% end %>

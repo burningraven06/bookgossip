@@ -1,0 +1,11 @@
+<%= link_to 'Settings', edit_user_path(current_user), class:"btn btn-default pull-right", remote:true, id:"user_profile_button" %>
+
+<div class='col-md-6'>
+	<%= image_tag(@user.avatar.url(:large) ,class:"text-center marg-top") %>
+</div>	
+<div class='col-md-6'>
+	<h2 > <%= @user.name %> </h2>
+	<h4 > <strong> <%= @user.account_type %></strong> </h4>
+	<h6> <%= @user.gender %>, Birthday: <%= display_birthday(@user.show_birthday_status) %> </h6>
+	<h6> Joined: <%= @user.created_at.strftime("%d/%B/%Y") %></h6>
+</div>

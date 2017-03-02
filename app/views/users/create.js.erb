@@ -1,0 +1,6 @@
+<% if @user.errors.any? %>
+	$("#show_flash_messages_signup_div").html("<%= j render'common_form_errors/atuser_form_errors' %>");
+<% elsif not @user.errors.any? %>
+	$("#show_flash_messages_signup_div").html("<%= j render'users/user_flash_messages/user_created' %>");
+<% end %>
+

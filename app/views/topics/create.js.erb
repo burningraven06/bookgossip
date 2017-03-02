@@ -1,0 +1,12 @@
+<% if @topic.errors.any? %>
+	$("#show_flash_messages").html("<%= j render 'common_form_errors/attopic_form_errors' %>");
+<% elsif not @topic.errors.any? %>
+	$("#group_topic_form").fadeOut(100);
+	$("#groups_path_button").fadeIn(100);
+	$("#group_new_topic_button").fadeIn(100);
+	$("#group_topics_div").fadeIn(100);
+	$("#group_topics").html("<%= j render 'groups/topics_of_group' %>");
+	$("#show_flash_messages").html("<%= j render 'topics/topic_flash_messages/topic_created' %>");
+	$("#group_topics").fadeIn(100);
+	$("#topic_count_div").html("<%= @topics_of_group.count %>");
+<% end %>

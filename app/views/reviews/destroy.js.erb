@@ -1,0 +1,3 @@
+$("#review_<%= @review.id %>").remove();
+$("#show_flash_messages").prepend("<%= j render'reviews/review_flash_messages/review_deleted' %>");
+$("#all_reviews_div").fadeIn(200);

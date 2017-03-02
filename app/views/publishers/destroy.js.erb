@@ -1,0 +1,3 @@
+$("#publisher_<%= @publisher.id %>").remove();
+$("#show_flash_messages").prepend("<%= j render'publishers/publisher_flash_messages/publisher_deleted' %>");
+$("#all_publishers_div").fadeIn(200);

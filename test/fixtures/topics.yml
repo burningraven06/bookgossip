@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  heading: MyString
+  body: MyString
+  user: one
+  group: one
+  default_avatar: false
+
+two:
+  heading: MyString
+  body: MyString
+  user: two
+  group: two
+  default_avatar: false

@@ -1,0 +1,7 @@
+<% if @books.present? %>
+	$("#all_books_div").html("<%= j render 'books' %>");
+	$("#book_search_textfield").val("");
+<% else %>
+	$("#all_books_div").html("<h3 class='text-center'>Found nothing with <strong><%= params[:search] %></strong></h3>");
+	$("#book_search_textfield").val("");
+<% end %>

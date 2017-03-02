@@ -1,0 +1,7 @@
+<% if @genres.present? %>
+	$("#all_genres_div").html("<%= j render 'genres' %>");
+	$("#genre_search_textfield").val("");
+<% else %>
+	$("#all_genres_div").html("<h3 class='text-center'>Found nothing with <strong><%= params[:search] %></strong></h3>");
+	$("#genre_search_textfield").val("");
+<% end %>

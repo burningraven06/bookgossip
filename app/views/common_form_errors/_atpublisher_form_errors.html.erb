@@ -1,0 +1,11 @@
+<% if @publisher.errors.any? %>
+<div class='alert alert-danger'>
+	<i class='fa fa-exclamation-triangle fa-2x' style='padding-right: 3%;'></i> Sorry, you've got <%= pluralize(@publisher.errors.count, "problem") %>.
+	<dl class="dl-vertical ">
+		<% @publisher.errors.full_messages.each do |msg| %>
+		<dt class='marg-top'> <%= msg.truncate_words(1,  omission: ':') %> </dt>
+		<dd> <%= msg %> </dd>
+		<% end %>
+	</dl>
+</div>
+<% end %>

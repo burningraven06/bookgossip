@@ -1,0 +1,23 @@
+<% provide(:title, "Update") %>
+<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
+<div class='col-md-4 text-center pad-zero'>
+	<%= image_tag(@user.avatar.url(:medium)) %>
+	<h3 class='text-capitalize'> <%= @user.account_type %>  </h6>
+	<h6> Member Since: <%= @user.created_at %> </h6>
+</div>
+<div class='col-md-4 pad-zero' id='user_form_div'></div>
+<div class='col-md-4 pad-zero'>
+	<button type='button' class='btn btn-default pull-right' id='password_button' title='Update your Password'> <i class='fa fa-key'></i> Password</button>
+	<button type='button' class='btn btn-default pull-right' id='profile_button' title='Update your Password'> <i class='fa fa-user'></i> Profile</button>
+</div>
+
+<script>
+	$("#profile_button").click(function(){
+		$("#user_form_div").html("<%= j render'user_edit_profile_form' %> ");
+		$("#user_form_div").fadeIn(100);
+	});
+	$("#password_button").click(function(){
+		$("#user_form_div").html("<%= j render'user_edit_password_form' %> ");
+		$("#user_form_div").fadeIn(100);
+	});
+</script>

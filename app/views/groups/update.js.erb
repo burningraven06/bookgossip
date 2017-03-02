@@ -1,0 +1,9 @@
+<% if @group.errors.any? %>
+	$("#show_flash_messages").html("<%= j render'common_form_errors/atgroup_form_errors' %>");
+<% elsif not @group.errors.any? %>
+	$("#group_forms").fadeOut(100);
+	$("#group_<%= @group.id %>").fadeOut();
+	$("#all_groups_div").html("<%= j render 'groups' %>");
+	$("#show_flash_messages").html("<%= j render'groups/group_flash_messages/group_updated' %>");
+	$("#show_all_groups").fadeIn(100);
+<% end %>

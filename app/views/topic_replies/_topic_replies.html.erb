@@ -1,0 +1,9 @@
+<% @topic.topic_replies.each do |r| %>
+	<div class='col-md-12 marg-zero' style='padding: 2%; border: 1px solid #c4c4c4;'>
+	<%= r.content %>
+		<div class = 'pull-right'>
+			- <%= link_to r.user.name, r.user %>
+			<%= time_ago_in_words(r.created_at) %> ago
+		</div>
+	</div>
+<% end %>

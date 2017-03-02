@@ -1,0 +1,7 @@
+<% if @membership.errors.any? %>
+	$("#show_flash_messages").html("<%= j render'common_form_errors/atmembership_form_errors' %>");
+<% elsif not @membership.errors.any? %>
+	$("#show_flash_messages").html("<%= j render'memberships/membership_flash_messages/membership_created' %>");
+	$("#group_membership_form").html("");
+	$("#group_leave_butoon").html("Joined, Leave Button Here");
+<% end %>

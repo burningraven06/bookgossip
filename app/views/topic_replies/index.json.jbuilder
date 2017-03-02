@@ -1,0 +1,1 @@
+json.array! @topic_replies, partial: 'topic_replies/topic_reply', as: :topic_reply

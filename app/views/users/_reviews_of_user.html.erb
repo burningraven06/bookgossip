@@ -1,0 +1,12 @@
+<h4 class='text-center'> Reviews of <%= current_user.name %> </h4>
+<% if not @reviews_of_user %> No Reviews Published Yet 
+<% else %>
+	<% @reviews_of_user.each do |review| %>
+	<div class='col-md-4 text-center'>
+		<%= image_tag(review.cover_page.url(:thumb)) %>
+		<h6> <%= link_to review.heading, review %> </h6>
+	</div>
+	<% end %>
+	<div class='col-md-12 marg-top'> <%= will_paginate @reviews_of_user, param_name: 'review_page', renderer: BootstrapPagination::Rails %> </div>
+	<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<% end %>

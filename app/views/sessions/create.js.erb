@@ -1,0 +1,7 @@
+<% if @invalid_email_password %>
+	$("#show_flash_messages_login_div").html("<%= j render 'sessions/session_flash_messages/invalid_email_password_combo' %>");
+<% end %>
+<% if @email_unconfirmed %>
+	$("#show_flash_messages_login_div").html("<%= j render 'sessions/session_flash_messages/email_unconfirmed' %>");
+<% end %>
+

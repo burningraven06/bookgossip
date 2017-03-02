@@ -1,0 +1,7 @@
+<% if @publishers.present? %>
+	$("#all_publishers_div").html("<%= j render 'publishers' %>");
+	$("#publisher_search_textfield").val("");
+<% else %>
+	$("#all_publishers_div").html("<h3 class='text-center'>Found nothing with <strong><%= params[:search] %></strong></h3>");
+	$("#publisher_search_textfield").val("");
+<% end %>

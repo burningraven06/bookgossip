@@ -1,0 +1,8 @@
+<% if @topic_reply.errors.any? %>
+	$("#show_flash_messages").html("<%= j render 'common_form_errors/attopic_reply_form_errors' %>");
+<% elsif not @topic_reply.errors.any? %>
+	$("#topic_reply_form_div").html("");
+	$("#topic_new_reply_button").fadeIn(100);
+	$("#replies_of_topic_div").html("<%= j render 'topic_replies' %>");
+	$("#show_flash_messages").html("<%= j render 'topic_replies/topic_replies_flash_messages/topic_reply_created' %>");
+<% end %>

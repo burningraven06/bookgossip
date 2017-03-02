@@ -1,0 +1,14 @@
+<% provide(:title,"Reviews")%>
+<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
+<div class='col-md-12' id='review_forms'></div>
+<% if current_user.account_type=='writer' %>
+<div class='col-md-12' id="show_all_reviews">
+	<div class='col-md-6 text-center'>
+		<h1 class='marg-zero'><%= current_user.name %>'s Reviews <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_review_path, class:"btn btn-default", remote: true, id:"new_review_button", title:"Create New Review" %> </h1>
+	</div>  
+	<div class='col-md-6 '> <%= render 'review_search' %>  </div>
+	<div class='col-md-12'  id='all_reviews_div'> <%= render 'reviews'  %></div>
+</div>
+<% elsif current_user.account_type=='reader' %>
+<h2 class='text-center' style='margin-top:10%;'> You don't have permission to create reviews </h2>
+<% end %>

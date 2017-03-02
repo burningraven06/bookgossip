@@ -1,0 +1,8 @@
+<% if @review.errors.any? %>
+	$("#show_flash_messages").html("<%= j render'common_form_errors/atreview_form_errors' %>");
+<% elsif not @review.errors.any? %>
+	$("#review_forms").fadeOut(100);
+	$("#all_reviews_div").html("<%= j render 'reviews' %>");
+	$("#show_flash_messages").html("<%= j render 'reviews/review_flash_messages/review_created' %>");
+	$("#show_all_reviews").fadeIn(100);
+<% end %>

@@ -1,0 +1,12 @@
+<style> .col-md-4{padding:0} .col-md-8{padding:0} .col-md-12{padding:0} </style>
+<%= form_tag password_resets_path, :method=> :post do %>
+<div class='col-md-12 marg-top'>
+	<div class='col-md-4 marg-top pad-zero'>
+		<%= label_tag :email, "Registered Email" %>	
+	</div>
+	<div class='col-md-8 pad-zero marg-bot'>
+		<%= email_field_tag :email, params[:email], required: true, class:"form-control marg-top" %>
+	</div>
+</div>
+<button type='submit' class="btn btn-info btn-block"> <i class= 'fa fa-check'></i> Reset Password</button>
+<% end %>

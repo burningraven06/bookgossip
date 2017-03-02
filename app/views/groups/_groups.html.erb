@@ -1,0 +1,19 @@
+<% @groups.each do |group| %>
+<div class='col-md-2 marg-top' id="group_<%= group.id %>"> 
+	<%= image_tag(group.cover_page.url(:medium)) %> <br>
+	<% if group_admin(group.user_id) %> 
+	<div class='marg-top'>
+		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_group_path(group), class:"btn btn-default", remote: true, id:"edit_group_button", title:"Edit #{group.name}" %>
+		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, group, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, title:"Delete #{group.name}", class:"btn btn-warning", remote: true %>  
+	</div>
+	<% end %>
+	<div class='marg-top marg-bot'>     
+		<h4><%= link_to group.name, group %></h4>
+		<h6> Admin: <%= link_to group.user.name, group.user %> </h6>
+		<h6> Members: <%= group.member_count %> </h6>
+		<h6> Topics:  CHANGE LATER </h6>
+	</div>  
+</div>
+<% end %>
+<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @groups, renderer: BootstrapPagination::Rails %> </div>
+<script> $(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>

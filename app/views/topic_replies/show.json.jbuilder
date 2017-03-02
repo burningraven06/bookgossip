@@ -1,0 +1,1 @@
+json.partial! "topic_replies/topic_reply", topic_reply: @topic_reply

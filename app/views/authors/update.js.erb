@@ -1,0 +1,9 @@
+<% if @author.errors.any? %>
+	$("#show_flash_messages").html("<%= j render'common_form_errors/atauthor_form_errors' %>");
+<% elsif not @author.errors.any? %>
+	$("#author_forms").fadeOut(100);
+	$("#author_<%= @author.id %>").fadeOut();
+	$("#all_authors_div").html("<%= j render 'authors' %>");
+	$("#show_flash_messages").html("<%= j render'authors/author_flash_messages/author_updated' %>");
+	$("#show_all_authors").fadeIn(100);
+<% end%>

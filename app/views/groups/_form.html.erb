@@ -1,0 +1,34 @@
+<h1 class='marg-bot text-center' id='form_heading'> </h1> 
+<div class='col-md-4 text-center'> <%= image_tag(@group.cover_page.url(:medium)) %> </div>
+<div class='col-md-4'>
+  <%= form_for(@group, html:{multipart: true}, remote: true) do |f| %>
+
+  <style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} </style>
+  <% render 'common_form_errors/atgroup_form_errors' %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+  <div class='col-md-3 '> <%= f.label :name, class:" marg-top" %> </div>
+  <div class='col-md-9'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Group Name" %> </div>
+
+  <div class='col-md-3 marg-top'> <%= f.label :description, class:" marg-top" %> </div>
+  <div class='col-md-9'> <%= f.text_area :description, class:"form-control marg-bot", placeholder: "Group Description" %> </div>
+
+  <div class='col-md-12 marg-bot'>
+    <div class='col-md-6 '> 
+      <div class='col-md-2 marg-top'> <%= f.check_box(:default_avatar) %> </div>
+      <div class='col-md-10 marg-top marg-bot'> <%= f.label(:default_avatar, "Default Group Avatar") %>  </div>
+    </div>
+    <div class='col-md-6 '>
+      <%= f.label "Custom Avatar", class:"marg-top" %>
+      <%= f.file_field :cover_page, class:"" %>
+    </div>
+  </div>
+
+  <button type='submit' class='btn btn-default btn-block'> <i class='fa fa-check'></i> Submit</button>
+  
+  <% end %>
+</div>
+
+<div class='col-md-4'>
+  <%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, groups_path, class:"btn btn-default pull-right" %>
+</div>

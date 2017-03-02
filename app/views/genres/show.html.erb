@@ -1,0 +1,10 @@
+<% provide(:title,@genre.name)%>
+<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, genres_path, class:"btn btn-default pull-right" %>
+
+<div class='col-md-4 '> 
+	<%= image_tag(@genre.cover_page.url(:large)) %>
+	<h3 class=''> <%= link_to @genre.name, @genre %> </h3>
+	<h6> Books Available: <% if @genre.books.any? %> <%= @genre.books.count%> <% else %> <br>No Books Available <% end %> </h6>
+</div>
+
+<div class='col-md-8 ' id='genre_books'> <% if @books_of_genre %> <%= render 'books_of_genre' %> <% end %></div>
