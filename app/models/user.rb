@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
 	validates :name, presence: true, length: {maximum:100}
 	validates :email, presence: true, uniqueness: true, length: {maximum:100}
-	validates :password, length: {minimum:6}, on: :create
-	validates :password, length:{minimum: 6} , on: :update_password
+	validates :password, length: {minimum:8}, on: :create
+	validates :password, length:{minimum: 8} , on: :update_password
 	# validates :password_confirmation, length: {minimum:6}, on: :create , on: :update_password, confirmation: true
 	validates :account_type, presence: true
 	validates :gender, presence: true

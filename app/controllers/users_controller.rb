@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 			if @user.save
 				# cookies[:remember_token] = @user.remember_token
 				UserMailer.account_activation(@user).deliver
-				format.html{	redirect_to common_signup_path ; flash[:info] = "Hey #{@user.name}, An Email has been sent to you for account activation." }
 				format.js{}
+				format.html{	redirect_to common_signup_path ; flash[:info] = "Hey #{@user.name}, An Email has been sent to you for account activation." }
 			else
 				format.html { render 'new' }
 				format.js{}

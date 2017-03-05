@@ -1,5 +1,7 @@
+<% if not current_user %>
+<script type = 'text/javascript'>
+ window.location.href="/signup";
+</script>
+<% else %>
 <h1> Hello World</h1>
-form ->modal all models
-model-search (advanced)
-rails_admin
-users table add column is_admin
+<% end %>

@@ -1,7 +1,6 @@
 <% provide(:title, "Login | Signup") %>
 <div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-<div class='col-md-8'></div>
-<div class='col-md-4'>
+<div class='col-md-4 pull-right'>
 	<button type='button' class='btn btn-default' id='signin_button'> Sign In</button>
 	<button type='button' class='btn btn-default' id='signup_button'> Sign Up</button>
 </div>
@@ -21,10 +20,10 @@
 	$("#login_signup_div").html("<%= j render'login_partial' %> ");
 	$("#signup_button").click(function(){
 		$("#login_signup_div").html("<%= j render'signup_partial' %> ");
-		$("#login_signup_div").fadeIn(100);
+		$("#login_signup_div").fadeIn(200);
 	});
 	$("#signin_button").click(function(){
 		$("#login_signup_div").html("<%= j render'login_partial' %> ");
-		$("#login_signup_div").fadeIn(100);
+		$("#login_signup_div").fadeIn(200);
 	});
 </script>

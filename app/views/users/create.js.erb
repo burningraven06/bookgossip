@@ -1,6 +1,15 @@
+$("#jquery-loading").css("display", "none");
+
 <% if @user.errors.any? %>
 	$("#show_flash_messages_signup_div").html("<%= j render'common_form_errors/atuser_form_errors' %>");
 <% elsif not @user.errors.any? %>
 	$("#show_flash_messages_signup_div").html("<%= j render'users/user_flash_messages/user_created' %>");
+	$("#signup_fullname_field").val("");
+	$("#signup_email_field").val("");
+	$("#signup_password_field").val("");
+	$("#signup_passwordconf_field").val("");
+	$("#signup_writer_radiobutton").reset();
+	$("#signup_reader_radiobutton").reset();
+	$("#signup_gender_select").val("");
 <% end %>
 
