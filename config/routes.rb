@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 	
 	get 'calendar' => 'extrapages#calendar', as: :calendar
 	get '/bookgosp' => 'extrapages#root_home_page', as: :bookgosp_home
-
+	get '/gallery' => 'extrapages#gallery', as: :all_items
 	get '/signup' =>'users#new', as: :common_signup
 	post '/signup' => 'users#create'
 	# get '/login' => "sessions#new" 

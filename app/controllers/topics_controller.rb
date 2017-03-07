@@ -5,7 +5,13 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    params[:search] ? @topics=Topic.search(params[:search]) : @topics= Topic.all
+    @topics = @topics.order(:heading).paginate(page: params[:page], per_page: 18)
+    respond_to do |format|
+      format.html{}
+      format.json{}
+      format.js
+    end
   end
 
   # GET /topics/1

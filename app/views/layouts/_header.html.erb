@@ -5,18 +5,11 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li> <%= link_to "About", about_path %> </li>
 				<% if current_user %>
-				<li> <%= link_to "Books", books_path %> </li>
-				<li> <%= link_to "Authors", authors_path %> </li>
-				<li> <%= link_to "Publishers", publishers_path %> </li>
-				<li> <%= link_to "Genres", genres_path %> </li>
+				<li> <%= link_to "About", about_path %> </li>
+				<li> <%= link_to "Gallery", all_items_path %> </li>
 				<li> <%= link_to "Calendar", calendar_path %> </li>
-				<li> <%= link_to "Reviews", reviews_path %> </li>
-				<li> <%= link_to "Groups", groups_path %> </li>
-				<li> <%= link_to "Topics", topics_path %> </li>
-				<li> <%= link_to "Memberships", memberships_path %> </li>
-
+				
 				<!-- <li class='dropdown'> -->
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Account <span class="caret"></span></a> -->
 				<!-- <ul class='dropdown-menu'> -->

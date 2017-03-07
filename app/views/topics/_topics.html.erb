@@ -1,0 +1,11 @@
+<% @topics.each do |topic| %>
+<div class='col-md-2 marg-top' id="topic_<%= topic.id %>"> 
+	<%= image_tag("medium/default_topic.png") %> <br>
+	
+	<div class='marg-top marg-bot'>			
+		<h4><%= link_to topic.heading, topic %></h4>
+	</div>
+</div>
+<% end %>
+<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @topics, renderer: BootstrapPagination::Rails %> </div>
+<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>

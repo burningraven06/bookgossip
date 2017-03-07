@@ -1,1 +1,9 @@
-Nothing To see here!
+<% provide(:title,"Topic")%>
+<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
+<div class='col-md-12' id="show_all_topics">
+	<div class='col-md-6 text-center'>
+		<h1 class='marg-zero'>Topics </h1>
+	</div>	
+	<div class='col-md-6 '> <%= render 'topic_search' %>	</div>
+	<div class='col-md-12'  id='all_topics_div'> <%= render 'topics'	%></div>
+</div>

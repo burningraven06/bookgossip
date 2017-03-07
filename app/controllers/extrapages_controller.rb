@@ -3,6 +3,8 @@ class ExtrapagesController < ApplicationController
 	end
 	def root_home_page
 	end
+	def gallery
+	end
 	def calendar
 		@reviews=Review.all
 		@books=Book.all

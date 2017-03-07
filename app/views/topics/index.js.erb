@@ -1,0 +1,7 @@
+<% if @topics.present? %>
+	$("#all_topics_div").html("<%= j render 'topics' %>");
+	$("#topic_search_textfield").val("");
+<% else %>
+	$("#all_topics_div").html("<h3 class='text-center'>Found nothing with <strong><%= params[:search] %></strong></h3>");
+	$("#topic_search_textfield").val("");
+<% end %>
