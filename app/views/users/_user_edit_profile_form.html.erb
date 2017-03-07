@@ -19,14 +19,26 @@
 	<div class='col-md-9'> <%= f.date_field :date_of_birth, class:'form-control marg-top', value: @user.date_of_birth, required: true %> </div>
 
 	<div class='col-md-3 marg-top'>	<%= f.label :show_birthday_status, "Privacy Settings" %>	</div>
+
+	<% if @user.date_of_birth %>
 	<div class='col-md-9 '>	<%= f.select :show_birthday_status, options_for_select([
 		["Birthdate & Age - #{@user.date_of_birth}, #{age(@user.date_of_birth)} Years", 1], 
 		["Birthdate - #{@user.date_of_birth}", 2], 
-		["Birthday - #{@user.date_of_birth.strftime("%B/%d")}", 3], 
+		["Birthday - #{@user.date_of_birth.to_date.strftime("%B/%d")}", 3], 
 		["Just Age - #{age(@user.date_of_birth)} Years Old", 4], 
 		["Don't Show Anything", 5]],	@user.show_birthday_status), {}, class:"form-control marg-top", required: true 
 		%>
 	</div>
+	<% elsif not @user.date_of_birth %>
+	<div class='col-md-9 '>	<%= f.select :show_birthday_status, options_for_select([
+		["Birthdate & Age - #{@user.created_at}, #{age(@user.created_at)} Years", 1], 
+		["Birthdate - #{@user.created_at}", 2], 
+		["Birthday - #{@user.created_at.strftime("%B/%d")}", 3], 
+		["Just Age - #{age(@user.created_at)} Years Old", 4], 
+		["Don't Show Anything", 5]],	@user.show_birthday_status), {}, class:"form-control marg-top", required: true 
+		%>
+	</div>
+	<% end %>
 
 	<div class='col-md-12 pull-right marg-bot'>
 		<div class='col-md-6 marg-top'>	
@@ -39,6 +51,13 @@
 		</div>
 	</div>
 
-	<button type='submit' class='btn btn-primary btn-block'><i class='fa fa-check'></i> Update Profile</button>
+	<button type='submit' class='btn btn-primary btn-block' id='user_edit_profile_submit_button'><i class='fa fa-check'></i> Update Profile</button>
 </div>
 <% end %>
+
+<script type='text/javascript'> 
+	$("form").submit(function(){
+		$("#jquery-loading").css("display", "block"); 
+		// $("#show_flash_messages").html("");	
+	});
+</script>

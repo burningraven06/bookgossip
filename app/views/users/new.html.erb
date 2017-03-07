@@ -1,22 +1,28 @@
 <% provide(:title, "Login | Signup") %>
+
 <div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-<div class='col-md-4 pull-right'>
-	<button type='button' class='btn btn-default' id='signin_button'> Sign In</button>
-	<button type='button' class='btn btn-default' id='signup_button'> Sign Up</button>
+
+<div class='col-md-4' style='background-color:rgba(23, 48, 54, 0.7); margin-top: 4%; box-shadow: 0px 0px 3px 0px rgba(29,61,68,1);'>
+	<link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
+	<h1 class='landing_page_heading'> Book Gossips</h1>
+	<button type='button' class='btn col-md-6 ' style='background-color: #0e2f44; color: #ffffff; mar' id='signin_button'> Sign In</button>
+	<button type='button' class='btn col-md-6 ' style='background-color: #ff4040; color: #ffffff;' id='signup_button'> Sign Up</button>
+	
+	<div id="login_signup_div" style='color:#fff;'></div>
+</div>
+<div class='col-md-4 text-center'>
+	<div id="show_flash_messages_signup_div" class=' col-md-offset-3 pad-zero marg-bot'></div>
 </div>
 
-<div class='col-md-8 text-center'>
-	<%= image_tag("home_logo/send.png")%>
-	<h1 class='main_site_heading marg-top'> Book Gossips</h1>
-</div>
-
-<div class='col-md-4 ' id="login_signup_div"></div>
 
 <script>
 	$(document).ready(function(){
 		$("#navheader").remove();
 		$("#main-container").css("margin-top", 0);
+		$(".landing_pg_img").css("display", 'block');
+		$("body").css("margin", 0);
 	});
+
 	$("#login_signup_div").html("<%= j render'login_partial' %> ");
 	$("#signup_button").click(function(){
 		$("#login_signup_div").html("<%= j render'signup_partial' %> ");
@@ -26,4 +32,5 @@
 		$("#login_signup_div").html("<%= j render'login_partial' %> ");
 		$("#login_signup_div").fadeIn(200);
 	});
+	
 </script>

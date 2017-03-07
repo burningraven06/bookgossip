@@ -11,16 +11,17 @@ class MembershipsController < ApplicationController
 
 	def index
 		@groups = Group.where("user_id = ?", current_user.id)
-		@groups.each do |g|
-			@memberships = Membership.where("group_id = ?", g.id)
+		if Membership.count>0
+			@groups.each do |g|
+				@memberships = Membership.where("group_id = ?", g.id)
+			end
+			@memberships.each do |m|
+				@approved_members = @memberships.where("request_approved = ? ", true)
+				@pending_members = @memberships.where("request_approved = ? ", false)
+			end
+			@approved_members = @approved_members.paginate(page: params[:page], per_page: 15)
+			@pending_members = @pending_members.paginate(page: params[:page], per_page: 15)
 		end
-		@memberships.each do |m|
-			@approved_members = @memberships.where("request_approved = ? ", true)
-			@pending_members = @memberships.where("request_approved = ? ", false)
-		end
-		@approved_members = @approved_members.paginate(page: params[:page], per_page: 15)
-		@pending_members = @pending_members.paginate(page: params[:page], per_page: 15)
-
 		respond_to do |format|
 			format.html{}
 			format.json

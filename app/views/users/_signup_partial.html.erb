@@ -1,6 +1,5 @@
-<div id="show_flash_messages_signup_div" class='col-md-12 pad-zero marg-bot'></div>
-
-<h2 class='text-center'> Sign Up</h2>
+<div class='col-md-12 pad-zero marg-bot'></div>
+<h4 class='text-center signup_signin_passreset_heading'> Sign Up</h4>
 <%= form_for(@user, url: common_signup_path, remote: true) do |f| %>
 <%= render 'common_form_errors/atuser_form_errors' %>
 
@@ -28,11 +27,11 @@
 	</div>
 </div>
 
-<button type='submit' class='btn btn-info btn-block' id="signup_submit_button"> <i class='fa fa-chevron-right'> </i> Sign Up</button>
+<button type='submit' class='btn btn-info btn-block'> <i class='fa fa-chevron-right'> </i> Sign Up</button>
 
 <% end %>
 <script type='text/javascript'> 
-	$("#signup_submit_button").click(function(){
+	$("form").submit(function(){
 		$("#jquery-loading").css("display", "block"); 
 		$("#show_flash_messages_signup_div").html("");	
 	});

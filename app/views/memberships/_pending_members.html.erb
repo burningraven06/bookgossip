@@ -1,6 +1,7 @@
 <h5 class='text-center'> Pending requests </h5>
-<ol>
-	<% @pending_members.each do |membership| %>		
+<ol> 
+<% if @pending_members %>
+<% @pending_members.each do |membership| %>		
 	<div class='col-md-12' > 
 		<li class='pad-zero'>
 			<%= link_to "#{show_group_name(membership.group_id)}", group_path(membership.group_id) %>,
@@ -12,3 +13,6 @@
 </ol>
 <div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @pending_members, renderer: BootstrapPagination::Rails %> </div>
 <script> $(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<% elsif not @pending_members %>
+<p class='text-center'> No Membership Requests Yet </p>
+<% end %>
