@@ -1,13 +1,17 @@
 <% provide(:title,@book.title)%>
 <div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
 <div class='col-md-6 col-md-offset-3' id='book_review_form'></div>
-<div id='show_book'>
-	<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, books_path, class:"btn btn-default pull-right" %>
-	<div class='col-md-4'> 
-		<%= image_tag(@book.cover_page.url(:large)) %>
-		<h3> <%= link_to @book.title, @book %> </h3>
+
+<div class='col-md-12' id='show_book'>
+	
+	<div class='col-md-4 pad-zero text-center'> 
+		<div class='marg-top2'>
+			<%= image_tag(@book.cover_page.url(:large)) %>
+		</div>
+		<h3 class='marg-top10' > <%= link_to @book.title, @book %> </h3>
 	</div>
-	<div class='col-md-8'>
+	
+	<div class='well col-md-6 '>
 		<div class='col-md-12'>
 			<div class='col-md-3'> <h6>Author: </h6> </div>
 			<div class='col-md-9 marg-bot2'> <%= image_tag(@book.author.avatar.url(:thumb)) %> <%= link_to @book.author.name, @book.author %> </div>
@@ -32,5 +36,10 @@
 			<div class='col-md-3'> <h6>Reviews: <% if @book.reviews.any? %> <% @book.reviews.count%> <% else %> <br>No Reviews Published Yet <% end %> </h6> </div>
 			<div class='col-md-9' id='book_reviews'> <% if @reviews_of_book %> <%= render 'reviews_of_book' %> <% end %></div>
 		</div>
+	</div>
+
+	<div class='text-right col-md-2 pad-zero'>
+		<%= link_to image_tag('button_icons/back_button.png'), books_path %> 
+		<span class='marg-left'><%= link_to "Back", books_path %></span>
 	</div>
 </div>

@@ -1,6 +1,11 @@
-<h1 class='marg-bot text-center' id='form_heading'> </h1> 
-<div class='col-md-4 text-center'> <%= image_tag(@group.cover_page.url(:medium)) %> </div>
-<div class='col-md-4'>
+<h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
+<div class='col-md-4 text-center'>
+ <%= image_tag(@group.cover_page.url(:medium)) %>
+ <h3 id='jquery_group_name'></h3>
+ <h6 class='marg-top10 marg-bot'>Group Admin: <%= current_user.name %></h6>
+ <h6 id='jquery_group_description'></h6>
+</div>
+<div class='col-md-4 form_border'>
   <%= form_for(@group, html:{multipart: true}, remote: true) do |f| %>
 
   <style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} </style>
@@ -8,10 +13,10 @@
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
   <div class='col-md-3 '> <%= f.label :name, class:" marg-top" %> </div>
-  <div class='col-md-9'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Group Name" %> </div>
+  <div class='col-md-9'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Group Name", id:"form_group_name" %> </div>
 
   <div class='col-md-3 marg-top'> <%= f.label :description, class:" marg-top" %> </div>
-  <div class='col-md-9'> <%= f.text_area :description, class:"form-control marg-bot", placeholder: "Group Description" %> </div>
+  <div class='col-md-9'> <%= f.text_area :description, class:"form-control marg-bot", placeholder: "Group Description", id:"form_group_description" %> </div>
 
   <div class='col-md-12 marg-bot'>
     <div class='col-md-6 '> 
@@ -24,11 +29,24 @@
     </div>
   </div>
 
-  <button type='submit' class='btn btn-default btn-block'> <i class='fa fa-check'></i> Submit</button>
+  <button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
   
   <% end %>
 </div>
 
-<div class='col-md-4'>
-  <%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, groups_path, class:"btn btn-default pull-right" %>
+<div class='col-md-4 text-center'>
+    <%= link_to image_tag('button_icons/back_button.png'), groups_path %>
+  <span style='margin-left: 2%;'><%= link_to "Back", groups_path %></span>
 </div>
+
+<script type='text/javascript'> 
+  $("#form_group_name").keyup(function(){
+    $("#jquery_group_name").html($(this).val());
+  });
+  $("#form_group_description").keyup(function(){
+    $("#jquery_group_description").html($(this).val());
+  });
+  $("form").submit(function(){
+    $("#jquery_loading").css("display", "block"); 
+  });
+</script>

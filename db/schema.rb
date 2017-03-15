@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023095840) do
+ActiveRecord::Schema.define(version: 20170314200142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20161023095840) do
     t.integer  "cover_page_file_size"
     t.datetime "cover_page_updated_at"
     t.boolean  "default_avatar"
+    t.string   "publisher_id"
     t.index ["author_id"], name: "index_books_on_author_id", using: :btree
     t.index ["id"], name: "index_books_on_id", using: :btree
+    t.index ["publisher_id"], name: "index_books_on_publisher_id", using: :btree
   end
 
   create_table "books_genres", force: :cascade do |t|

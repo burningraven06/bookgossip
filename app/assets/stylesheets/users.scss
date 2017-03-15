@@ -6,6 +6,8 @@
 .marg-bot{margin-bottom: 5%;}
 .marg-top2{margin-top: 2%;}
 .marg-bot2{margin-bottom: 2%;}
+.marg-top10{margin-top: 10%;}
+.marg-bot10{margin-bottom: 10%;}
 .marg-left{margin-left: 5%;}
 .marg-right{margin-right: 5%;}
 .form-control{ border-radius: 0;}
@@ -19,4 +21,12 @@
 .landing_page_heading{font-family: Vollkorn; text-align: center; font-size: 460%; color: rgba(255,255,255,1); margin-bottom:5%;padding:0;margin-top:5%;}
 .landing_pg_img{min-width:100%;max-height:100%;position:absolute;display:none;}
 #login_signup_div{ padding-bottom:5%; margin-top:3%;}
+.create_new_button{margin-left:5%;}
 .gallery_item_div{ margin-top:3%;}
+.form_border{border: 1px solid lightgrey; padding:2%;}
+body {
+	/*font-family: Source Sans Pro; */
+	font-family: Nato Sans; 
+}
+.navbar_fontstyle {font-family: Nato Sans; font-size: 125%; } 
+

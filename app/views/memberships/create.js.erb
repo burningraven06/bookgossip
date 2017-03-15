@@ -1,3 +1,4 @@
+$("#jquery_loading").css("display", "none");
 <% if @membership.errors.any? %>
 	$("#show_flash_messages").html("<%= j render'common_form_errors/atmembership_form_errors' %>");
 <% elsif not @membership.errors.any? %>

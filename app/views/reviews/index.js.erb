@@ -1,3 +1,4 @@
+$("#jquery_loading").css("display", "none");
 <% if @reviews.present? %>
 	$("#all_reviews_div").html("<%= j render 'reviews' %>");
 	$("#review_search_textfield").val("");

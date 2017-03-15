@@ -9,22 +9,19 @@
 	<%= csrf_meta_tags %>
 	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		<link rel="shortcut icon" href="assets/images/send.png">
+		<%= favicon_link_tag 'home_logo/send.png' %>
+		<link href="https://fonts.googleapis.com/css?family=Nato+Sans" rel="stylesheet">
 </head>
 <body>
-
 	<div id= 'fullheight'>
-	<%= image_tag("home_logo/wiki_bookshelf.jpg", class: "landing_pg_img")%>
-
+	<%= image_tag("home_logo/wiki_bookshelf_sm.jpg", class: "landing_pg_img")%>
 		<div class='container'>
 			<%= render 'layouts/header' %> 
-			<div id="jquery_loading" style='margin:2% 45% 0% 45%; display:none; position:fixed;'> <%= image_tag("js_loading/hourglass.svg")%></div>
-			<div id="main-container" style='margin-top: 4%;'>
+			<div id="main-container" style='margin-top: 5%;'> 
 				<%= render 'layouts/flash_alerts' %>
 				<%= yield %> 
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

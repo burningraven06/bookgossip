@@ -1,3 +1,4 @@
+<% if @books_of_publisher %>
 <% @books_of_publisher.each do |book| %>
 <div class='col-md-2'>
 	<%= image_tag(book.cover_page.url(:thumb)) %>
@@ -6,3 +7,6 @@
 <% end %>
 <div class='col-md-6 col-md-offset-3 marg-top'> <%= will_paginate @books_of_publisher, renderer: BootstrapPagination::Rails %> </div>
 <script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<% elsif not @books_of_publisher %>
+<div class='well col-md-6 col-md-offset-3'><h4><%= @publisher.name %> hasn't published any books</h4></div>
+<% end %>

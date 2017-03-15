@@ -1,19 +1,27 @@
+<% if @books.count>0 %>
 <% @books.each do |book| %>
-<div class='col-md-3 marg-top' id="book_<%= book.id %>"> 
-	<%= image_tag(book.cover_page.url(:medium)) %> <br>
-	<div class='marg-top '>
-		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_book_path(book), class:"btn btn-default", remote: true, id:"edit_book_button", title:"Edit #{book.title}" %>
-		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, book, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, title:"Delete #{book.title}", class:"btn btn-warning", remote: true %>		
+<div class='col-md-3 pad-zero text-center marg-top' id="book_<%= book.id %>" > 
+	<%= link_to image_tag(book.cover_page.url(:medium)), book %> <br>
+	<h4 > <%= link_to book.title, book %> </h4>
+
+	<div class='marg-top10 marg-bot10 '>
+		<%= link_to image_tag('button_icons/writing.png'), edit_book_path(book), remote: true, id:"edit_book_button", title:"Edit #{book.title}" %>
+		<%= link_to image_tag('button_icons/remove.png'), book, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, title:"Delete #{book.title}", remote: true %>	
 	</div>
-	<div class='marg-top marg-bot'>			
-		<h4 > <%= link_to book.title, book %> </h4>
-		<h6> Author: <%= link_to book.author.name, book.author %> </h6>	
+	<div class='well marg-top marg-bot text-left'>			
+		<h6 class='marg-top10'> Author: <%= link_to book.author.name, book.author %> </h6>	
 		<h6> Publisher: <%= link_to book.publisher.name, book.publisher %>  </h6>
 		<h6> Summary: <%= book.book_summary.truncate(100) %> </h6>
 		<h6> Genres: <% book.genres.each do |genre| %> <%= link_to genre.name, genre %>, <% end %> </h6>
-		<h6> Reviews: <% if book.reviews.any? %> <% book.reviews.each do |review| %> <%= link_to review.heading, review %>, <% end %> <% else %> No Reviews Published Yet <% end %></h6>
+		<h6> Reviews: <% if book.reviews.any? %> <%= book.reviews.count %> Reviews Available <% else %> No Reviews Published Yet <% end %></h6>
 	</div>
 </div>
 <% end %>
 <div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @books, renderer: BootstrapPagination::Rails %> </div>
 <script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<% elsif not @books.count > 0 %>
+<div class='well col-md-8 col-md-offset-2'>
+	<h3> No Books Available</h3> 
+	<h6> Please Click the <strong>Plus Icon</strong> to create a New Book</h6>
+</div>
+<% end %>

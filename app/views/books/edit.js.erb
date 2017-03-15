@@ -1,4 +1,4 @@
 $("#book_forms").html("<%= j render 'form' %>");
-$("#form_heading").html("<i class='fa fa-pencil iconspace fa-2x'></i> <%= @book.title %>");
+$("#form_heading").html("Edit <%= @book.title %>");
 $("#show_all_books").fadeOut(100);
 $("#book_forms").fadeIn(100);

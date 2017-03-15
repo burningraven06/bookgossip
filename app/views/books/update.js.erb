@@ -1,3 +1,4 @@
+$("#jquery_loading").css("display", "none");
 <% if @book.errors.any? %>
 	$("#show_flash_messages").html("<%= j render'common_form_errors/atbook_form_errors' %>");
 <% elsif not @book.errors.any? %>

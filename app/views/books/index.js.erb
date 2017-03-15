@@ -1,3 +1,4 @@
+$("#jquery_loading").css("display", "none");
 <% if @books.present? %>
 	$("#all_books_div").html("<%= j render 'books' %>");
 	$("#book_search_textfield").val("");

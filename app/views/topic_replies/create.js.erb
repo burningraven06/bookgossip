@@ -1,3 +1,4 @@
+$("#jquery_loading").css("display", "none");
 <% if @topic_reply.errors.any? %>
 	$("#show_flash_messages").html("<%= j render 'common_form_errors/attopic_reply_form_errors' %>");
 <% elsif not @topic_reply.errors.any? %>

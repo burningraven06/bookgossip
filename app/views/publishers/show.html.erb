@@ -1,13 +1,21 @@
 <% provide(:title,@publisher.name)%>
-<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, publishers_path, class:"btn btn-default pull-right" %>
+<div class="col-md-12 pad-zero ">
+	<div class='col-md-4'> 
+		<div class='marg-top2 text-center'>
+			<%= image_tag(@publisher.cover_page.url(:large)) %>
+			<h3> <%= link_to @publisher.name, @publisher %> </h3>
+		</div>
+		<div class='well'>
+			<h6> Address: <%= @publisher.address %> </h6>
+			<h6> Website: <%= link_to @publisher.website, "http://#{@publisher.website}" %></h6>
+		</div>
+	</div>
 
-<div class='col-md-4'> 
-	<%= image_tag(@publisher.cover_page.url(:large)) %>
-	<h3> <%= link_to @publisher.name, @publisher %> </h3>
-	<h6> Address: <%= @publisher.address %> </h6>
-	<h6> Website: <%= link_to @publisher.website, "http://#{@publisher.website}" %></h6>
-	<h6> Books Published: <% if @publisher.books.any? %> <%= @publisher.books.count%> <% else %> <br>No Books Published Yet <% end %> </h6>
+	<div class='col-md-6 text-center' id= "publisher_books"> <%= render 'books_of_publisher' %> </div>
+
+	<div class='col-md-2 text-right'>
+		<%= link_to image_tag('button_icons/back_button.png'), publishers_path %>
+		<span class='marg-left'><%= link_to "Back", publishers_path %></span>
+	</div>
 </div>
-
-<div class='col-md-8 text-center' id= "publisher_books"> <%= render 'books_of_publisher' %> </div>
 

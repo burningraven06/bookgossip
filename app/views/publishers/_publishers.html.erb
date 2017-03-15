@@ -1,16 +1,25 @@
+<% if @publishers.count >0 %>
 <% @publishers.each do |publisher| %>
-<div class='col-md-2 marg-top' id="publisher_<%= publisher.id %>"> 
-	<%= image_tag(publisher.cover_page.url(:medium)) %> <br>
-	<div class='marg-top'>
-		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_publisher_path(publisher), class:"btn btn-default", remote: true, id:"edit_publisher_button", title:"Edit #{publisher.name}" %>
-		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, publisher, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"btn btn-warning", remote: true, title:"Delete #{publisher.name}" %>		
+<div class='col-md-2 pad-zero marg-top text-center' id="publisher_<%= publisher.id %>"> 
+	<%= link_to image_tag(publisher.cover_page.url(:medium)), publisher %> <br>
+	<h4><%= link_to publisher.name, publisher %></h4>
+
+	<div class='marg-top10 marg-bot10'>
+		<%= link_to image_tag('button_icons/writing.png'), edit_publisher_path(publisher), remote: true, id:"edit_publisher_button", title:"Edit #{publisher.name}" %>
+		<%= link_to image_tag('button_icons/remove.png'), publisher, method: :delete, data: { confirm: 'Are you sure you want to delete?' },  remote: true, title:"Delete #{publisher.name}" %>		
 	</div>
-	<div class='marg-top marg-bot'>			
-		<h4><%= link_to publisher.name, publisher %></h4>
-		<h6>Address: <%= publisher.address %></h6>
-		<h6>Books Published: <% if publisher.books.any? %> <%= publisher.books.count%> <% else %> <br>No Books Published Yet <% end %></h6>
+	<div class='marg-top marg-bot text-left'>			
+		<h6 class='marg-top10'>Address: <%= publisher.address %></h6>
+		<h6 class='marg-top10'>Books Published:
+		<% if publisher.books.count>0 %> <%= publisher.books.count %> <% elsif not publisher.books.count>0 %> No Books Published Yet <% end %> </h6>
 	</div>
 </div>
 <% end %>
 <div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @publishers, renderer: BootstrapPagination::Rails %> </div>
 <script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<% elsif not @publishers.count>0 %>
+<div class='well col-md-8 col-md-offset-2'>
+	<h3> No Publishers Available</h3> 
+	<h6> Please Click the <strong>Plus Icon</strong> to create a New Publisher</h6>
+</div>
+<% end %>

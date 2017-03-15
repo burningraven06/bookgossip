@@ -1,26 +1,64 @@
-<h1 class='marg-bot text-center' id='form_heading'> </h1> 
-<div class='col-md-4 text-center'> <%= image_tag(@book.cover_page.url(:medium)) %> </div>
-<div class='col-md-4'>
+<h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
+<div class='col-md-3 text-center'>
+	<%= image_tag(@book.cover_page.url(:medium)) %>
+	<h3 id='jquery_book_title'></h3>
+	<h6 class='marg-top10 marg-bot' id='jquery_book_author'></h6>
+	<h6 class='marg-bot' id='jquery_book_publisher'></h6>
+	<h6 class='marg-bot' id='jquery_book_genres'></h6>
+	<h6 class='marg-bot' id='jquery_book_pubdate'></h6>
+	<h6 id='jquery_book_summary'></h6>
+</div>
+<div class='col-md-6 form_border' style='padding:3%;'>
 	<%= form_for(@book, html:{ multipart: true}, remote: true) do |f| %>
 	<style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} </style>
-
 	<% render 'common_form_errors/atbook_form_errors' %>
 	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
 	<div class='col-md-3 '> <%= f.label :title, class:" marg-top" %> </div>
-	<div class='col-md-9'> <%= f.text_field :title, class:"form-control marg-bot", placeholder: "Book Title" %> </div>
-
+	<div class='col-md-9'> <%= f.text_field :title, class:"form-control marg-bot", placeholder: "Book Title", id:"form_book_title" %> </div>
+	
+	<% if Author.count >0 %>
 	<div class='col-md-3 '>  <%= f.label :author_id, class:" marg-top" %>	</div>
-	<div class='col-md-9'>  <%= f.select(:author_id, Author.all.map {|a| [a.name, a.id]},{},class:"form-control marg-bot") %>	</div>
+	<div class='col-md-9 '>  <%= f.select(:author_id, Author.all.map {|a| [a.name, a.id]},{},class:"form-control marg-bot", id:"form_book_author") %>	</div>
+	<% else %>
+	<div class='col-md-3'> 	<%= f.label :author_id, class:"marg-top"%> </div>
+	<div class='col-md-9 marg-bot2' >
+		<div class='alert alert-warning'>
+			** No Authors Available! <br>
+			Please <strong><%= link_to "Create An Author", new_author_path %></strong> First
+		</div>
+	</div>
+	<% end %>
 
+	<% if Publisher.count >0 %>
 	<div class='col-md-3'> 	<%= f.label :publisher_id, class:"marg-top"%> </div>
-	<div class='col-md-9'>  <%= f.select(:publisher_id, Publisher.all.map {|p| [p.name, p.id]},{},class:"form-control marg-bot") %> </div>
+	<div class='col-md-9'>  <%= f.select(:publisher_id, Publisher.all.map {|p| [p.name, p.id]},{},class:"form-control marg-bot", id: "form_book_publisher") %> </div>
+	<% else %>
+	<div class='col-md-3'> 	<%= f.label :publisher_id, class:"marg-top"%> </div>
+	<div class='col-md-9'>
+		<div class='alert alert-warning'>
+			** No Publishers Available! <br>
+			Please <strong><%= link_to "Create A Publisher", new_publisher_path %></strong> First
+		</div>
+	</div>
+	<% end %>
 
+	<% if Genre.count>0 %>
 	<div class='col-md-3'> 	<%= f.label :genre_ids, "Genres", class:"marg-top"%> </div>
-	<div class='col-md-9'>  <%= f.select(:genre_ids, Genre.all.map {|g| [g.name, g.id]},{},class:"form-control marg-bot", multiple: true) %> </div>
+	<div class='col-md-9'>  <%= f.select(:genre_ids, Genre.all.map {|g| [g.name, g.id]},{},class:"form-control marg-bot", multiple: true, id:"form_book_genres") %> </div>
+	<% else %>
+	<div class='col-md-3'> 	<%= f.label :genre_ids, "Genres", class:"marg-top"%> </div>
+	<div class='col-md-9'>
+		<div class='alert alert-warning'>
+			** No Genres Available! <br>
+			Please <strong><%= link_to "Create A Genre", new_genre_path %></strong> First
+		</div>
+	</div>
+	<% end %>
+
 
 	<div class='col-md-3'> 	<%= f.label :publication_date, class:" marg-top" %> </div>
-	<div class='col-md-9'> 	<%= f.date_field :publication_date, class: "form-control marg-bot" %> </div>
+	<div class='col-md-9'> 	<%= f.date_field :publication_date, class: "form-control marg-bot", id:"form_book_pubdate" %> </div>
 
 	<div class='col-md-12 marg-bot'>
 		<div class='col-md-6 '> 
@@ -32,13 +70,34 @@
 			<%= f.file_field :cover_page, class:"" %>
 		</div>
 	</div>
-	
+
 	<div class='col-md-3'> 	<%= f.label :book_summary, class:" marg-top" %> </div>
-	<div class='col-md-9'> 	<%= f.text_area :book_summary , class:"form-control marg-bot", placeholder: "Whatś the story about" %> </div>
-	
-	<button type='submit' class='btn btn-default btn-block'> <i class='fa fa-check'></i> Submit</button>
+	<div class='col-md-9'> 	<%= f.text_area :book_summary , class:"form-control marg-bot", placeholder: "Whatś the story about", id:"form_book_summary" %> </div>
+
+	<button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
 	<% end %>
 </div>
-<div class='col-md-4'>
-	<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, books_path, class:"btn btn-default pull-right" %>
+<div class='col-md-3 text-center'>
+	<%= link_to image_tag('button_icons/back_button.png'), books_path %>
+	<span style='margin-left: 2%;'><%= link_to "Back", books_path %></span>
 </div>
+<script type='text/javascript'> 
+$("#form_book_title").keyup(function(){
+	$("#jquery_book_title").html($(this).val());
+});
+$("#form_book_author").change(function(){
+	$("#jquery_book_author").html($(this).val());
+});
+$("#form_book_publisher").change(function(){
+	$("#jquery_book_publisher").html($(this).val());
+});
+$("#form_book_pubdate").change(function(){
+	$("#jquery_book_pubdate").html($(this).val());
+});
+$("#form_book_summary").keyup(function(){
+	$("#jquery_book_summary").html($(this).val());
+});
+	$("form").submit(function(){
+		$("#jquery_loading").css("display", "block"); 
+	});
+</script>

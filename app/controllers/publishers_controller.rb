@@ -8,17 +8,19 @@ class PublishersController < ApplicationController
 		params[:search] ?	@publishers=Publisher.search(params[:search]) : @publishers= Publisher.all
 		@publishers = @publishers.order(:name).paginate(page: params[:page], per_page: 18)
 		respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @publishers}
-      format.js
-    end
+		format.html # index.html.erb
+		format.json { render json: @publishers}
+		format.js
+	 end
   end
 
 	# GET /publishers/1
 	# GET /publishers/1.json
 	def show
 		@publisher = Publisher.find(params[:id])
-		@books_of_publisher = @publisher.books.order(title: :asc).paginate(page: params[:page], per_page: 24)
+		if Book.all.count>0
+			@books_of_publisher = @publisher.books.order(title: :asc).paginate(page: params[:page], per_page: 24)
+		end
 		respond_to do |format|
 			format.html {}
 			format.json {}

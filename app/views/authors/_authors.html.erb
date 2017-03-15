@@ -1,17 +1,24 @@
+<% if @authors.count>0 %>
 <% @authors.each do |author| %>
-<div class='col-md-2 pad-zero marg-top' id="author_<%= author.id %>"> 
-	<%= image_tag(author.avatar.url(:medium)) %> <br>
-	<div class='marg-top'>
-		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_author_path(author), class:"btn btn-default", remote: true, id:"edit_author_button" %>
-		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, author, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"btn btn-warning", remote: true %>
+<div class='col-md-2 pad-zero text-center marg-top' id="author_<%= author.id %>"> 
+	<%= link_to image_tag(author.avatar.url(:medium)), author %> <br>
+	<h4> <%= link_to author.name, author %> </h4>
+	<div class='marg-top10 marg-bot10'>
+		<%= link_to image_tag('button_icons/writing.png'), edit_author_path(author), remote: true, id:"edit_author_button", title:"Edit #{author.name} " %>
+		<%= link_to image_tag('button_icons/remove.png'), author, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, remote: true, title: "Delete #{author.name}" %>
 	</div>
-	<div class='marg-top marg-bot'>			
-		<h4> <%= link_to author.name, author %> </h4>
-		<h6> Birthday: <%= author.date_of_birth %> </h6>
-		<h6> Bio: <%= author.bio.truncate(25) %>  </h6>
-		<h6> Books Written: <% if author.books.any? %> <%= author.books.count%> <% else %> <br>No Books Written Yet <% end %> </h6>
+	<div class='well marg-top marg-bot text-left'>			
+		<h6 class='marg-top10 '> Birthday: <%= author.date_of_birth %> </h6>
+		<h6 > Bio: <%= author.bio.truncate(25) %>  </h6>
+		<h6 > Books Written: <% if author.books.any? %> <%= author.books.count%> <% else %> <br>No Books Written Yet <% end %> </h6>
 	</div>
 </div>
 <% end %>
 <div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @authors, renderer: BootstrapPagination::Rails %> </div>
 <script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<% elsif not @authors.count>0 %>
+<div class='well col-md-8 col-md-offset-2'>
+	<h3> No Authors Available</h3> 
+	<h6> Please Click the <strong>Plus Icon</strong> to create a New Author</h6>
+</div>
+<% end %>
