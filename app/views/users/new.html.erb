@@ -26,13 +26,13 @@
 		$("body").css("margin", 0);
 	});
 
-	$("#login_signup_div").html("<%= j render'login_partial' %> ");
+	$("#login_signup_div").html("<%= j render 'users/login_partial' %> ");
 	$("#signup_button").click(function(){
-		$("#login_signup_div").html("<%= j render'signup_partial' %> ");
+		$("#login_signup_div").html("<%= j render 'users/signup_partial' %> ");
 		$("#login_signup_div").fadeIn(200);
 	});
 	$("#signin_button").click(function(){
-		$("#login_signup_div").html("<%= j render'login_partial' %> ");
+		$("#login_signup_div").html("<%= j render 'users/login_partial' %> ");
 		$("#login_signup_div").fadeIn(200);
 	});
 	

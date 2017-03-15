@@ -1,5 +1,10 @@
 class PasswordResetsController < ApplicationController
 	def new
+		respond_to do |format|
+			format.html {}
+			format.json {}
+			format.js
+		end
 	end
 
 	def create
@@ -16,7 +21,7 @@ class PasswordResetsController < ApplicationController
 		else
 			@invalid_email=true
 			respond_to do |format|
-				format.html {flash[:danger]="Email not registered!"; render 'new'}
+				format.html {flash[:danger]="Email not registered!";render 'new'}
 				format.json{}
 				format.js
 			end

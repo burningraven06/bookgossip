@@ -1,8 +1,9 @@
-$("#jquery_loading").css("display", "none");
+$("#landingpg_jquery_loading").css("display", "none");
 <% if @invalid_email %>
-	$("#show_flash_messages").html("<%= j render 'email_not_registered' %>");
+	$("#password_reset_messages").html("<%= j render 'email_not_registered' %>");
 	$("#password_reset_email_field").val("");
+	$("#login_signup_div").html("<%= j render 'form' %>");
 <% elsif @mail_sent %>
-	$("#show_flash_messages").html("<%= j render 'password_reset_email_sent' %>");
+	$("#password_reset_messages").html("<%= j render 'password_reset_email_sent' %>");
 	$("#password_reset_email_field").val("");
 <% end %>

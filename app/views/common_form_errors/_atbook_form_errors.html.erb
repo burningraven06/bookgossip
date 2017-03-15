@@ -1,7 +1,7 @@
 <% if @book.errors.any? %>
 <div class='alert alert-danger alert-dismissible'>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-<i class='fa fa-exclamation-triangle fa-2x' style='padding-right: 3%;'></i> Sorry, you've got <%= pluralize(@book.errors.count, "problem") %>.
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+	<i class='fa fa-exclamation-triangle fa-2x' style='padding-right: 3%;'></i> Sorry, you've got <%= pluralize(@book.errors.count, "problem") %>.
 	<dl class="dl-vertical ">
 		<% @book.errors.full_messages.each do |msg| %>
 		<dt class='marg-top'> <%= msg.truncate_words(1,  omission: ':') %> </dt>

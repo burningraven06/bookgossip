@@ -1,10 +1,19 @@
 <% provide(:title, "Forgot Password") %>
 <style> .col-md-4{padding: 0} .col-md-8{padding: 0}.col-md-12{padding:0;} </style>
-<div class= 'col-md-4 col-md-offset-4' style='margin-top:10%;'>
-	<%= render 'email_form' %>
+<div class= 'text-center col-md-4 marg-bot marg-top'>
+	<%= link_to image_tag('home_logo/send.png'), common_signup_path %> <br>
+	<div class='marg-top'>
+		<%= link_to "Register Your Account", common_signup_path %>
+	</div>
+</div> 
+<div class= 'form_border col-md-5 col-md-offset-1 marg-top' style='padding: 3%;'>
+	<div id='password_reset_messages' class='col-md-12'></div>
+	<h1 class='text-center'>Oops!</h1>
+	<%= render 'form' %>
 </div>
 <script>
 	$(document).ready(function(){
 		$("#navheader").remove();
+		$("#pass_reset_label").css('color', '#000000');
 	});
 </script>
