@@ -1,5 +1,5 @@
 <div class='col-md-12 pad-zero marg-bot'></div>
-<h4 class='text-center signup_signin_passreset_heading'> Sign Up</h4>
+<h4 class='marg-top text-center signup_signin_passreset_heading'> Sign Up</h4>
 <%= form_for(@user, url: common_signup_path, remote: true) do |f| %>
 <%= render 'common_form_errors/atuser_form_errors' %>
 
@@ -32,7 +32,7 @@
 <% end %>
 <script type='text/javascript'> 
 	$("form").submit(function(){
-		$("#jquery_loading").css("display", "block"); 
+		$("#landingpg_jquery_loading").css("display", "block"); 
 		$("#show_flash_messages_signup_div").html("");	
 	});
 </script>

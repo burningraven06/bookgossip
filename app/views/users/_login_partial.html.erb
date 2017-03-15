@@ -1,6 +1,5 @@
-<div id="show_flash_messages_login_div" class='col-md-12 pad-zero marg-bot'></div>
-
-<h4 class='text-center signup_signin_passreset_heading'> Sign In</h4>
+<div class='col-md-12 pad-zero marg-bot'></div>
+<h4 class='marg-top text-center signup_signin_passreset_heading'> Sign In</h4>
 <%= form_for(:session, url: login_path, remote: true) do |f| %>
 <%= f.email_field :email, class: "form-control marg-top", placeholder: "Email" , required: true%>
 <%= f.password_field :password, class: "form-control marg-top ", placeholder: "Password", required: true %>
@@ -11,3 +10,12 @@
 <%= link_to "Forgot Password?", new_password_reset_path, class:'pull-right marg-bot marg-top', remote: true, style: 'color: #fff;' %>
 <button type='submit' class="btn btn-info btn-block marg-top"> <i class='fa fa-chevron-right'> </i> Log In</button>
 <% end %>
+
+<script>
+	$(document).ready(function(){
+		$("form").submit(function(){
+			$("#landingpg_jquery_loading").css("display", "block"); 
+			$("#show_flash_messages_login_div").html("");
+		});
+	});
+</script>
