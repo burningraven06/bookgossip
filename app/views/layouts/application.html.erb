@@ -10,12 +10,12 @@
 	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 		<%= favicon_link_tag 'home_logo/send.png' %>
-		<link href="https://fonts.googleapis.com/css?family=Nato+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nato+Sans|Crimson+Text" rel="stylesheet">
 </head>
 <body>
 	<div id= 'fullheight'>
-	<%= image_tag("home_logo/wiki_bookshelf_sm.jpg", class: "landing_pg_img")%>
-		<div class='container'>
+		<div id = 'first_container' class='container'>
+			<%= image_tag("home_logo/wiki_bookshelf_sm.jpg", class: "landing_pg_img")%>
 			<%= render 'layouts/header' %> 
 			<div id="main-container" style='margin-top: 5%;'> 
 				<%= render 'layouts/flash_alerts' %>
