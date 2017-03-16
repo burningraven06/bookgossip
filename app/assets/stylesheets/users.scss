@@ -2,57 +2,118 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-.marg-top {margin-top: 5%;}
-.marg-bot {margin-bottom: 5%;}
-.marg-top2 {margin-top: 2%;}
-.marg-bot2 {margin-bottom: 2%;}
-.marg-top10 {margin-top: 10%;}
-.marg-bot10 {margin-bottom: 10%;}
-.marg-left {margin-left: 5%;}
-.marg-right {margin-right: 5%;}
-.form-control { border-radius: 0;}
-.btn {border-radius:0;}
-.alert {border-radius:0;}
-.pad-zero {padding:0;}
-.well {border-radius:0;}
-.marg-zero {margin:0;}
-.main_site_heading {
-	font-size: 500%;text-align:center;color: rgba(0,0,0,0.6);
+.marg-top {
+	margin-top: 5%;
 }
-.signup_signin_passreset_heading {color: #f0f8ff;}
+.marg-bot {
+	margin-bottom: 5%;
+}
+.marg-top2 {
+	margin-top: 2%;
+}
+.marg-bot2 {
+	margin-bottom: 2%;
+}
+.marg-top10 {
+	margin-top: 10%;
+}
+.marg-bot10 {
+	margin-bottom: 10%;
+}
+.marg-left {
+	margin-left: 5%;
+}
+.marg-right {
+	margin-right: 5%;
+}
+.form-control {
+	border-radius: 0;
+}
+.btn {
+	border-radius:0;
+}
+.alert {
+	border-radius:0;
+}
+.pad-zero {
+	padding:0;
+}
+.well {
+	border-radius:0;
+}
+.marg-zero {
+	margin:0;
+}
+.main_site_heading {
+	font-size: 500%;
+	text-align:center;
+	color: rgba(0,0,0,0.6);
+}
+.signup_signin_passreset_heading {
+	color: #f0f8ff;
+}
 .landing_page_heading {
-	font-family: Crimson Text; font-size: 600%; color: rgba(220,226,232,1); margin-bottom:5%;padding:0; margin-left: 15%;
+	font-family: Crimson Text;
+	font-size: 500%; 
+	color: rgba(225,237,255,1); 
+	/*margin-bottom:5%;*/
+	padding:0; 
+	/*margin-left: 15%; */
+	/*background-color:rgba(23, 48, 54, 0.3);*/
 }
 .landing_pg_img {
-	min-width:100%;max-height:100%;position:absolute;display:none;
+	min-width:100%;
+	max-height:100%;
+	position:absolute;
+	display:none;
 }
 #login_signup_div {
-	padding-bottom:3%; margin-top:3%;
+	padding-bottom:3%;
+	margin-top:3%;
 }
-.create_new_button {margin-left:5%;}
-.gallery_item_div {margin-top:3%;}
+.create_new_button {
+	margin-left:5%;
+}
+.gallery_item_div {
+	margin-top:3%;
+}
 .form_border {
-	border: 1px solid lightgrey; padding:2%;
+	border: 1px solid lightgrey;
+	padding:2%;
 }
 body {
 	/*font-family: Source Sans Pro; */
 	font-family: Nato Sans; 
 }
 .navbar_fontstyle {
-	font-family: Nato Sans; font-size: 125%; 
+	font-family: Nato Sans; 
+	font-size: 125%; 
 } 
 .landingpg_form_background{
-	background-color:rgba(23, 48, 54, 0.7); margin-top: 9%; box-shadow: 0px 0px 3px 0px rgba(29,61,68,1); padding:2%;
+	/*background-color:rgba(23, 48, 54, 0.7); */
+	background-color: rgba(0,1,25,0.5); 
+	/*margin-top: 9%; */
+	box-shadow: 0px 0px 3px 0px rgba(29,61,68,1); 
+	padding-top:2%;
 }
 #signin_button{
-	background-color: #0e2f44; color: #ffffff;
+	background-color: #0e2f44; 
+	color: #ffffff;
 }
 #signup_button{
-	background-color: #ff4040; color: #ffffff;
+	background-color: #ff4040; 
+	color: #ffffff;
 }
 #landingpg_jquery_loading{
-	display:none; background-color:rgba(23, 48, 54, 0.65); padding: 3%;
+	display:block; 
+	background-color: rgba(0,1,25,0.5); 
+	padding: 3%;
 }
 #overlay{
-	background-color: rgba(0,1,25,0.5); height: 100vh;
+	background-color: rgba(0,1,25,0.65); 
+	height: 100vh;
+}
+#heading_background{
+	background-color: rgba(0,1,25,0.5); 
+	/*padding:3%;*/
 }
