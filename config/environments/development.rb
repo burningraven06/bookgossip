@@ -81,7 +81,7 @@ Rails.application.configure do
 		user_name: "thedevmailer@gmail.com",
 		password: "konichiwa2435",
 		authentication: "plain",
-		# enable_starttls_auto: true
+		enable_starttls_auto: true
 	}
 
 end

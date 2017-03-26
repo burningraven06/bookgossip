@@ -9,6 +9,7 @@
 			<%= image_tag(@book.cover_page.url(:large)) %>
 		</div>
 		<h3 class='marg-top10' > <%= link_to @book.title, @book %> </h3>
+		<%= link_to "<i class= 'fa fa-plus'></i> Create Topic".html_safe, book_new_review_path, remote: true, id: "book_new_review_button", class: "btn btn-default pull-left" %>
 	</div>
 	
 	<div class='well col-md-6 '>

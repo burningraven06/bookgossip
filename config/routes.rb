@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 	
 	get 'calendar' => 'extrapages#calendar', as: :calendar
 	get '/bookgosp' => 'extrapages#root_home_page', as: :bookgosp_home
+	get '/' => 'users#new'
 	get '/gallery' => 'extrapages#gallery', as: :all_items
 	get '/signup' =>'users#new', as: :common_signup
 	post '/signup' => 'users#create'
@@ -32,6 +33,9 @@ Rails.application.routes.draw do
 	get '/groups/:id/join' => 'memberships#new', as: :create_form_membership
 	post '/groups/:id/join' => 'memberships#create', as: :create_membership
 	
+	get '/books/:id/reviews/new' => 'reviews#new_js', as: :book_new_review
+	post '/books/:id/reviews/new' => 'reviews#create_js', as: :book_create_review
+
 	get '/groups/:id/topics/new' => 'topics#new', as: :group_new_topic
 	post '/groups/:id/topics/new' => 'topics#create', as: :group_create_topic
 

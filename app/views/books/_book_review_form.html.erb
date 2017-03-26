@@ -3,7 +3,7 @@
 
 <div class='col-md-4 text-center'> <%= image_tag(@review.cover_page.url(:large)) %> </div>
 <div class='col-md-6'>
-  <%= form_for(@review, html: {multipart: true}, remote: true, url: create_bookreview_path) do |f| %>
+  <%= form_for(@review, html: {multipart: true}, remote: true, url: book_create_review_path) do |f| %>
   <style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-8{padding: 0}.col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} .col-md-4{padding: 0}</style>
 
   <% render 'common_form_errors/atreview_form_errors' %>
