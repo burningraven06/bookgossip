@@ -1,6 +1,6 @@
 <% provide(:title,@genre.name)%>
-<div class='col-md-12 pad-zero'>
-	<div class='col-md-4 '> 
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero'>
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 '> 
 		<div class='marg-top2 text-center'>
 			<%= image_tag(@genre.cover_page.url(:large)) %>
 		</div>	
@@ -10,9 +10,9 @@
 		</div>
 	</div>
 
-	<div class='col-md-6 ' id='genre_books'> <% if @books_of_genre %> <%= render 'books_of_genre' %> <% end %></div>
+	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='genre_books'> <% if @books_of_genre %> <%= render 'books_of_genre' %> <% end %></div>
 
-	<div class='col-md-2 text-right '>
+	<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-right '>
 		<%= link_to image_tag('button_icons/back_button.png'), genres_path %>
 		<span class='marg-left'><%= link_to "Back", genres_path %></span>
 	</div>

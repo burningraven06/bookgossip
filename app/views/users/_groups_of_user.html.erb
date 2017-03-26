@@ -1,12 +1,17 @@
 <h4 class='text-center'> Admin of Groups </h4>
 <% if not @groups_of_user %> No Groups Created 
 <% else @groups_of_user %>
-	<% @groups_of_user.each do |group| %>
-	<div class='col-md-4 text-center'>
-		<%= image_tag(group.cover_page.url(:thumb)) %>
-		<h6> <%= link_to group.name, group %> </h6>
-	</div>
-	<% end %>
-	<div class='col-md-12 marg-top'> <%= will_paginate @groups_of_user, param_name: 'group_page', renderer: BootstrapPagination::Rails %> </div>
-	<script> $(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<% @groups_of_user.each do |group| %>
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
+	<%= image_tag(group.cover_page.url(:thumb)) %>
+	<h6> <%= link_to group.name, group %> </h6>
+</div>
+
 <% end %>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top'>
+	<%= will_paginate @groups_of_user, param_name: 'group_page', renderer: BootstrapPagination::Rails %> 
+</div>
+
+<script type='text/javascript'>
+	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+	<% end %>

@@ -1,6 +1,6 @@
 <% flash.each do |flash_type, flash_msg| %>
-<div class='col-md-12'>
-	<div class= 'alert alert-<%=flash_type%> alert-dismissible col-md-6 col-md-offset-3' role='alert' id="flash_messages_div"> 
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
+	<div class= 'alert alert-<%=flash_type%> alert-dismissible col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3' role='alert' id="flash_messages_div"> 
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <%= flash_msg %> 
 	</div>
 </div>

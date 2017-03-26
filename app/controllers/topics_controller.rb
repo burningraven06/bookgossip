@@ -59,7 +59,7 @@ class TopicsController < ApplicationController
       if @topic.save
         @group.post_count = @group.post_count + 1
         @group.save
-        @topics_of_group = @group.topics.order(heading: :asc).paginate(page: params[:page], per_page: 12)
+        @topics_of_group = @group.topics.order(heading: :asc).paginate(page: params[:page], per_page: 24)
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
         format.js

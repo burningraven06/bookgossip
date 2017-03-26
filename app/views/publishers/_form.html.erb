@@ -1,43 +1,65 @@
 <h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
-<div class='col-md-4 text-center'> 
+
+<div class='well col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
 	<%= image_tag(@publisher.cover_page.url(:medium)) %>
+	<h3 id='jquery_publisher_name'></h3>
+	<h6 class='marg-top10 marg-bot' id='jquery_publisher_address'></h6>
+	<h6 class= 'marg-bot' id='jquery_publisher_website'></h6>
 </div>
-<div class='col-md-4 form_border'>
+
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero form_border'>
 	<%= form_for(@publisher, html: {multipart: true}, remote: true) do |f| %>
-	<style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} </style>
 
 	<% render 'common_form_errors/atpublisher_form_errors' %>
 	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-	<div class='col-md-3 '> <%= f.label :name, class:" marg-top" %> </div>
-	<div class='col-md-9'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Publisher Name" %> </div>
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label :name, class:" marg-top" %> </div>
 
-	<div class='col-md-3 '> <%= f.label :address, class:" marg-top" %> </div>
-	<div class='col-md-9'> <%= f.text_field :address, class:"form-control marg-bot", placeholder: "Address" %> </div>
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Publisher Name", id: "form_publisher_name" %> </div>
 
-	<div class='col-md-3 '> <%= f.label :website, class:" marg-top" %> </div>
-	<div class='col-md-9'> <%= f.text_field :website, class:"form-control marg-bot", placeholder: "Visit" %> </div>
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label :address, class:" marg-top" %> </div>
 
-	<div class='col-md-12 marg-bot'>
-		<div class='col-md-6 '> 
-			<div class='col-md-2 marg-top'>	<%= f.check_box(:default_avatar) %>	</div>
-			<div class='col-md-10 marg-top marg-bot'> <%= f.label(:default_avatar, "Default Book Avatar") %>	</div>
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :address, class:"form-control marg-bot", placeholder: "Address", id: "form_publisher_address" %> </div>
+
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label :website, class:" marg-top" %> </div>
+
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :website, class:"form-control marg-bot", placeholder: "Visit", id: "form_publisher_website" %> </div>
+
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot pad-zero'>
+		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'> 
+			<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 marg-top pad-zero'>	<%= f.check_box(:default_avatar) %>	</div>
+
+			<div class='col-md-10 col-lg-10 col-xs-10 col-sm-10 marg-top marg-bot pad-zero'> <%= f.label(:default_avatar, "Default Publisher Avatar") %>	</div>
+
 		</div>
-		<div class='col-md-6 '>
+
+		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'>
 			<%= f.label "Custom Avatar", class:"marg-top" %>
 			<%= f.file_field :cover_page, class:"" %>
 		</div>
+
 	</div>
-	
-	<button type='submit' class='btn btn-default btn-block'> <i class='fa fa-check'></i> Submit</button>
+
+	<button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
 
 	<% end %>
 </div>
-<div class='col-md-4 text-center'>
+
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
 	<%= link_to image_tag('button_icons/back_button.png'), publishers_path %>
 	<span style='margin-left: 2%;'><%= link_to "Back", publishers_path %></span>
 </div>
+
 <script type='text/javascript'> 
+	$("#form_publisher_name").keyup(function(){
+		$("#jquery_publisher_name").html($(this).val());
+	}); 
+	$("#form_publisher_address").keyup(function(){
+		$("#jquery_publisher_address").html($(this).val());
+	}); 
+	$("#form_publisher_website").keyup(function(){
+		$("#jquery_publisher_website").html($(this).val());
+	}); 
 	$("form").submit(function(){
 		$("#jquery_loading").css("display", "block"); 
 	});

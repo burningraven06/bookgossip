@@ -2,17 +2,20 @@
 <ol> 
 <% if @pending_members %>
 <% @pending_members.each do |membership| %>		
-	<div class='col-md-12' > 
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12' > 
 		<li class='pad-zero'>
 			<%= link_to "#{show_group_name(membership.group_id)}", group_path(membership.group_id) %>,
 			<%= link_to "#{show_user_name(membership.user_id)}", user_path(membership.user_id) %> 
 			<%= link_to "Edit Status", edit_membership_path(membership), class: "btn btn-default pull-right", remote: true, id:"edit_membership_button" %> 		
 		</li>
-	</div>  
+	</div>
+  
 	<% end %>
 </ol>
-<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @pending_members, renderer: BootstrapPagination::Rails %> </div>
-<script> $(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<div class='marg-top col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'> <%= will_paginate @pending_members, renderer: BootstrapPagination::Rails %> </div>
+
+<script type='text/javascript'>
+ $(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
 <% elsif not @pending_members %>
 <p class='text-center'> No Membership Requests Yet </p>
 <% end %>

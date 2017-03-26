@@ -1,5 +1,5 @@
 <% @topic.topic_replies.each do |r| %>
-	<div class='col-md-12 marg-zero' style='padding: 2%; border: 1px solid #c4c4c4;'>
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-zero' style='padding: 2%; border: 1px solid #c4c4c4;'>
 	<%= r.content %>
 		<div class = 'pull-right'>
 			- <%= link_to r.user.name, r.user %>

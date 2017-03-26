@@ -1,9 +1,11 @@
 <% provide(:title, "Memberships") %>
-<style> .col-md-6{padding:0;} .col-md-12{padding: 0} .col-md-5{padding: 0} .col-md-7{padding: 0}</style>
 
-<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-<div class='col-md-6 col-md-offset-3' id='edit_membership_form'> </div> 
+<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3 pad-zero'></div>
 
-<div class='col-md-6' id= 'approved_memberlist_div'> <%= render 'approved_members' %> </div>
-<div class='col-md-6' id= 'pending_memberlist_div'> <%= render 'pending_members' %> </div>
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3 pad-zero' id='edit_membership_form'> </div>
+ 
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero' id= 'approved_memberlist_div'> <%= render 'approved_members' %> </div>
+
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero' id= 'pending_memberlist_div'> <%= render 'pending_members' %> </div>
+
 

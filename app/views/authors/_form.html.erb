@@ -1,45 +1,59 @@
-<h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
-<div class='col-md-4 text-center'>
-	<%= image_tag(@author.avatar.url(:medium)) %>
-	<h3 id='jquery_author_name'></h3>
-	<h6 class= 'marg-top10 marg-bot' id = 'jquery_author_bday'></h6>
-	<h6 id = 'jquery_author_bio'></h6>
-</div>
-<div class='col-md-4 form_border'>
-	<%= form_for(@author, html: { multipart: true }, remote: true) do |f| %>
-	<style> .col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} .col-md-2{padding: 0} .col-md-10{padding: 0} {padding:0;}</style>
-
-	<%= render 'common_form_errors/atauthor_form_errors' %>
-	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-
-	<div class='col-md-3 '> <%= f.label :name, class:" marg-top" %> </div>
-	<div class='col-md-9'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Full Name", id: "form_authorname_inputfield" %> </div>
-
-	<div class='col-md-3'>  <%= f.label :date_of_birth, class:" marg-top" %> </div>
-	<div class='col-md-9'>  <%= f.date_field :date_of_birth, class: "form-control marg-bot", id:"form_authordob_datefield" %> </div>
-
-	<div class='col-md-3'>  <%= f.label :bio, class:" marg-top" %> </div>
-	<div class='col-md-9'>  <%= f.text_area :bio , class:"form-control marg-bot", placeholder: "Tell us something about the author", id:'form_authorbio_textfield' %> </div>
-
-	<div class='col-md-12 marg-bot'>
-		<div class='col-md-6 '> 
-			<div class='col-md-2 marg-top'>	<%= f.check_box(:default_avatar) %>	</div>
-			<div class='col-md-10 marg-top marg-bot'> <%= f.label(:default_avatar, "Default Author Avatar") %>	</div>
-		</div>
-		<div class='col-md-6 '>
-			<%= f.label "Custom Avatar", class:"marg-top" %>
-			<%= f.file_field :avatar, class:"" %>
-		</div>
+<div class='col-md-12 col-xs-12 col-lg-12 col-sm-12 pad-zero'>
+	<h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
+	<div class='well col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero text-center'>
+		<%= image_tag(@author.avatar.url(:medium)) %>
+		<h3 id='jquery_author_name'></h3>
+		<h6 class= 'marg-top10 marg-bot' id = 'jquery_author_bday'></h6>
+		<h6 id = 'jquery_author_bio'></h6>
 	</div>
 
-	<button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero form_border'>
+		<%= form_for(@author, html: { multipart: true }, remote: true) do |f| %>
 
-	<% end %>
+		<%= render 'common_form_errors/atauthor_form_errors' %>
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+		<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label :name, class:" marg-top" %> </div>
+
+		<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Full Name", id: "form_authorname_inputfield" %> </div>
+
+		<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'>  <%= f.label :date_of_birth, class:" marg-top" %> </div>
+
+		<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.date_field :date_of_birth, class: "form-control marg-bot", id:"form_authordob_datefield" %> </div>
+
+		<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'>  <%= f.label :bio, class:" marg-top" %> </div>
+
+		<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.text_area :bio , class:"form-control marg-bot", placeholder: "Tell us something about the author", id:'form_authorbio_textfield' %> </div>
+
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot'>
+			<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'> 
+				<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 marg-top pad-zero'>	<%= f.check_box(:default_avatar) %>	</div>
+
+				<div class='col-md-10 col-lg-10 col-xs-10 col-sm-10 marg-top marg-bot pad-zero'> <%= f.label(:default_avatar, "Default Author Avatar") %>	</div>
+
+			</div>
+
+			<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'>
+				<%= f.label "Custom Avatar", class:"marg-top" %>
+				<%= f.file_field :avatar, class:"" %>
+			</div>
+
+		</div>
+
+
+		<button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
+
+		<% end %>
+	</div>
+
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
+		<%= link_to image_tag('button_icons/back_button.png'), authors_path %>
+		<span style='margin-left: 2%;'><%= link_to "Back", authors_path %></span>
+	</div>
+
 </div>
-<div class='col-md-4 text-center'>
-	<%= link_to image_tag('button_icons/back_button.png'), authors_path %>
-	<span style='margin-left: 2%;'><%= link_to "Back", authors_path %></span>
-</div>
+
+
 <script type='text/javascript'> 
 	$("#form_authorname_inputfield").keyup(function(){
 		$("#jquery_author_name").html($(this).val());

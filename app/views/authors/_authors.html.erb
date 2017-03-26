@@ -1,23 +1,31 @@
 <% if @authors.count>0 %>
 <% @authors.each do |author| %>
-<div class='col-md-2 pad-zero text-center marg-top' id="author_<%= author.id %>"> 
+<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 pad-zero text-center marg-top' id="author_<%= author.id %>"> 
 	<%= link_to image_tag(author.avatar.url(:medium)), author %> <br>
 	<h4> <%= link_to author.name, author %> </h4>
 	<div class='marg-top10 marg-bot10'>
 		<%= link_to image_tag('button_icons/writing.png'), edit_author_path(author), remote: true, id:"edit_author_button", title:"Edit #{author.name} " %>
 		<%= link_to image_tag('button_icons/remove.png'), author, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, remote: true, title: "Delete #{author.name}" %>
 	</div>
+
 	<div class='well marg-top marg-bot text-left'>			
 		<h6 class='marg-top10 '> Birthday: <%= author.date_of_birth %> </h6>
-		<h6 > Bio: <%= author.bio.truncate(25) %>  </h6>
+		<h6 > Bio: <%= author.bio.truncate(25) %> </h6>
 		<h6 > Books Written: <% if author.books.any? %> <%= author.books.count%> <% else %> <br>No Books Written Yet <% end %> </h6>
 	</div>
+
 </div>
 <% end %>
-<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @authors, renderer: BootstrapPagination::Rails %> </div>
-<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<div class='marg-top col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'>
+	<%= will_paginate @authors, renderer: BootstrapPagination::Rails %> 
+</div>
+
+<script type='text/javascript'>
+	$(function(){ $('.pagination a').attr('data-remote', 'true') });
+</script>
+
 <% elsif not @authors.count>0 %>
-<div class='well col-md-8 col-md-offset-2'>
+<div class='well col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2'>
 	<h3> No Authors Available</h3> 
 	<h6> Please Click the <strong>Plus Icon</strong> to create a New Author</h6>
 </div>

@@ -1,31 +1,41 @@
-<div class='col-md-12 pad-zero marg-bot'></div>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot'></div>
+
 <h4 class='marg-top text-center signup_signin_passreset_heading'> Sign Up</h4>
+
 <%= form_for(@user, url: common_signup_path, remote: true) do |f| %>
 <%= render 'common_form_errors/atuser_form_errors' %>
 
 <%= f.text_field :name, class:"form-control marg-top", placeholder:"Your full name", required: true, id: "signup_fullname_field" %>
+
 <%= f.email_field :email, class:"form-control marg-top", placeholder: "user@example.com" , required: true, id: "signup_email_field" %>
+
 <%= f.password_field :password, class:"form-control marg-top", placeholder: "Password, 8 Characters Minimum" , required: true, id: "signup_password_field"%>
+
 <%= f.password_field :password_confirmation, class:"form-control marg-top", placeholder:"Confirm Password" , required: true, id: "signup_passwordconf_field" %>
 
-<div class='col-md-6 pad-zero marg-top '>
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero marg-top '>
 	<%= f.label :gender, "Sex", class:"text-center" %>
-	<div class='col-md-12 pad-zero marg-top '>
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-top '>
 		<%= f.select :gender, options_for_select([['Male', 'Male'], ['Female', 'Female']], @user.gender), {}, class:"form-control", required: true, id: "signup_gender_select" %>
 	</div>
+
 </div>
 
-<div class='col-md-6 pad-zero marg-top marg-bot text-center'>
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero marg-top marg-bot text-center'>
 	<%= f.label :account_type, "Account", class:"text-center" %>
-	<div class='col-md-6 marg-bot marg-top'>
+	
+	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-bot marg-top'>
 		<%= f.radio_button :account_type,  'writer', class: "marg-top", id: "signup_writer_radiobutton" %>
 		<%= f.label :account_type_writer,  "Critic" %>
 	</div>
-	<div class="col-md-6 marg-top marg-bot">
+
+	<div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-top marg-bot">
 		<%= f.radio_button :account_type, 'reader', class: "marg-top", id: "signup_reader_radiobutton" %>
 		<%= f.label :account_type_reader, "Reader" %>
 	</div>
+
 </div>
+
 
 <button type='submit' class='btn btn-primary btn-block'> <i class='fa fa-chevron-right'> </i> Sign Up</button>
 

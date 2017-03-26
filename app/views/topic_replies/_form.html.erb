@@ -1,15 +1,16 @@
-<style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-4{padding: 0}.col-md-9{padding: 0}.col-md-8{padding: 0}.col-md-12{padding:0} .col-md-3{padding:0} .col-md-6{padding:0} </style>
-
 <%= form_for(@topic_reply, url: topic_create_reply_path, remote: true) do |f| %>
   <% render 'common_form_errors/attopic_reply_form_errors' %>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <div class='col-md-12'>
-    <%= f.text_area :content, class: "form-control marg-bot", placeholder: "Your Reply",size: "30x10" %>
+  <div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero'>
+    <%= f.text_area :content, class: "form-control", placeholder: "Your Reply",size: "30x10" %>
   </div>
-  <button type='submit' class='btn btn-primary btn-block'> <i class='fa fa-check'></i> Submit</button>
+
+  <button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
   <% end %>
+
 <script type='text/javascript'> 
 	$("form").submit(function(){
 		$("#jquery_loading").css("display", "block"); 
+    $("#topic_add_reply_div").show();
 	});
 </script>

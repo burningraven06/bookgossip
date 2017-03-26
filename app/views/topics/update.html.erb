@@ -1,7 +1,7 @@
 <% provide(:title, @topic.heading)%>
-<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-<div class='col-md-12' id='topic_form_div'></div>
-<div class='col-md-12' id='show_topic_div'>
+<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'></div>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12' id='topic_form_div'></div>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12' id='show_topic_div'>
 
 <h1 class='text-center'> <strong> <%= @topic.heading %></strong> </h1>
 <% if topic_owner(@topic.id) %> 

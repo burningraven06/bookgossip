@@ -1,46 +1,80 @@
 <% provide(:title,@book.title)%>
-<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-<div class='col-md-6 col-md-offset-3' id='book_review_form'></div>
+<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'></div>
 
-<div class='col-md-12' id='show_book'>
-	
-	<div class='col-md-4 pad-zero text-center'> 
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3' id='book_review_form'></div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12' id='show_book'>
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero text-center'> 
 		<div class='marg-top2'>
 			<%= image_tag(@book.cover_page.url(:large)) %>
 		</div>
+
 		<h3 class='marg-top10' > <%= link_to @book.title, @book %> </h3>
-		<%= link_to "<i class= 'fa fa-plus'></i> Create Topic".html_safe, book_new_review_path, remote: true, id: "book_new_review_button", class: "btn btn-default pull-left" %>
-	</div>
-	
-	<div class='well col-md-6 '>
-		<div class='col-md-12'>
-			<div class='col-md-3'> <h6>Author: </h6> </div>
-			<div class='col-md-9 marg-bot2'> <%= image_tag(@book.author.avatar.url(:thumb)) %> <%= link_to @book.author.name, @book.author %> </div>
+
+		<% if current_user.account_type='writer' %>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12  marg-top10' style='padding:5%;'>
+			<%= link_to "Review <strong>#{@book.title}</strong>".html_safe, book_new_review_path, remote: true, class: "pull-left marg-top10" %>
+			
+			<%= link_to image_tag("button_icons/plus_64.png"), book_new_review_path, remote: true, id: "book_new_review_button", class: "create_new_button text-center" %>
 		</div>
-		<div class='col-md-12'>
-			<div class='col-md-3'> <h6>Publisher: </h6> </div> 
-			<div class='col-md-9 marg-bot2'> <%= image_tag(@book.publisher.cover_page.url(:thumb)) %> <%= link_to @book.publisher.name, @book.publisher %> </div>
-		</div>
-		<div class='col-md-12'>
-			<div class='col-md-3'> <h6>Summary: </h6> </div>
-			<div class='col-md-9 marg-bot2'> <%= @book.book_summary.truncate(250) %> </div>
-		</div>
-		<div class='col-md-12'>
-			<div class='col-md-3'> <h6>Publication Date: </h6> </div>
-			<div class='col-md-9 marg-bot2'> <%= @book.publication_date %> </div>
-		</div>
-		<div class='col-md-12'>
-			<div class='col-md-3'> <h6>Genres: (<%= @genres_of_book.count %> Genres) </h6> </div>
-			<div class='col-md-9' id='book_genres'>  <%= render 'genres_of_book' %></div>
-		</div>
-		<div class='col-md-12'>
-			<div class='col-md-3'> <h6>Reviews: <% if @book.reviews.any? %> <% @book.reviews.count%> <% else %> <br>No Reviews Published Yet <% end %> </h6> </div>
-			<div class='col-md-9' id='book_reviews'> <% if @reviews_of_book %> <%= render 'reviews_of_book' %> <% end %></div>
-		</div>
+		<% end %>
 	</div>
 
-	<div class='text-right col-md-2 pad-zero'>
+	<div class='well col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='book_review_form_div'> </div>
+
+	<div class='well col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='book_all_info_div'>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Author: </h6> </div>
+
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-bot2'> <%= image_tag(@book.author.avatar.url(:thumb)) %> <%= link_to @book.author.name, @book.author %> </div>
+
+		</div>
+
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Publisher: </h6> </div>
+
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-bot2'> <%= image_tag(@book.publisher.cover_page.url(:thumb)) %> <%= link_to @book.publisher.name, @book.publisher %> </div>
+
+		</div>
+
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Summary: </h6> </div>
+
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-bot2'> <%= @book.book_summary.truncate(250) %> </div>
+
+		</div>
+
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Publication Date: </h6> </div>
+
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-bot2'> <%= @book.publication_date %> </div>
+
+		</div>
+
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Genres: (<%= @genres_of_book.count %> Genres) </h6> </div>
+
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9' id='book_genres'>  <%= render 'genres_of_book' %></div>
+
+		</div>
+
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Reviews: <% if @book.reviews.any? %> <% @book.reviews.count%> <% else %> <br>No Reviews Published Yet <% end %> </h6> </div>
+
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9' id='book_reviews'> <% if @reviews_of_book %> <%= render 'reviews_of_book' %> <% end %></div>
+
+		</div>
+
+	</div>
+
+
+	<div class='text-right col-md-2 col-lg-2 col-xs-2 col-sm-2 pad-zero'>
 		<%= link_to image_tag('button_icons/back_button.png'), books_path %> 
 		<span class='marg-left'><%= link_to "Back", books_path %></span>
 	</div>
+
 </div>
+
+<script type='text/javascript'>
+	$("#book_review_form_div").hide();
+</script>

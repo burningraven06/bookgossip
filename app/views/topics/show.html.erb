@@ -1,33 +1,50 @@
 <% provide(:title, @topic.heading)%>
-<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-<div class = 'col-md-12' id='show_topic_div'>
-	<div class= 'col-md-2'> 
-		<%= link_to '<i class="fa fa-chevron-left"></i> Back'.html_safe, group_path(@topic.group_id), class: "btn btn-default" %>
+<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'></div>
+
+<div class = 'col-md-12 col-lg-12 col-xs-12 col-sm-12' id='show_topic_div'>
+	<div class= 'col-md-2 col-lg-2 col-xs-2 col-sm-2 pad-zero '> 
+		<%= link_to image_tag('button_icons/back_button.png'), group_path(@topic.group_id), title: "Back to Group" %> 
+		<!-- <%= link_to "Back", group_path(@topic.group_id) %> -->
 	</div>
-	<div class='col-md-8'>
+
+	<div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 pad-zero'>
 		<h1> <strong> <%= image_tag(@topic.topic_icon.url(:thumb)) %> <%= @topic.heading %></strong> </h1>
 		Started by <%= link_to @topic.user.name, @topic.user %> in <%= link_to @topic.group.name, @topic.group %>
 	</div>
-	<div class='col-md-2 marg-zero'>
+
+	<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 pad-zero text-right'>
+	<%= link_to image_tag('button_icons/previous.png'), topics_path, title: "Back to All Topics" %>
+		<!-- <%= link_to "Back", topics_path %> -->
+
 		<% if topic_owner(@topic.id) %> 
-		<%= link_to '<i class="fa fa-remove"></i> Delete'.html_safe, @topic, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: "btn btn-default pull-right", title:"Delete #{@topic.heading}", id: "topic_delete_button" %>   
+		<%= link_to image_tag('button_icons/remove.png'), @topic, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, title:"Delete #{@topic.heading}", id: "topic_delete_button" %>   
 		<% end %>
 	</div>
 
-	<div class='col-md-12 marg-top2' style='padding: 2%; border: 1px solid #c4c4c4;'> <%= @topic.body %>	</div>
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top2' style='padding: 2%; border: 1px solid #c4c4c4;'> <%= @topic.body %>	</div>
+
 
 	<div id = 'replies_of_topic_div'>
 		<% @replies_of_topic.each do |r| %>
-		<div class='col-md-12 marg-zero' style='padding: 2%; border: 1px solid #c4c4c4;'>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-zero' style='padding: 2%; border: 1px solid #c4c4c4;'>
 			<%= r.content %>
 			<div class = 'pull-right'>
 				- <%= link_to r.user.name, r.user %>
 				<%= time_ago_in_words(r.created_at) %> ago
 			</div>
+
 		</div>
+
 		<% end %>
 	</div>
-	
-	<%= link_to "<i class= 'fa fa-plus'></i> Reply".html_safe, topic_new_reply_path,  id: "topic_new_reply_button", class: "btn btn-default pull-left marg-top", remote: true %>
+
 </div>
-<div class='col-md-12' id='topic_reply_form_div'></div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top' id='topic_add_reply_div'>
+	<%= link_to "Add Your Comment", topic_new_reply_path %>
+	<%= link_to image_tag('button_icons/plus_64.png'), topic_new_reply_path, id: "topic_new_reply_button", class: "create_new_button", remote: true, title:"Add Your Comment" %>
+</div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12' id='topic_reply_form_div'></div>
+
+

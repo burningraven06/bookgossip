@@ -1,21 +1,25 @@
 <% provide(:title,@publisher.name)%>
-<div class="col-md-12 pad-zero ">
-	<div class='col-md-4'> 
+<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero ">
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4'> 
 		<div class='marg-top2 text-center'>
 			<%= image_tag(@publisher.cover_page.url(:large)) %>
 			<h3> <%= link_to @publisher.name, @publisher %> </h3>
 		</div>
+
 		<div class='well'>
 			<h6> Address: <%= @publisher.address %> </h6>
 			<h6> Website: <%= link_to @publisher.website, "http://#{@publisher.website}" %></h6>
 		</div>
+
 	</div>
 
-	<div class='col-md-6 text-center' id= "publisher_books"> <%= render 'books_of_publisher' %> </div>
+	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center' id= "publisher_books"> <%= render 'books_of_publisher' %> </div>
 
-	<div class='col-md-2 text-right'>
+	<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-right'>
 		<%= link_to image_tag('button_icons/back_button.png'), publishers_path %>
 		<span class='marg-left'><%= link_to "Back", publishers_path %></span>
 	</div>
+
 </div>
+
 

@@ -1,21 +1,39 @@
+<% if @reviews.count >0 %> 
 <% @reviews.each do |review| %>
-<div class='col-md-2 marg-top' id="review_<%= review.id %>"> 
-	<%= image_tag(review.cover_page.url(:medium)) %> <br>
+<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 pad-zero marg-top text-center' id="review_<%= review.id %>">  
+	<%= link_to image_tag(review.cover_page.url(:medium)), review %> <br>
+	<h4><%= link_to review.heading, review %></h4>
+
 	<% if review_owner(review) %>
-	<div class='marg-top'>
-		<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_review_path(review), class:"btn btn-default", remote: true, id:"edit_review_button", title:"Edit #{review.heading}" %>
-		<%= link_to '<i class="fa fa-remove"></i>'.html_safe, review, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class:"btn btn-warning", remote: true, title:"Delete #{review.heading}" %>		
+	<div class='marg-top10 marg-bot10'>
+		<%= link_to image_tag('button_icons/writing.png'), edit_review_path(review), remote: true, id:"edit_review_button", title:"Edit #{review.heading}" %>
+		<%= link_to image_tag('button_icons/remove.png'), review, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, remote: true, title:"Delete #{review.heading}" %>		
 	</div>
+
 	<% end %>
-	<div class='marg-top marg-bot'>			
-		<h4><%= link_to review.heading, review %></h4>
+	<div class='marg-top marg-bot text-left'>			
 		<h6>Book Reviewed: <br><%= link_to review.book.title, review.book %></h6>
 		<h6>Review Status: <% if review.status==0 %> Draft <% else%> Published <% end %> </h6>
 		<% if not review_owner(review) %>
 		<h6>Review Writer: <%= review.user.name %> </h6> <% end %>
 	</div>
+
 </div>
+
 <% end %>
 
-<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %> </div>
-<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<div class='marg-top col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'>
+	<%= will_paginate @reviews, renderer: BootstrapPagination::Rails %> 
+</div>
+
+<script type='text/javascript'>
+	$(function(){ $('.pagination a').attr('data-remote', 'true') }); 
+</script>
+
+<% elsif not @reviews.count>0 %>
+<div class='well col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2 marg-top10'>
+	<h3> No Reviews Available</h3> 
+	<h6> Please Click the <strong>Plus Icon</strong> to create a New Publisher</h6>
+</div>
+
+<% end %>

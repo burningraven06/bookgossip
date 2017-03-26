@@ -1,16 +1,21 @@
 <% provide(:title,"Authors")%> 
-<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-<div class='col-md-12' id='author_forms'></div>
-<div class='col-md-12 pad-zero' id="show_all_authors">
-	<div class='col-md-5'>
+<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'></div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12' id='author_forms'></div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero' id="show_all_authors"> 
+	<div class='col-md-5 col-lg-5 col-xs-5 col-sm-5'>
 		<h1 class='marg-zero'> Authors <%= link_to image_tag('button_icons/plus_64.png'), new_author_path, remote: true, id:"new_author_button", class: "create_new_button" %>
 		</h1>
 	</div>
-	<div class='col-md-5 '> <%= render 'author_search' %>	</div>
-	<div class='col-md-2 text-right pad-zero'>
+
+	<div class='col-md-5 col-lg-5 col-xs-5 col-sm-5 pad-zero'> <%= render 'author_search' %>	</div>
+
+	<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-right pad-zero'>
 		<%= link_to image_tag('button_icons/back_button.png'), all_items_path, title:"Back to Gallery" %>
 		<span class='marg-left'><%= link_to "Back", all_items_path %></span>
 	</div>
 
-	<div class='col-md-12 marg-top' id='all_authors_div'> <%= render 'authors' %>	</div>
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top' id='all_authors_div'> <%= render 'authors' %>	</div>
+	
 </div>

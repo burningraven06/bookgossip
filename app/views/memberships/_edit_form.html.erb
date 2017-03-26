@@ -3,16 +3,19 @@
 </div>
 
 <%= form_for(@membership, url: edit_membership_path(@membership), remote: true) do |f| %>
-<div class='col-md-1 col-md-offset-3 marg-bot'>
+<div class='col-md-1 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3 marg-bot'>
 	<%= f.radio_button :request_approved,  't', class: "marg-top", checked: true %>
 	<%= f.label :request_approved_t,  "Add" %>
 </div>
-<div class='col-md-2 marg-bot'>
+
+<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 marg-bot'>
 	<%= f.radio_button :request_approved, 'f', class: "marg-top" %>
 	<%= f.label :request_approved_f, "Remove" %>
 </div>
-<div class='col-md-4 marg-bot'>
+
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 marg-bot'>
 	<button type="submit" class='btn btn-info'> Submit </button>
 	<button type="button" class='btn btn-default' id='cancel_form_button'> Cancel </button>
 </div>
+
 <% end %>

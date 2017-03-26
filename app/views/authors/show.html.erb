@@ -1,10 +1,12 @@
 <% provide(:title,@author.name)%>
 <!-- <p id="notice"><%= notice %></h6> -->
-<div class='col-md-4'> 
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4'> 
 	<div class='marg-top2 text-center'>
 		<%= image_tag(@author.avatar.url(:large)) %>
 	</div>
+
 	<h3 class='text-center'> <%= @author.name %> </h3> <br>
+
 	<div class='well'>
 		<h6>Birthday: <%= @author.date_of_birth %> </h6>
 		<h6>Bio: <%= @author.bio %></h6>
@@ -16,14 +18,17 @@
 			<% end %>
 		</h6>
 	</div>
+
 </div>
 
-<div class='col-md-6 text-center' id= 'author_books'> 
-	<h4 class='text-left marg-bot10'> Books by <strong> <%= @author.name %> </strong> </h4>
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center' id= 'author_books'> 
+	<h4 class='text-left marg-bot10'>
+		Books by <strong> <%= @author.name %> </strong>
+	</h4>
 	<% if @books_of_author %> <%= render 'books_of_author' %> <% end%>
 </div>
 
-<div class='col-md-2 text-right pad-zero'>
+<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-right pad-zero'>
 	<%= link_to image_tag('button_icons/back_button.png'), authors_path %>
 	<span class='marg-left'><%= link_to "Back", authors_path %></span>
 </div>

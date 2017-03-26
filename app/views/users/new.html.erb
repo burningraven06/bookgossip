@@ -1,28 +1,42 @@
 <% provide(:title, "Login | Signup") %>
-<div class='col-md-12 pad-zero marg-zero' id='overlay'>
-	<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
-	<div class='col-md-12 pad-zero marg-zero'>
-		<div class='col-md-4 pad-zero marg-zero'>		</div>
-		<div class='col-md-4 pad-zero marg-zero text-center' id='signup_signin_form_div'>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-zero' id='overlay'>
+	<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'></div>
+
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-zero'>
+		<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero marg-zero'>		</div>
+
+		<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero marg-zero text-center' id='signup_signin_form_div'>
 			<h1 id='heading_background' class=' landing_page_heading'> Book Gossips</h1>
-			<div class='col-md-12 landingpg_form_background'>
-				<button type='button' class='btn col-md-6 ' id='signin_button'> Sign In</button>
-				<button type='button' class='btn col-md-6 ' id='signup_button'> Sign Up</button>
+			<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 landingpg_form_background'>
+				<button type='button' class='btn col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='signin_button'> Sign In</button>
+
+				<button type='button' class='btn col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='signup_button'> Sign Up</button>
+
 				<div id="login_signup_div" style='color:#fff;'></div>
+
 			</div>
+
 		</div>
-		<div class='col-md-4 pad-zero marg-zero'>	
-			<div class='col-md-3 col-md-offset-5 text-center marg-top' id="landingpg_jquery_loading">
+
+		<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero marg-zero'>	
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 col-md-offset-5 text-center marg-top' id="landingpg_jquery_loading">
 				<%= image_tag("js_loading/hourglass.svg")%>
 			</div>
-			<div id="show_flash_messages_signup_div" class=' col-md-8 col-md-offset-2 pad-zero' style='margin-top:25%;'></div>
-			<div id="show_flash_messages_login_div" class='col-md-8 col-md-offset-2 pad-zero ' style='margin-top:25%;'></div>
+
+			<div id="show_flash_messages_signup_div" class=' col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2 pad-zero' style='margin-top:25%;'></div>
+
+			<div id="show_flash_messages_login_div" class='col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2 pad-zero ' style='margin-top:25%;'></div>
+
 		</div>
+
 	</div>
+
 </div>
 
 
-<script>
+
+<script type='text/javascript'>
+
 	$(document).ready(function(){
 		$("#navheader").remove();
 		$("#main-container").css("margin-top", 0);

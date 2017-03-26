@@ -1,52 +1,61 @@
 <h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
-<div class='col-md-4 text-center'>
- <%= image_tag(@group.cover_page.url(:medium)) %>
- <h3 id='jquery_group_name'></h3>
- <h6 class='marg-top10 marg-bot'>Group Admin: <%= current_user.name %></h6>
- <h6 id='jquery_group_description'></h6>
-</div>
-<div class='col-md-4 form_border'>
-  <%= form_for(@group, html:{multipart: true}, remote: true) do |f| %>
-
-  <style> .col-md-2{padding: 0}.col-md-10{padding: 0} .col-md-3{padding: 0}.col-md-9{padding: 0}.col-md-6{padding: 0}.col-md-12{padding:0} </style>
-  <% render 'common_form_errors/atgroup_form_errors' %>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-
-  <div class='col-md-3 '> <%= f.label :name, class:" marg-top" %> </div>
-  <div class='col-md-9'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Group Name", id:"form_group_name" %> </div>
-
-  <div class='col-md-3 marg-top'> <%= f.label :description, class:" marg-top" %> </div>
-  <div class='col-md-9'> <%= f.text_area :description, class:"form-control marg-bot", placeholder: "Group Description", id:"form_group_description" %> </div>
-
-  <div class='col-md-12 marg-bot'>
-    <div class='col-md-6 '> 
-      <div class='col-md-2 marg-top'> <%= f.check_box(:default_avatar) %> </div>
-      <div class='col-md-10 marg-top marg-bot'> <%= f.label(:default_avatar, "Default Group Avatar") %>  </div>
-    </div>
-    <div class='col-md-6 '>
-      <%= f.label "Custom Avatar", class:"marg-top" %>
-      <%= f.file_field :cover_page, class:"" %>
-    </div>
-  </div>
-
-  <button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
-  
-  <% end %>
+<div class='well col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
+	<%= image_tag(@group.cover_page.url(:medium)) %>
+	<h3 id='jquery_group_name'></h3>
+	<h6 class='marg-top10 marg-bot'>Group Admin: <%= current_user.name %></h6>
+	<h6 id='jquery_group_description'></h6>
 </div>
 
-<div class='col-md-4 text-center'>
-    <%= link_to image_tag('button_icons/back_button.png'), groups_path %>
-  <span style='margin-left: 2%;'><%= link_to "Back", groups_path %></span>
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero form_border'>
+	<%= form_for(@group, html:{multipart: true}, remote: true) do |f| %>
+
+	<% render 'common_form_errors/atgroup_form_errors' %>
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label :name, class:" marg-top" %> </div>
+
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :name, class:"form-control marg-bot", placeholder: "Group Name", id:"form_group_name" %> </div>
+
+
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'> <%= f.label :description, class:" marg-top" %> </div>
+
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_area :description, class:"form-control marg-bot", placeholder: "Group Description", id:"form_group_description" %> </div>
+
+
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot pad-zero'>
+		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'> 
+			<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 marg-top pad-zero'> <%= f.check_box(:default_avatar) %> </div>
+
+			<div class='col-md-10 col-lg-10 col-xs-10 col-sm-10 marg-top marg-bot pad-zero'> <%= f.label(:default_avatar, "Default Group Avatar") %>  </div>
+
+		</div>
+
+		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'>
+			<%= f.label "Custom Avatar", class:"marg-top" %>
+			<%= f.file_field :cover_page, class:"" %>
+		</div>
+
+	</div>
+
+	<button type='submit' class='btn btn-success btn-block'> <i class='fa fa-check'></i> Submit</button>
+
+	<% end %>
 </div>
+
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center '>
+	<%= link_to image_tag('button_icons/back_button.png'), groups_path %>
+	<span style='margin-left: 2%;'><%= link_to "Back", groups_path %></span>
+</div>
+
 
 <script type='text/javascript'> 
-  $("#form_group_name").keyup(function(){
-    $("#jquery_group_name").html($(this).val());
-  });
-  $("#form_group_description").keyup(function(){
-    $("#jquery_group_description").html($(this).val());
-  });
-  $("form").submit(function(){
-    $("#jquery_loading").css("display", "block"); 
-  });
+	$("#form_group_name").keyup(function(){
+		$("#jquery_group_name").html($(this).val());
+	});
+	$("#form_group_description").keyup(function(){
+		$("#jquery_group_description").html($(this).val());
+	});
+	$("form").submit(function(){
+		$("#jquery_loading").css("display", "block"); 
+	});
 </script>

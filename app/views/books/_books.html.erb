@@ -1,6 +1,6 @@
 <% if @books.count>0 %>
 <% @books.each do |book| %>
-<div class='col-md-3 pad-zero text-center marg-top' id="book_<%= book.id %>" > 
+<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero text-center marg-top' id="book_<%= book.id %>" > 
 	<%= link_to image_tag(book.cover_page.url(:medium)), book %> <br>
 	<h4 > <%= link_to book.title, book %> </h4>
 
@@ -8,6 +8,7 @@
 		<%= link_to image_tag('button_icons/writing.png'), edit_book_path(book), remote: true, id:"edit_book_button", title:"Edit #{book.title}" %>
 		<%= link_to image_tag('button_icons/remove.png'), book, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, title:"Delete #{book.title}", remote: true %>	
 	</div>
+
 	<div class='well marg-top marg-bot text-left'>			
 		<h6 class='marg-top10'> Author: <%= link_to book.author.name, book.author %> </h6>	
 		<h6> Publisher: <%= link_to book.publisher.name, book.publisher %>  </h6>
@@ -15,13 +16,21 @@
 		<h6> Genres: <% book.genres.each do |genre| %> <%= link_to genre.name, genre %>, <% end %> </h6>
 		<h6> Reviews: <% if book.reviews.any? %> <%= book.reviews.count %> Reviews Available <% else %> No Reviews Published Yet <% end %></h6>
 	</div>
+
 </div>
+
 <% end %>
-<div class='marg-top col-md-6 col-md-offset-3'> <%= will_paginate @books, renderer: BootstrapPagination::Rails %> </div>
-<script>	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+<div class='marg-top col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'>
+	<%= will_paginate @books, renderer: BootstrapPagination::Rails %> 
+</div>
+
+<script type='text/javascript'>
+	$(function(){ $('.pagination a').attr('data-remote', 'true') }); 
+</script>
 <% elsif not @books.count > 0 %>
-<div class='well col-md-8 col-md-offset-2'>
+<div class='well col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2'>
 	<h3> No Books Available</h3> 
 	<h6> Please Click the <strong>Plus Icon</strong> to create a New Book</h6>
 </div>
+
 <% end %>

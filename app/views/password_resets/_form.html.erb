@@ -1,16 +1,20 @@
-<div class='col-md-12 pad-zero marg-bot'></div>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot'></div>
+
 <h4 class='text-center signup_signin_passreset_heading'> Recover Password</h4> 
 
 <%= form_tag password_resets_path, :method=> :post do %>
-<div class='col-md-12 pad-zero' style='margin-bottom: 5%;'>
-	<div class='col-md-4 marg-top pad-zero' style='color: #fff;'>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero' style='margin-bottom: 5%;'>
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 marg-top pad-zero' style='color: #fff;'>
 		<%= label_tag :email, "Email", id:'pass_reset_label' %>	
 	</div>
-	<div class='col-md-8 pad-zero marg-bot'>
+
+	<div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 pad-zero marg-bot'>
 		<%= email_field_tag :email, params[:email], required: true, class:"form-control marg-top", id:"password_reset_email_field" %>
 	</div>
+
 	<button type='submit' class="btn btn-primary btn-block"> <i class= 'fa fa-check' ></i> Recover Password</button>
 </div>
+
 <% end %>
 <script type='text/javascript'> 
 	$("form").submit(function(){

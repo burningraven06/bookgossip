@@ -1,20 +1,31 @@
 <% provide(:title, @review.heading)%>
-<!-- <p id="notice"><%= notice %></p> -->
-<%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, book_path(@review.book), class:"btn btn-default pull-right" %>
-<div class='col-md-4'> 
-  <%= image_tag(@review.cover_page.url(:large)) %>
-  <h3 class='text-center'> <%= link_to @review.heading, @review %> </h3>
-  <div class='col-md-12'> <%= image_tag(@review.book.cover_page.url(:thumb)) %>  <h6>Book:  <%= link_to @review.book.title, @review.book %> </h6> 
-  </div>
-  <div class='col-md-12'>
-    <%= image_tag(@review.user.avatar.url(:thumb)) %> <h6>Review Writer:  <%= link_to @review.user.name, @review.user %> </h6> 
-  </div>
-  <div class='col-md-12'>
-    <h6>Publication Date: <%= @review.created_at %> </h6>
-  </div>      
-</div>
-<div class='col-md-8'>
-  <% if @review.status == 0 %> <h3 class='text-center'>Review Not Yet Published!</h3>
-  <% elsif @review.status ==1 %> <h3> <%= @review.review %></h3>  <% end %>
-</div>
+<!-- <p id="notice"><%= notice %></p> --> 
+<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero ">
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4'> 
+		<div class='marg-top2 text-center'>
+			<%= image_tag(@review.cover_page.url(:large)) %>
+			<h3 class='text-center'> <%= link_to @review.heading, @review %> </h3>
+			<h6>Publication Date: <%= @review.created_at %> </h6>
+		</div>
+
+		<div class='col-lg-6 col-md-6 col-sm-6 col-xs-6 well marg-zero text-center'>
+			<%= link_to image_tag(@review.book.cover_page.url(:thumb)), @review.book %>
+			<h6 class='text-left'>Book Reviewed: <br> <%= link_to @review.book.title, @review.book %></h6>
+		</div>
+		<div class='col-lg-6 col-md-6 col-sm-6 col-xs-6 well marg-zero text-center'>
+			<%= link_to image_tag(@review.user.avatar.url(:thumb)), @review.user %>
+			<h6 class='text-left'>Review Writer: <br><%= link_to @review.user.name, @review.user %></h6>
+		</div>
+
+	</div>
+
+	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 '>
+		<% if @review.status == '0' %> <h3 class='text-center'>Review Not Yet Published!</h3>
+		<% elsif @review.status =='1' %> <h3> <%= @review.review %></h3>  <% end %>
+	</div>
+
+	<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-right '>
+		<%= link_to image_tag('button_icons/back_button.png'), reviews_path %>
+		<span class='marg-left'><%= link_to "Back", reviews_path %></span>
+	</div>
 </div>

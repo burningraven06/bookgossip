@@ -1,29 +1,49 @@
 <% provide(:title, @group.name)%>
 
-<div id="show_flash_messages" class='col-md-6 col-md-offset-3'></div>
+<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'></div>
 
-<div class='col-md-4 '> 
-  <%= image_tag(@group.cover_page.url(:large)) %>
-  <h3 class=''> <%= link_to @group.name, @group %> </h3>
-  <h6> Admin: <%= link_to @group.user.name, @group.user %> </h6>
-  <h6> Members: <%= @group.member_count %> </h6>
-  
-  <% if member_joined(@group) %>  <div id='group_leave_butoon'> Joined </div>
-  <% elsif not member_joined(@group) %> <div id='group_membership_form'> <%= render 'memberships/form' %> </div>
-  <% end %>
-  <h6> Topics: 
-    <% if @topics_of_group %>
-      <span id='topic_count_div'> <%="#{@topics_of_group.count}"%></span>  
-    <% else %> No Topics Created Yet <% end %>
-  </h6>
+
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 '>
+	<div class='marg-top2 text-center'> 
+		<%= image_tag(@group.cover_page.url(:large)) %>
+		<h3 class=''> <%= link_to @group.name, @group %> </h3>
+	</div>
+
+	<div class='well'>
+		<h6> Admin: <%= link_to @group.user.name, @group.user %> </h6>
+		<h6> Members: <%= @group.member_count %> </h6>
+		
+		<% if member_joined(@group) %>
+		<div id='group_leave_butoon'> Joined </div>
+
+		<% elsif not member_joined(@group) %> \
+		<div id='group_membership_form'> <%= render 'memberships/form' %> </div>
+
+		<% end %>
+		<h6> Topics: 
+			<% if @topics_of_group %>
+			<span id='topic_count_div'> <%="#{@topics_of_group.count}"%></span>  
+			<% else %> No Topics Created Yet <% end %>
+		</h6>
+	</div>
+
 </div>
 
-<div class='col-md-6 col-md-offset-1' id='group_topic_form'></div>
+<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-1' id='group_topic_form'></div>
 
-<div class='col-md-8' id='group_topics_div'> 
-  <div class='col-md-12 marg-bot'>
-    <%= link_to '<i class= "fa fa-chevron-left"></i> Back'.html_safe, groups_path, class:"btn btn-default pull-right", id:"groups_path_button" %>
-    <%= link_to "<i class= 'fa fa-plus'></i> Create Topic".html_safe, group_new_topic_path, remote: true, id: "group_new_topic_button", class: "btn btn-default pull-left" %>
-  </div>
-  <div class='col-md-12 ' id='group_topics'> <%= render 'topics_of_group' %> </div>
+<div class='col-md-8 col-lg-8 col-xs-8 col-sm-8' id='group_topics_div'> 
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot'>
+		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-right'>
+			<%= link_to image_tag('button_icons/plus_64.png'), group_new_topic_path, remote: true, id: "group_new_topic_button" %>
+		</div>
+
+		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-right'>
+			<%= link_to image_tag('button_icons/back_button.png'), groups_path, id:"groups_path_button" %>
+		</div>
+
+	</div>
+
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 ' id='group_topics'> <%= render 'topics_of_group' %> </div>
+
 </div>
+
