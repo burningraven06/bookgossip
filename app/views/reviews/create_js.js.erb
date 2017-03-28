@@ -2,9 +2,11 @@ $("#jquery_loading").css("display", "none");
 <% if @review.errors.any? %>
 $("#show_flash_messages").html("<%= j render'common_form_errors/atreview_form_errors' %>");
 <% elsif not @review.errors.any? %>
-$("#book_review_form").fadeOut(100);
-$("#show_book").fadeIn(100);
-$("#review_forms").fadeOut(100);
+$("#book_review_form_div").fadeOut(100);
+$("#book_review_add_button_div").show();
 $("#show_flash_messages").html("<%= j render 'reviews/review_flash_messages/review_created' %>");
 $("#book_reviews").html("<%= j render 'books/reviews_of_book' %>");
-<% end %>
+$("#book_all_info_div").show();
+
+	// $("#show_all_reviews").fadeIn(100);
+	<% end %>

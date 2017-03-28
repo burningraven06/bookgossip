@@ -12,7 +12,7 @@
 		<h3 class='marg-top10' > <%= link_to @book.title, @book %> </h3>
 
 		<% if current_user.account_type='writer' %>
-		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12  marg-top10' style='padding:5%;'>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12  marg-top10' style='padding:5%;' id='book_review_add_button_div'>
 			<%= link_to "Review <strong>#{@book.title}</strong>".html_safe, book_new_review_path, remote: true, class: "pull-left marg-top10" %>
 			
 			<%= link_to image_tag("button_icons/plus_64.png"), book_new_review_path, remote: true, id: "book_new_review_button", class: "create_new_button text-center" %>
@@ -40,28 +40,28 @@
 		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
 			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Summary: </h6> </div>
 
-			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-bot2'> <%= @book.book_summary.truncate(250) %> </div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-top2 marg-bot2'> <%= @book.book_summary.truncate(250) %> </div>
 
 		</div>
 
 		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
 			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Publication Date: </h6> </div>
 
-			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-bot2'> <%= @book.publication_date %> </div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 marg-top2 marg-bot2'> <%= @book.publication_date %> </div>
 
 		</div>
 
 		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
 			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Genres: (<%= @genres_of_book.count %> Genres) </h6> </div>
 
-			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9' id='book_genres'>  <%= render 'genres_of_book' %></div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero' id='book_genres'>  <%= render 'genres_of_book' %></div>
 
 		</div>
 
 		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'>
 			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3'> <h6>Reviews: <% if @book.reviews.any? %> <% @book.reviews.count%> <% else %> <br>No Reviews Published Yet <% end %> </h6> </div>
 
-			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9' id='book_reviews'> <% if @reviews_of_book %> <%= render 'reviews_of_book' %> <% end %></div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero' id='book_reviews'> <% if @reviews_of_book %> <%= render 'reviews_of_book' %> <% end %></div>
 
 		</div>
 

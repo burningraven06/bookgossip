@@ -19,8 +19,8 @@ class BooksController < ApplicationController
 	def show
 		@book=Book.find(params[:id])
 		@review=Review.new
-		@reviews_of_book = @book.reviews.order(heading: :asc).paginate(page: params[:review_page], per_page: 1)
-		@genres_of_book = @book.genres.order(name: :asc).paginate(page: params[:genre_page], per_page:6)
+		@reviews_of_book = @book.reviews.order(heading: :asc).paginate(page: params[:review_page], per_page: 8)
+		@genres_of_book = @book.genres.order(name: :asc).paginate(page: params[:genre_page], per_page:8)
 		respond_to do |format|
 			format.html {}
 			format.json {}
