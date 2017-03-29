@@ -1,9 +1,9 @@
-<h4 class='text-center'> Admin of Groups </h4>
+<h4 class='text-center marg-bot10 marg-top10'> Admin of Groups </h4>
 <% if not @groups_of_user %> No Groups Created 
 <% else @groups_of_user %>
 <% @groups_of_user.each do |group| %>
 <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
-	<%= image_tag(group.cover_page.url(:thumb)) %>
+	<%= link_to image_tag(group.cover_page.url(:thumb)), group %>
 	<h6> <%= link_to group.name, group %> </h6>
 </div>
 

@@ -1,15 +1,18 @@
-<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4'>
-	<%= image_tag(@user.avatar.url(:large) ,class:"text-center marg-top") %>
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 well text-center'>
+	<%= image_tag(@user.avatar.url(:large), class:"text-center marg-top") %>
 	<h2 > <%= @user.name %> </h2>
-	<h4 > <strong> <%= @user.account_type %></strong> </h4>
-	<h6> <%= @user.gender %>, Birthday: <%= display_birthday(@user.show_birthday_status) %> </h6>
-	<h6> Joined: <%= @user.created_at.strftime("%d/%B/%Y") %></h6>
-	<h6> Reviews Written: <%= @reviews_of_user? "#{@reviews_of_user.count} Reviews" : "No Reviews Published Yet" %></h6>
+	<div class="marg-left text-left">
+		<h4 > <strong> <%= @user.account_type %></strong> </h4>
+		<h6> <%= @user.gender %>, Birthday: <%= display_birthday(@user.show_birthday_status) %> </h6>
+		<h6> Joined: <%= @user.created_at.strftime("%d/%B/%Y") %></h6>
+		<h6> Reviews Written: <%= @reviews_of_user? "#{@reviews_of_user.count} Reviews" : "No Reviews Published Yet" %></h6>
+		<h6> Admin of Groups : <%= @groups_of_user? "#{@groups_of_user.count} Groups" : "No Groups Started Yet" %></h6>
+	</div>
 </div>
-	
-<div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 pad-zero'>
-	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='user_reviews'> <%= render 'reviews_of_user' %> </div>
 
-	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='user_groups'> <%= render 'groups_of_user' %> </div>
+<div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 pad-zero'>
+	<div class='well pad-zero col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='user_reviews'> <%= render 'reviews_of_user' %> </div>
+
+	<div class='well pad-zero col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='user_groups'> <%= render 'groups_of_user' %> </div>
 	
 </div>

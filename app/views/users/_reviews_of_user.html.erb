@@ -1,9 +1,9 @@
-<h4 class='text-center'> Reviews of <%= current_user.name %> </h4>
+<h4 class='text-center marg-bot10 marg-top10'> Reviews of <%= current_user.name %> </h4>
 <% if not @reviews_of_user %> No Reviews Published Yet 
 <% else %>
 <% @reviews_of_user.each do |review| %>
 <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
-	<%= image_tag(review.cover_page.url(:thumb)) %>
+	<%= link_to image_tag(review.cover_page.url(:thumb)), review %>
 	<h6> <%= link_to review.heading, review %> </h6>
 </div>
 

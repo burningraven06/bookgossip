@@ -1,0 +1,20 @@
+<% @tweets.each do |tweet| %>
+
+<div class='well col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-bot' >
+	<h3 class='marg-bot'> @<%= tweet.user.name %> </h3>
+	<h5 style='line-height: 150%;'> <%= tweet.full_text %> </h5>
+	
+	<p class='pull-right pad-zero marg-zero'> <%= tweet.created_at.strftime("%d-%b-%Y %H:%M") %> </p>
+</div>
+
+<% end %>
+
+<div class='marg-top col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'>
+	<%= will_paginate @tweets, renderer: BootstrapPagination::Rails %> 
+</div>
+
+<!-- 
+<script type='text/javascript'>
+	$(function(){ $('.pagination a').attr('data-remote', 'true') }); 
+</script>
+ -->

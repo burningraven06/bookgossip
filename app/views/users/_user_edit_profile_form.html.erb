@@ -1,71 +1,83 @@
-<%= form_for(@user, html: { multipart: true }, remote:true) do |f| %>
-<%= render 'common_form_errors/atuser_form_errors' %>
-<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<div class='form_border ' style='padding: 7%;'>
+	<%= form_for(@user, html: { multipart: true }, remote:true) do |f| %>
+	<%= render 'common_form_errors/atuser_form_errors' %>
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-<div class='pad-zero marg-top'>
-	<h4 class='text-center marg-top'> Personal Information</h4>
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :name, "Full Name" %>	</div>
+	<div class='pad-zero marg-top'>
+		<h4 class='text-center marg-top'> Personal Information</h4>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero'>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :name, "Full Name" %>	</div>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :name, class:'form-control marg-top', required: true %>	</div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :name, class:'form-control marg-top', required: true %>	</div>
+		</div>
 
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :email, "Email" %>	</div>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero'>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.email_field :email, class:'form-control marg-top', required: true %>	</div>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :email, "Email" %>	</div>
 
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :gender, "Sex" %>	</div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.email_field :email, class:'form-control marg-top', required: true %>	</div>
+		</div>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero'>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>
-		<%= f.select :gender, options_for_select([['Male', 'Male'], ['Female', 'Female']], @user.gender), {}, class:"form-control marg-top", required: true %>
-	</div>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :gender, "Sex" %>	</div>
 
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :date_of_birth, "Birthday" %>	</div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>
+				<%= f.select :gender, options_for_select([['Male', 'Male'], ['Female', 'Female']], @user.gender), {}, class:"form-control marg-top", required: true %>
+			</div>
+		</div>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero'>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.date_field :date_of_birth, class:'form-control marg-top', value: @user.date_of_birth, required: true %> </div>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :date_of_birth, "Birthday" %>	</div>
 
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :show_birthday_status, "Privacy Settings" %>	</div>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.date_field :date_of_birth, class:'form-control marg-top', value: @user.date_of_birth, required: true %> </div>
+		</div>
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero'>
 
-	<% if @user.date_of_birth %>
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>	<%= f.select :show_birthday_status, options_for_select([
-		["Birthdate & Age - #{@user.date_of_birth}, #{age(@user.date_of_birth)} Years", 1], 
-		["Birthdate - #{@user.date_of_birth}", 2], 
-		["Birthday - #{@user.date_of_birth.to_date.strftime("%B/%d")}", 3], 
-		["Just Age - #{age(@user.date_of_birth)} Years Old", 4], 
-		["Don't Show Anything", 5]],	@user.show_birthday_status), {}, class:"form-control marg-top", required: true 
-		%>
-	</div>
+			<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'>	<%= f.label :show_birthday_status, "Privacy Settings" %>	</div>
 
-	<% elsif not @user.date_of_birth %>
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>	<%= f.select :show_birthday_status, options_for_select([
-		["Birthdate & Age - #{@user.created_at}, #{age(@user.created_at)} Years", 1], 
-		["Birthdate - #{@user.created_at}", 2], 
-		["Birthday - #{@user.created_at.strftime("%B/%d")}", 3], 
-		["Just Age - #{age(@user.created_at)} Years Old", 4], 
-		["Don't Show Anything", 5]],	@user.show_birthday_status), {}, class:"form-control marg-top", required: true 
-		%>
+			<% if @user.date_of_birth %>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>	<%= f.select :show_birthday_status, options_for_select([
+				["Birthdate & Age - #{@user.date_of_birth}, #{age(@user.date_of_birth)} Years", 1], 
+				["Birthdate - #{@user.date_of_birth}", 2], 
+				["Birthday - #{@user.date_of_birth.to_date.strftime("%B/%d")}", 3], 
+				["Just Age - #{age(@user.date_of_birth)} Years Old", 4], 
+				["Don't Show Anything", 5]],	@user.show_birthday_status), {}, class:"form-control marg-top", required: true 
+				%>
+			</div>
+
+			<% elsif not @user.date_of_birth %>
+			<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>	<%= f.select :show_birthday_status, options_for_select([
+				["Birthdate & Age - #{@user.created_at}, #{age(@user.created_at)} Years", 1], 
+				["Birthdate - #{@user.created_at}", 2], 
+				["Birthday - #{@user.created_at.strftime("%B/%d")}", 3], 
+				["Just Age - #{age(@user.created_at)} Years Old", 4], 
+				["Don't Show Anything", 5]],	@user.show_birthday_status), {}, class:"form-control marg-top", required: true 
+				%>
+			</div>
+
+			<% end %>
+		</div>
+
+		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pull-right marg-bot pad-zero'>
+			<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-top pad-zero'>	
+				<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 marg-top pad-zero'>	<%= f.check_box(:default_avatar) %>	</div>
+
+				<div class='col-md-10 col-lg-10 col-xs-10 col-sm-10 marg-top marg-bot pad-zero'> <%= f.label(:default_avatar, "Default User Avatar") %> </div>
+
+			</div>
+
+			<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-top pad-zero'>
+				<%= f.label "Custom Avatar", class:" marg-top marg-bot text-right" %>
+				<%= f.file_field :avatar, class:"" %>
+			</div>
+
+		</div>
+
+		<button type='submit' class='btn btn-success btn-block' id='user_edit_profile_submit_button'><i class='fa fa-check'></i> Update Profile</button>
 	</div>
 
 	<% end %>
-
-	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pull-right marg-bot pad-zero'>
-		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-top pad-zero'>	
-			<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 marg-top pad-zero'>	<%= f.check_box(:default_avatar) %>	</div>
-
-			<div class='col-md-10 col-lg-10 col-xs-10 col-sm-10 marg-top marg-bot pad-zero'> <%= f.label(:default_avatar, "Default User Avatar") %> </div>
-
-		</div>
-
-		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-top pad-zero'>
-			<%= f.label "Custom Avatar", class:" marg-top marg-bot" %>
-			<%= f.file_field :avatar, class:"" %>
-		</div>
-
-	</div>
-
-	<button type='submit' class='btn btn-primary btn-block' id='user_edit_profile_submit_button'><i class='fa fa-check'></i> Update Profile</button>
 </div>
-
-<% end %>
-
 <script type='text/javascript'> 
 	$("form").submit(function(){
 		$("#jquery_loading").css("display", "block"); 
