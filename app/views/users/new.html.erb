@@ -23,7 +23,7 @@
 				<%= image_tag("js_loading/hourglass.svg")%>
 			</div>
 
-			<div id="show_flash_messages_signup_div" class=' col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2 pad-zero' style='margin-top:25%;'></div>
+			<div id="show_flash_messages_signup_div" class=' col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2 pad-zero' style='margin-top:25%;'> </div>
 
 			<div id="show_flash_messages_login_div" class='col-md-8 col-lg-8 col-xs-8 col-sm-8 col-md-offset-2 col-lg-offset-2 col-xs-offset-2 col-sm-offset-2 pad-zero ' style='margin-top:25%;'></div>
 
@@ -55,4 +55,11 @@
 	});
 	$('#first_container').addClass('container-fluid pad-zero');
 	$('#first_container').removeClass('container');
+
+	window.setTimeout(function() {
+		$("#show_flash_messages").fadeTo(500, 0).slideUp(500, function(){
+			$(this).remove(); 
+		});
+	}, 2000);
+
 </script>

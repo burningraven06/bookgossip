@@ -21,6 +21,6 @@ class Author < ApplicationRecord
 	end
 	
 	def description
-		"It's Author #{name}'s Birthday"
+		"Author #{name}'s Birthday"
 	end
 end

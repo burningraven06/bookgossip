@@ -3,19 +3,35 @@
 <ol class='pad-zero'>
 	<% @approved_members.each do |membership| %> 
 	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12'> 
-		<li class='pad-zero'>
-			<%= link_to "#{show_group_name(membership.group_id)}", group_path(membership.group_id) %>,
-			<%= link_to "#{show_user_name(membership.user_id)}", user_path(membership.user_id) %> 
-			<%= link_to "Edit Status", edit_membership_path(membership), class: "btn btn-default pull-right", remote: true, id:"edit_membership_button" %> 		
+		<li class='well '>
+			<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero'>
+				<h5 class='marg-top2 marg-bot2'> User:	<%= link_to "#{show_user_name(membership.user_id)}", user_path(membership.user_id) %> 
+				</h5>
+			</div>
+			<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero'>
+				<h5 class='marg-top2 marg-bot2'>Group: <%= link_to "#{show_group_name(membership.group_id)}", group_path(membership.group_id) %>
+				</h5>
+			</div>
+
+			<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero text-center'>
+				<h5 class='marg-top2 marg-bot2' style='display:inline;'> 
+				<%= link_to image_tag("button_icons/writing.png"), edit_membership_path(membership),remote: true, id:"edit_membership_button" %>
+				</h5>
+				<h6 class='marg-top2 marg-bot2' style='margin-left: 10%; display:inline;'> 
+					<%= link_to "Update", edit_membership_path(membership),remote: true, id:"edit_membership_button" %> 
+				</h6> 	
+			</div>	
 		</li>
 	</div>
-  
+
 	<%end %>
 </ol>
+
+
 <div class='marg-top col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'> <%= will_paginate @approved_members, renderer: BootstrapPagination::Rails %> </div>
 
 <script type='text/javascript'>
- $(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
-<% elsif not @approved_members %>
-<p class='text-center'> No Members </p> 
-<% end %>
+	$(function(){ $('.pagination a').attr('data-remote', 'true') }); </script>
+	<% elsif not @approved_members %>
+	<p class='text-center'> No Members </p> 
+	<% end %>

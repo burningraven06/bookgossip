@@ -68,13 +68,15 @@ class UsersController < ApplicationController
 
 	def account_confirmation
 		@user=User.find_by_account_confirmation_token(params[:id])
-		if @user
-			@user.activate_account
-			flash[:success]="Congratulations #{@user.name}, your account has been activated. Sign in with your username/password."
-			redirect_to common_signup_path
-		else
-			flash[:danger]="Sorry, the account does not exist. Please try registering with a different email address."
-			redirect_to common_singup_path
+		respond_to do |format|
+			if @user
+				@user.activate_account
+				format.js {}
+				format.html { redirect_to common_signup_path ; flash[:success]="Congratulations #{@user.name}, your account has been activated. Sign in with your username/password."}
+			else
+				format.html { redirect_to common_signup_path ; flash[:danger]="Sorry, the account does not exist. Please try registering with a different email address."}
+				format.js {}
+			end
 		end
 	end
 

@@ -9,8 +9,8 @@
 	<%= csrf_meta_tags %>
 	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		<%= favicon_link_tag 'home_logo/send.png' %>
-		<link href="https://fonts.googleapis.com/css?family=Nato+Sans|Crimson+Text|Raleway" rel="stylesheet">
+	<%= favicon_link_tag 'home_logo/send.png' %>
+	<link href="https://fonts.googleapis.com/css?family=Nato+Sans|Crimson+Text|Raleway" rel="stylesheet">
 </head>
 <body>
 	<div id= 'fullheight'>
@@ -18,7 +18,7 @@
 			<%= image_tag("home_logo/wiki_bookshelf_sm.jpg", class: "landing_pg_img")%>
 			<%= render 'layouts/header' %> 
 			<div id="main-container" style='margin-top: 5%;'> 
-				<%= render 'layouts/flash_alerts' %>
+				<div id='flash_alerts_div'> <%= render 'layouts/flash_alerts' %> </div>
 				<%= yield %> 
 			</div>
 
@@ -27,4 +27,5 @@
 	</div>
 
 </body>
+
 </html>

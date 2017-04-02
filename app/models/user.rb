@@ -52,7 +52,7 @@ class User < ApplicationRecord
 	def start_time
 		if self.date_of_birth?
 			if self.show_birthday_status = 1 or 2
-				date_of_birth
+				date_of_birth.to_date
 			end
 		else
 			created_at
@@ -62,7 +62,7 @@ class User < ApplicationRecord
 		"<i class='fa fa-birthday-cake'></i>".html_safe
 	end
 	def description
-		"It's #{name}'s Birthday"
+		"#{name}'s Birthday"
 	end
 
 end

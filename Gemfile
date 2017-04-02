@@ -10,6 +10,7 @@ gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'twitter-bootstrap-rails'
+gem "font-awesome-rails"
 gem 'therubyracer'
 gem 'bcrypt'
 gem 'paperclip'
@@ -30,7 +31,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'twitter'
-
+gem 'instagram', :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
+gem 'faraday'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
