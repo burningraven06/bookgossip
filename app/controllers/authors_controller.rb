@@ -5,15 +5,15 @@ class AuthorsController < ApplicationController
 	# GET /authors
 	# GET /authors.json
 	def index
-		# @authors = Author.order(:name).paginate(page: params[:page], per_page: 18)
-		params[:search] ?	@authors=Author.search(params[:search]) :	@authors= Author.all
-		@authors = @authors.order(:name).paginate(page: params[:page], per_page: 18)
+		params[:search] ? @authors=Author.search(params[:search]) :	@authors= Author.where("user_id = ?", current_user.id).order("name")
+		# params[:search] ? @authors=Author.search(params[:search]) :	@authors= Author.all
+		@authors = @authors.paginate(page: params[:page], per_page: 18) if @authors
 		respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @authors}
-      format.js
-    end
-  end
+			format.html # index.html.erb
+			format.json { render json: @authors}
+			format.js
+		end
+	end
 
 	# GET /authors/1
 	# GET /authors/1.json
@@ -39,9 +39,11 @@ class AuthorsController < ApplicationController
 	# POST /authors.json
 	def create
 		@author = Author.new(author_params)
+		@author.user_id = current_user.id
 		respond_to do |format|
 			if @author.save
-				@authors = Author.order(:name).paginate(page: params[:page], per_page: 18)
+				@authors= Author.where("user_id = ?", current_user.id).order("name")
+				@authors = @authors.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @author; flash[:success]= "Author was successfully created." }
 				format.json { render :show, status: :created, location: @author }
 				format.js
@@ -60,7 +62,8 @@ class AuthorsController < ApplicationController
 		@author.avatar.destroy if @set_def_avt
 		respond_to do |format|
 			if @author.update(author_params)
-				@authors = Author.order(:name).paginate(page: params[:page], per_page: 18)
+				@authors= Author.where("user_id = ?", current_user.id).order("name")
+				@authors = @authors.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @author;	flash[:info]= "Author was successfully updated." }
 				format.json { render :show, status: :ok, location: @author }
 				format.js
@@ -84,13 +87,13 @@ class AuthorsController < ApplicationController
 	end
 
 	private
-		# Use callbacks to share common setup or constraints between actions.
-		def set_author
-			@author = Author.find(params[:id])
-		end
-
-		# Never trust parameters from the scary internet, only allow the white list through.
-		def author_params
-			params.require(:author).permit(:name, :date_of_birth, :bio, :avatar)
-		end
+	# Use callbacks to share common setup or constraints between actions.
+	def set_author
+		@author = Author.find(params[:id])
 	end
+
+	# Never trust parameters from the scary internet, only allow the white list through.
+	def author_params
+		params.require(:author).permit(:name, :date_of_birth, :bio, :avatar, :user_id, :twitter_username)
+	end
+end

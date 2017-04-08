@@ -1,6 +1,6 @@
-	class ReviewsController < ApplicationController
-		before_action :require_login
-		before_action :set_review, only: [:show, :edit, :update, :destroy]
+class ReviewsController < ApplicationController
+	before_action :require_login
+	before_action :set_review, only: [:show, :edit, :update, :destroy]
 
 	# GET /reviews
 	# GET /reviews.json
@@ -8,11 +8,11 @@
 		params[:search] ? @reviews=Review.search(params[:search]) : @reviews= Review.where("user_id = ?", current_user.id)
 		@reviews = @reviews.order(:heading).paginate(page: params[:page], per_page: 18)
 		respond_to do |format|
-	format.html # index.html.erb
-	format.json { render json: @reviews }
-	format.js
-end 
-end
+			format.html # index.html.erb
+			format.json { render json: @reviews }
+			format.js
+		end 
+	end
 
 	# GET /reviews/1
 	# GET /reviews/1.json

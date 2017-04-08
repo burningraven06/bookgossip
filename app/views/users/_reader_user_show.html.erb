@@ -1,9 +1,14 @@
 <div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center marg-top'>
 	<%= image_tag(@user.avatar.url(:large)) %>
+	<div class='form_border'>
+		<h2 class='marg-top'> <%= @user.name %> </h2>
+		<h4 > <strong> <%= @user.account_type %></strong> </h4>
+		<h6> <%= @user.gender %>, Birthday: <%= display_birthday(@user.show_birthday_status) %> </h6>
+		<h6> Joined: <%= @user.created_at.strftime("%d/%B/%Y") %></h6>
+	</div>
+
 </div>
-	
-<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6'> <h2 > <%= @user.name %> </h2>
-	<h4 > <strong> <%= @user.account_type %></strong> </h4>
-	<h6> <%= @user.gender %>, Birthday: <%= display_birthday(@user.show_birthday_status) %> </h6>
-	<h6> Joined: <%= @user.created_at.strftime("%d/%B/%Y") %></h6>
+
+<div class=' col-md-6 col-lg-6 col-xs-6 col-sm-6'>
+	<%= render 'groups_of_user' %>
 </div>

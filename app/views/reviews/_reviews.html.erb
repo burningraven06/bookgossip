@@ -11,7 +11,7 @@
 	</div>
 
 	<% end %>
-	<div class='marg-top marg-bot text-left'>			
+	<div class='well marg-top marg-bot text-left'>			
 		<h6>Book Reviewed: <br><%= link_to review.book.title, review.book %></h6>
 		<h6>Review Status: <% if review.status==0 %> Draft <% else%> Published <% end %> </h6>
 		<% if not review_owner(review) %>

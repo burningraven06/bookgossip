@@ -5,8 +5,10 @@ class Book < ApplicationRecord
 	validates :genres, presence:true
 	validates :publication_date, presence:true
 	validates :book_summary, presence: true, length:{maximum: 1000}
+	validates :twitter_username, uniqueness: true
 	belongs_to :author
 	belongs_to :publisher
+	belongs_to :user
 
 	has_and_belongs_to_many :genres
 	has_many :reviews
@@ -16,7 +18,7 @@ class Book < ApplicationRecord
 	validates_attachment_content_type :cover_page, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/svg"]
 
 	def self.search(query)
-		where("title LIKE ?", "%#{query}%")
+		where("LOWER(title) LIKE ?", "%#{query.downcase}%")
 	end
 
 	def start_time

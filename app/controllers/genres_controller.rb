@@ -5,8 +5,8 @@ class GenresController < ApplicationController
 	# GET /genres
 	# GET /genres.json
 	def index
-		params[:search] ? @genres=Genre.search(params[:search]) : @genres= Genre.all
-		@genres = @genres.order(:name).paginate(page: params[:page], per_page: 18)
+		params[:search] ? @genres=Genre.search(params[:search]) : @genres=Genre.where("user_id = ?", current_user.id).order("name")
+		@genres = @genres.paginate(page: params[:page], per_page: 18) if @genres
 		respond_to do |format|
 			format.html # index.html.erb
 			format.json { render json: @genres }
@@ -39,9 +39,12 @@ class GenresController < ApplicationController
 	# POST /genres.json
 	def create
 		@genre = Genre.new(genre_params)
+		@genre.user_id = current_user.id
+
 		respond_to do |format|
 			if @genre.save
-				@genres = Genre.order(:name).paginate(page: params[:page], per_page: 18)
+				@genres=Genre.where("user_id = ?", current_user.id).order("name")
+				@genres = @genres.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @genre; flash[:success]= 'Genre was successfully created.' }
 				format.json { render :show, status: :created, location: @genre }
 				format.js
@@ -61,7 +64,8 @@ class GenresController < ApplicationController
 
 		respond_to do |format|
 			if @genre.update(genre_params)
-				@genres = Genre.order(:name).paginate(page: params[:page], per_page: 18)
+				@genres=Genre.where("user_id = ?", current_user.id).order("name")
+				@genres = @genres.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @genre; flash[:info]= 'Genre was successfully updated.' }
 				format.json { render :show, status: :ok, location: @genre }
 				format.js
@@ -92,6 +96,6 @@ class GenresController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def genre_params
-			params.require(:genre).permit(:name, :cover_page)
+			params.require(:genre).permit(:name, :cover_page, :user_id)
 		end
 	end

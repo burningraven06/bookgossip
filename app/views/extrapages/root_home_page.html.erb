@@ -1,3 +1,19 @@
-<h1> Hello World</h1>
+<!-- <h1> Hello World</h1> -->
 
-<%= render 'tweets' %>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-zero'>
+	<% if @authors_of_logged_user %> 
+		<%= render 'authors_twitter_tweets' %>
+	<% end %>
+</div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot marg-top'>
+	<% if @books_of_logged_user %> 
+		<%= render 'books_twitter_tweets' %>
+	<% end %>
+</div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot '>
+	<% if @publishers_of_logged_user %> 
+		<%= render 'publishers_twitter_tweets' %>
+	<% end %>
+</div>

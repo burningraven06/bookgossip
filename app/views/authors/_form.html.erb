@@ -1,13 +1,14 @@
 <div class='col-md-12 col-xs-12 col-lg-12 col-sm-12 pad-zero'>
 	<h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
-	<div class='well col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero text-center'>
+	<div class='well col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero text-center'>
 		<%= image_tag(@author.avatar.url(:medium)) %>
 		<h3 id='jquery_author_name'></h3>
 		<h6 class= 'marg-top10 marg-bot' id = 'jquery_author_bday'></h6>
+		<h6 class='marg-bot' id = 'jquery_author_twitter_username'></h6>
 		<h6 id = 'jquery_author_bio'></h6>
 	</div>
 
-	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero form_border'>
+	<div class='col-md-5 col-lg-5 col-xs-5 col-sm-5 pad-zero form_border'>
 		<%= form_for(@author, html: { multipart: true }, remote: true) do |f| %>
 
 		<%= render 'common_form_errors/atauthor_form_errors' %>
@@ -24,6 +25,10 @@
 		<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'>  <%= f.label :bio, class:" marg-top" %> </div>
 
 		<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.text_area :bio , class:"form-control marg-bot", placeholder: "Tell us something about the author", id:'form_authorbio_textfield' %> </div>
+
+		<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label "Twitter ScreenName", class:" marg-top" %> </div>
+
+		<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :twitter_username, class:"form-control marg-bot", placeholder: "Twitter ScreenName", id: "form_author_twitter_username_inputfield", title: "Leave Blank if you wish to fill in later" %> </div>
 
 		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot'>
 			<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'> 
@@ -60,6 +65,9 @@
 	});
 	$("#form_authordob_datefield").keyup(function(){
 		$("#jquery_author_bday").html($(this).val());
+	});
+	$("#form_author_twitter_username_inputfield").keyup(function(){
+		$("#jquery_author_twitter_username").html($(this).val());
 	});
 	$("#form_authorbio_textfield").keyup(function(){
 		$("#jquery_author_bio").html($(this).val());

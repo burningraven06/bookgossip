@@ -10,7 +10,7 @@ class Group < ApplicationRecord
 	validates_attachment_content_type :cover_page, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/svg"]
 
 	def self.search(query)
-		where("name LIKE ?", "%#{query}%")
+		where("LOWER(name) LIKE ?", "%#{query.downcase}%")
 	end
 
 end

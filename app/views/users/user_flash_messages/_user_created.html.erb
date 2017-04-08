@@ -2,6 +2,9 @@
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> Hey <%= @user.name %>, An Email has been sent to you for account activation.
 </div>
 <script>
+	$('html, body').animate({
+		scrollTop: $('#flash_messages_div').offset().top - 300}, 200);
+	
 	window.setTimeout(function() {
 		$("#flash_messages_div").fadeTo(400, 0).slideUp(400, function(){
 			$(this).remove(); 

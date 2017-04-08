@@ -10,7 +10,7 @@ class Review < ApplicationRecord
 	validates_attachment_content_type :cover_page, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/svg"]
 
 	def self.search(query)
-		where("heading LIKE ?", "%#{query}%")
+		where("LOWER(heading) LIKE ?", "%#{query.downcase}%")
 	end
 
 	def start_time

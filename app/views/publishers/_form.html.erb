@@ -1,13 +1,14 @@
 <h1 class='marg-bot2 text-center' id='form_heading'> </h1> 
 
-<div class='well col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
+<div class='well col-md-3 col-lg-3 col-xs-3 col-sm-3 text-center'>
 	<%= image_tag(@publisher.cover_page.url(:medium)) %>
 	<h3 id='jquery_publisher_name'></h3>
 	<h6 class='marg-top10 marg-bot' id='jquery_publisher_address'></h6>
 	<h6 class= 'marg-bot' id='jquery_publisher_website'></h6>
+	<h6 id='jquery_publisher_twitter_username'></h6>
 </div>
 
-<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero form_border'>
+<div class='col-md-5 col-lg-5 col-xs-5 col-sm-5 pad-zero form_border'>
 	<%= form_for(@publisher, html: {multipart: true}, remote: true) do |f| %>
 
 	<% render 'common_form_errors/atpublisher_form_errors' %>
@@ -24,6 +25,10 @@
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label :website, class:" marg-top" %> </div>
 
 	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :website, class:"form-control marg-bot", placeholder: "Visit", id: "form_publisher_website" %> </div>
+
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label "Twitter ScreenName", class:" marg-top" %> </div>
+
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :twitter_username, class:"form-control marg-bot", placeholder: "Twitter ScreenName", id: "form_publisher_twitter_username_inputfield",title: "Leave Blank if you wish to fill in later" %> </div>
 
 	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot pad-zero'>
 		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'> 
@@ -56,6 +61,9 @@
 	}); 
 	$("#form_publisher_address").keyup(function(){
 		$("#jquery_publisher_address").html($(this).val());
+	}); 
+	$("#form_publisher_twitter_username_inputfield").keyup(function(){
+		$("#jquery_publisher_twitter_username").html($(this).val());
 	}); 
 	$("#form_publisher_website").keyup(function(){
 		$("#jquery_publisher_website").html($(this).val());

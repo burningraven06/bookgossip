@@ -5,14 +5,14 @@ class BooksController < ApplicationController
 	# GET /books
 	# GET /books.json
 	def index
-		params[:search] ? @books=Book.search(params[:search]) : @books=Book.all
-		@books = @books.order(:title).paginate(page: params[:page], per_page: 16)
+		params[:search] ? @books=Book.search(params[:search]) : @books=Book.where("user_id = ?", current_user.id).order("title")
+		@books = @books.paginate(page: params[:page], per_page: 16) if @books
 		respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @books}
       format.js
-    end
   end
+end
 
 	# GET /books/1
 	# GET /books/1.json
@@ -40,9 +40,12 @@ class BooksController < ApplicationController
 	# POST /books.json
 	def create
 		@book = Book.new(book_params)
+		@book.user_id = current_user.id
+
 		respond_to do |format|
 			if @book.save 
-				@books = Book.order(:title).paginate(page: params[:page], per_page: 16)
+				@books = Book.where("user_id = ?", current_user.id).order("title")
+				@books =@books.paginate(page: params[:page], per_page: 16)
 				format.html { redirect_to @book; flash[:success] = 'Book was successfully created.' }
 				format.json { render :show, status: :created, location: @book }
 				format.js
@@ -61,7 +64,8 @@ class BooksController < ApplicationController
 		@book.cover_page.destroy if @set_def_avt
 		respond_to do |format|
 			if @book.update(book_params)
-				@books = Book.order(:title).paginate(page: params[:page], per_page: 16)
+				@books = Book.where("user_id = ?", current_user.id).order("title")
+				@books =@books.paginate(page: params[:page], per_page: 16)
 				format.html { redirect_to @book; flash[:info]= 'Book was successfully updated.' }
 				format.json { render :edit, status: :ok, location: @book }
 				format.js
@@ -92,7 +96,7 @@ class BooksController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def book_params
-			params.require(:book).permit(:title, :author_id, :publisher_id, :default_avatar, :publication_date, :cover_page, :book_summary, genre_ids: [])
+			params.require(:book).permit(:title, :author_id, :publisher_id, :user_id, :twitter_username, :default_avatar, :publication_date, :cover_page, :book_summary, genre_ids: [])
 		end
 
 	end

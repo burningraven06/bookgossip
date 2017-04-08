@@ -1,20 +1,22 @@
 <% @tweets.each do |tweet| %>
+	<h6 > 
+		<%= tweet.user.followers_count %> Followers 
+	</h6>
+	<h6> <%= tweet.user.location %> </h6>
+	<h6> <%= tweet.user.description %> </h6>
+	<% break %>
+<% end %>
 
-<div class='well col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-bot' >
-	<h3 class='marg-bot'> @<%= tweet.user.name %> </h3>
-	<h5 style='line-height: 150%;'> <%= tweet.full_text %> </h5>
-	
-	<p class='pull-right pad-zero marg-zero'> <%= tweet.created_at.strftime("%d-%b-%Y %H:%M") %> </p>
+<% @tweets.each do |tweet| %>
+<div class='well col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-top2 marg-bot2' style='padding:4%;'>
+	<i class='fa fa-twitter fa-2x' style='display:inline; margin-right: 3%; color: #4099ff;'></i> <h3 class='marg-bot10' style='display:inline;'> <%= tweet.user.name %> </h3>
+	<h5 class='marg-bot' style='line-height: 200%;'> <%= tweet.full_text %> </h5>
+	<h5 >
+		<i class='fa fa-heart' style='color: #e74c3c;'></i> <%=tweet.favorite_count %> Favorites
+		<i class='fa fa-reply marg-left' style='color: #27ae60;'></i> <%= tweet.retweet_count %> Retweets
+		<span class='pull-right pad-zero marg-zero'> <%= tweet.created_at.strftime("%d-%b-%Y %H:%M") %> </span>
+
+	</h5>
 </div>
 
 <% end %>
-
-<div class='marg-top col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'>
-	<%= will_paginate @tweets, renderer: BootstrapPagination::Rails %> 
-</div>
-
-<!-- 
-<script type='text/javascript'>
-	$(function(){ $('.pagination a').attr('data-remote', 'true') }); 
-</script>
- -->

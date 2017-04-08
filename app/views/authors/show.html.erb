@@ -1,5 +1,6 @@
-<% provide(:title,@author.name)%>
+<% provide(:title,@author.name)%> 
 <!-- <p id="notice"><%= notice %></h6> -->
+
 <div class='col-md-4 col-lg-4 col-xs-4 col-sm-4'> 
 	<div class='marg-top2 text-center'>
 		<%= image_tag(@author.avatar.url(:large)) %>
@@ -17,6 +18,7 @@
 			<br>No Books Written Yet
 			<% end %>
 		</h6>
+		<h6> Twitter Name: <%= @author.twitter_username %></h6>
 	</div>
 
 </div>

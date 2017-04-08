@@ -1,9 +1,13 @@
 $("#jquery_loading").css("display", "none");
 <% if @book.errors.any? %>
-	$("#show_flash_messages").html("<%= j render'common_form_errors/atbook_form_errors' %>");
+$("#show_flash_messages").html("<%= j render'common_form_errors/atbook_form_errors' %>");
 <% elsif not @book.errors.any? %>
-	$("#book_forms").fadeOut(100);
-	$("#all_books_div").html("<%= j render 'books' %>");
-	$("#show_flash_messages").html("<%= j render 'books/book_flash_messages/book_created' %>");
-	$("#show_all_books").fadeIn(100);
+$("#book_forms").fadeOut(100);
+$("#all_books_div").html("<%= j render 'books' %>");
+$("#show_flash_messages").html("<%= j render 'books/book_flash_messages/book_created' %>");
+$("#show_flash_messages_newview").html("<%= j render 'books/book_flash_messages/book_created_newview' %>");
+$("#newview_book_form").hide();
+$("#show_all_books").fadeIn(100);
+$("#new_view_heading").fadeOut(100);
+
 <% end %>

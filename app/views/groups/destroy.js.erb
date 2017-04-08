@@ -1,3 +1,3 @@
 $("#group_<%= @group.id %>").remove();
 $("#show_flash_messages").prepend("<%= j render'groups/group_flash_messages/group_deleted' %>");
-$("#all_groups_div").fadeIn(100);
+$("#all_groups_div").html("<%= j render 'groups' %>");

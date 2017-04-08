@@ -1,4 +1,4 @@
-<% if @books_of_author.count>0 %>
+<% if @books_of_author.count>0 %> 
 <% @books_of_author.each do |book| %>
 <div class='col-md-2 col-lg-2 col-xs-2 col-sm-2'>
 	<%= link_to image_tag(book.cover_page.url(:thumb)), book %>
@@ -15,7 +15,7 @@
 </script>
 
 <% elsif not @books_of_author.count>0 %>
-<div class='well col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'>
+<div class='well col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top'>
 	<h4><strong><%= @author.name %></strong> hasn't written any books</h4>
 </div>
 

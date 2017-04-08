@@ -5,5 +5,8 @@ $("#jquery_loading").css("display", "none");
 	$("#author_forms").fadeOut(100);
 	$("#all_authors_div").html("<%= j render'authors' %>");
 	$("#show_flash_messages").html("<%= j render'authors/author_flash_messages/author_created' %>");
+	$("#show_flash_messages_newview").html("<%= j render'authors/author_flash_messages/author_created_newview' %>");
 	$("#show_all_authors").fadeIn(100);
+	$("#newview_author_form").fadeOut(100);
+$("#new_view_heading").fadeOut(100);
 <% end %>

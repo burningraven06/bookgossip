@@ -9,11 +9,17 @@
 		<div class='well'>
 			<h6> Address: <%= @publisher.address %> </h6>
 			<h6> Website: <%= link_to @publisher.website, "http://#{@publisher.website}" %></h6>
+			<h6> Twitter Screenname: <%= @publisher.twitter_username %></h6>
 		</div>
 
 	</div>
 
-	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center' id= "publisher_books"> <%= render 'books_of_publisher' %> </div>
+	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-center' id= "publisher_books">
+		<h4 class='text-left marg-bot10'>
+			Books by <strong> <%= @publisher.name %> </strong>
+		</h4>
+		<% if @books_of_publisher %> <%= render 'books_of_publisher' %> <% end%>
+	</div>
 
 	<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-right'>
 		<%= link_to image_tag('button_icons/back_button.png'), publishers_path %>

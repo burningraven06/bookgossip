@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402190546) do
+ActiveRecord::Schema.define(version: 20170408153927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20170402190546) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "default_avatar"
+    t.integer  "user_id"
+    t.string   "twitter_username"
+    t.index ["user_id"], name: "index_authors_on_user_id", using: :btree
   end
 
   create_table "books", force: :cascade do |t|
@@ -43,9 +46,12 @@ ActiveRecord::Schema.define(version: 20170402190546) do
     t.datetime "cover_page_updated_at"
     t.boolean  "default_avatar"
     t.string   "publisher_id"
+    t.integer  "user_id"
+    t.string   "twitter_username"
     t.index ["author_id"], name: "index_books_on_author_id", using: :btree
     t.index ["id"], name: "index_books_on_id", using: :btree
     t.index ["publisher_id"], name: "index_books_on_publisher_id", using: :btree
+    t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
   create_table "books_genres", force: :cascade do |t|
@@ -72,6 +78,8 @@ ActiveRecord::Schema.define(version: 20170402190546) do
     t.integer  "cover_page_file_size"
     t.datetime "cover_page_updated_at"
     t.boolean  "default_avatar"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_genres_on_user_id", using: :btree
   end
 
   create_table "group_user_requests", force: :cascade do |t|
@@ -120,6 +128,9 @@ ActiveRecord::Schema.define(version: 20170402190546) do
     t.integer  "cover_page_file_size"
     t.datetime "cover_page_updated_at"
     t.boolean  "default_avatar"
+    t.integer  "user_id"
+    t.string   "twitter_username"
+    t.index ["user_id"], name: "index_publishers_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|

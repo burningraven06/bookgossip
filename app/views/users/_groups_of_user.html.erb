@@ -1,13 +1,15 @@
 <h4 class='text-center marg-bot10 marg-top10'> Admin of Groups </h4>
-<% if not @groups_of_user %> No Groups Created 
-<% else @groups_of_user %>
+<% if not @groups_of_user.count>0 %> No Groups Created 
+
+<% elsif @groups_of_user.count >0 %>
 <% @groups_of_user.each do |group| %>
-<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
+<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center marg-bot2 pad-zero'>
 	<%= link_to image_tag(group.cover_page.url(:thumb)), group %>
 	<h6> <%= link_to group.name, group %> </h6>
 </div>
 
 <% end %>
+
 <div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top'>
 	<%= will_paginate @groups_of_user, param_name: 'group_page', renderer: BootstrapPagination::Rails %> 
 </div>

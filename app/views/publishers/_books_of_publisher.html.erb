@@ -1,7 +1,7 @@
-<% if @books_of_publisher %>
+<% if @books_of_publisher.count>0  %> 
 <% @books_of_publisher.each do |book| %>
 <div class='col-md-2 col-lg-2 col-xs-2 col-sm-2'>
-	<%= image_tag(book.cover_page.url(:thumb)) %>
+	<%= link_to image_tag(book.cover_page.url(:thumb)) %>
 	<h6> <%= link_to book.title, book %> </h6>
 </div>
 
@@ -13,9 +13,9 @@
 <script type='text/javascript'>
 	$(function(){ $('.pagination a').attr('data-remote', 'true') });
 </script>
-<% elsif not @books_of_publisher %>
-<div class='well col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'>
-	<h4><%= @publisher.name %> hasn't published any books</h4>
+<% elsif not @books_of_publisher.count>0  %>
+<div class='well col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top'>
+	<h4> <strong><%= @publisher.name %></strong> hasn't published any books</h4>
 </div>
 
 <% end %>

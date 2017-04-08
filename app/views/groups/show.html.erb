@@ -12,19 +12,30 @@
 	<div class='well'>
 		<h6> Admin: <%= link_to @group.user.name, @group.user %> </h6>
 		<h6> Members: <%= @group.member_count %> </h6>
-		
-		<% if member_joined(@group) %>
-		<div id='group_leave_butoon'> Joined </div>
 
-		<% elsif not member_joined(@group) %> \
-		<div id='group_membership_form'> <%= render 'memberships/form' %> </div>
-
-		<% end %>
 		<h6> Topics: 
 			<% if @topics_of_group %>
 			<span id='topic_count_div'> <%="#{@topics_of_group.count}"%></span>  
 			<% else %> No Topics Created Yet <% end %>
 		</h6>
+		
+		<div class='text-center' style='border-top:1px solid lightgrey; margin-top:5%; padding-top: 3%'>
+			<% if check_pending_member(@group.id) %> 
+			Pending 
+			<% end %>
+
+			<% if not check_pending_member(@group.id) && member_joined(@group) %>
+			<div id='group_leave_butoon'>
+				Joined 
+			</div>
+
+			<% elsif not member_joined(@group) %> 
+			<div id='group_membership_form'>
+				<%= render 'memberships/form' %> 
+			</div>
+
+			<% end %>
+		</div>
 	</div>
 
 </div>
@@ -34,7 +45,7 @@
 <div class='col-md-8 col-lg-8 col-xs-8 col-sm-8' id='group_topics_div'> 
 	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot'>
 		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-right'>
-			<%= link_to image_tag('button_icons/plus_64.png'), group_new_topic_path, remote: true, id: "group_new_topic_button" %>
+			<%= link_to image_tag('button_icons/plus_64.png'), group_new_topic_path, remote: true, id: "group_new_topic_button", title: "Start Your Topic" %>
 		</div>
 
 		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 text-right'>
@@ -43,7 +54,12 @@
 
 	</div>
 
-	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 ' id='group_topics'> <%= render 'topics_of_group' %> </div>
+	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 ' id='group_topics'>
+		<h4 class='text-left marg-bot10'>
+			Topics in <strong> <%= @group.name %> </strong>
+		</h4>
+		<% if @topics_of_group %> <%= render 'topics_of_group' %> <% end%>
+	</div>
 
 </div>
 

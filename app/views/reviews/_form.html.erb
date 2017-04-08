@@ -1,5 +1,5 @@
-<h1 class='marg-bot text-center' id='form_heading'> </h1> 
-<div class='well col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'> 
+<h3 class='text-center marg-bot2' id='form_heading'> </h3> 
+<div class='well col-md-2 col-lg-2 col-xs-2 col-sm-2 text-center'> 
 	<%= image_tag(@review.cover_page.url(:medium)) %>
 	<h3 id='jquery_review_heading'></h3>
 	<h6 class='marg-top10 marg-bot'>Review Writer: <%= current_user.name %></h6>
@@ -7,30 +7,45 @@
 	<h6 id='jquery_review_status'></h6>
 </div>
 
-<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero form_border'>
+<div class='col-md-8 col-lg-8 col-xs-8 col-sm-8 form_border'>
 	<%= form_for(@review, html: {multipart: true}, remote: true) do |f| %>
 
 	<% render 'common_form_errors/atreview_form_errors' %>
 	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 	<%= hidden_field_tag :user_id, current_user.id %>
 
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label :heading, class:" marg-top" %> </div>
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-left'> <%= f.label :heading, class:" marg-top" %> </div>
 
 	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :heading, class:"form-control marg-bot", placeholder: "Review Heading", id:"form_review_heading" %> </div>
 
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'>  <%= f.label :book_id, class:"marg-top"%> </div>
+	<% if Book.count>0 && Book.where("user_id = ?", current_user.id).count >0 %>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:book_id, Book.all.map {|b| [b.title, b.id]},{},class:"form-control", id:"form_review_book") %> </div>
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-left'>  <%= f.label :book_id, class:"marg-top"%> </div>
 
-	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 marg-top pad-zero'> <%= f.label :status, "Review Status" %> </div>
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:book_id, Book.where("user_id = ?", current_user.id).map {|b| [b.title, b.id]},{},class:"form-control", id:"form_review_book") %> </div>
+
+	<% else %>
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-left'> 	<%= f.label :book_id, "Book", class:"marg-top"%> </div>
+
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>
+		<div class='alert alert-warning'>
+			** No Books Created! <br>
+			Please <strong><%= link_to "Create A Book", new_book_path %></strong> First
+		</div>
+
+	</div>
+
+	<% end %>
+
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 marg-top pad-left'> <%= f.label :status, "Review Status" %> </div>
 
 	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pull-right marg-top pad-zero'>
 		<%= f.select :status, options_for_select([['Publish', 1], ['Draft', 0]], @review.status), {}, class:"form-control marg-bot", id:"form_review_status" %>
 	</div>
 
-	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-zero'> <%= f.label :review, class:" marg-top" %> </div>
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 marg-top pad-left'> <%= f.label :review, class:" marg-top" %> </div>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_area :review, class:"form-control marg-bot", placeholder: "Review", id:"form_review_full_review" %> </div>
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_area :review, class:"form-control marg-bot", placeholder: "Review", id:"form_review_full_review", size: "10x10" %> </div>
 
 	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot pad-zero'>
 		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'> 
@@ -51,7 +66,7 @@
 	<% end %>
 </div>
 
-<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 text-center'>
+<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-center'>
 	<%= link_to image_tag('button_icons/back_button.png'), reviews_path %>
 	<span style='margin-left: 2%;'><%= link_to "Back", reviews_path %></span>
 </div>

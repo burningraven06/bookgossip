@@ -10,7 +10,12 @@
 		</div>
 	</div>
 
-	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='genre_books'> <% if @books_of_genre %> <%= render 'books_of_genre' %> <% end %></div>
+	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 ' id='genre_books'> 
+		<h4 class='text-left marg-bot10'>
+			Books of <strong> <%= @genre.name %> </strong>
+		</h4>
+		<% if @books_of_genre %> <%= render 'books_of_genre' %> <% end %>
+	</div>
 
 	<div class='col-md-2 col-lg-2 col-xs-2 col-sm-2 text-right '>
 		<%= link_to image_tag('button_icons/back_button.png'), genres_path %>

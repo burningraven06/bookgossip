@@ -6,6 +6,7 @@
 	<h6 class='marg-bot' id='jquery_book_publisher'></h6>
 	<h6 class='marg-bot' id='jquery_book_genres'></h6>
 	<h6 class='marg-bot' id='jquery_book_pubdate'></h6>
+	<h6 class='marg-bot' id='jquery_book_twitter_username'></h6>
 	<h6 id='jquery_book_summary'></h6>
 </div>
 
@@ -19,10 +20,10 @@
 
 	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :title, class:"form-control marg-bot", placeholder: "Book Title", id:"form_book_title" %> </div>
 	
-	<% if Author.count >0 %>
+	<% if Author.count >0 && Author.where("user_id = ?", current_user.id).count >0 %>
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'>  <%= f.label :author_id, class:" marg-top" %>	</div>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:author_id, Author.all.map {|a| [a.name, a.id]},{},class:"form-control marg-bot", id:"form_book_author") %>	</div>
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:author_id, Author.where("user_id = ?", current_user.id).map {|a| [a.name, a.id]},{},class:"form-control marg-bot", id:"form_book_author") %>	</div>
 
 	<% else %>
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> 	<%= f.label :author_id, class:"marg-top"%> </div>
@@ -37,10 +38,10 @@
 
 	<% end %>
 
-	<% if Publisher.count >0 %>
+	<% if Publisher.count >0 && Publisher.where("user_id = ?", current_user.id).count >0%>
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> 	<%= f.label :publisher_id, class:"marg-top"%> </div>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:publisher_id, Publisher.all.map {|p| [p.name, p.id]},{},class:"form-control marg-bot", id: "form_book_publisher") %> </div>
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:publisher_id, Publisher.where("user_id = ?", current_user.id).map {|p| [p.name, p.id]},{},class:"form-control marg-bot", id: "form_book_publisher") %> </div>
 
 	<% else %>
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> 	<%= f.label :publisher_id, class:"marg-top"%> </div>
@@ -55,10 +56,10 @@
 
 	<% end %>
 
-	<% if Genre.count>0 %>
+	<% if Genre.count>0 && Genre.where("user_id = ?", current_user.id).count >0 %>
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> 	<%= f.label :genre_ids, "Genres", class:"marg-top"%> </div>
 
-	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:genre_ids, Genre.all.map {|g| [g.name, g.id]},{},class:"form-control marg-bot", multiple: true, id:"form_book_genres") %> </div>
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'>  <%= f.select(:genre_ids, Genre.where("user_id = ?", current_user.id).all.map {|g| [g.name, g.id]},{},class:"form-control marg-bot", multiple: true, id:"form_book_genres") %> </div>
 
 	<% else %>
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> 	<%= f.label :genre_ids, "Genres", class:"marg-top"%> </div>
@@ -76,6 +77,10 @@
 	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> 	<%= f.label :publication_date, class:" marg-top" %> </div>
 
 	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> 	<%= f.date_field :publication_date, class: "form-control marg-bot", id:"form_book_pubdate" %> </div>
+
+	<div class='col-md-3 col-lg-3 col-xs-3 col-sm-3 pad-zero'> <%= f.label "Twitter ScreenName", class:" marg-top" %> </div>
+
+	<div class='col-md-9 col-lg-9 col-xs-9 col-sm-9 pad-zero'> <%= f.text_field :twitter_username, class:"form-control marg-bot", placeholder: "Twitter Screenname", id: "form_book_twitter_username_inputfield", title: "Leave Blank if you wish to fill in later" %> </div>
 
 	<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot pad-zero'>
 		<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero'> 
@@ -106,21 +111,24 @@
 </div>
 
 <script type='text/javascript'> 
-$("#form_book_title").keyup(function(){
-	$("#jquery_book_title").html($(this).val());
-});
-$("#form_book_author").change(function(){
-	$("#jquery_book_author").html($(this).val());
-});
-$("#form_book_publisher").change(function(){
-	$("#jquery_book_publisher").html($(this).val());
-});
-$("#form_book_pubdate").change(function(){
-	$("#jquery_book_pubdate").html($(this).val());
-});
-$("#form_book_summary").keyup(function(){
-	$("#jquery_book_summary").html($(this).val());
-});
+	$("#form_book_title").keyup(function(){
+		$("#jquery_book_title").html($(this).val());
+	});
+	$("#form_book_author").change(function(){
+		$("#jquery_book_author").html($("#form_book_author :selected").text());
+	});
+	$("#form_book_publisher").change(function(){
+		$("#jquery_book_publisher").html($("#form_book_publisher :selected").text());
+	});
+	$("#form_book_pubdate").change(function(){
+		$("#jquery_book_pubdate").html($(this).val());
+	});
+	$("#form_book_twitter_username_inputfield").keyup(function(){
+		$("#jquery_book_twitter_username").html($(this).val());
+	});
+	$("#form_book_summary").keyup(function(){
+		$("#jquery_book_summary").html($(this).val());
+	});
 	$("form").submit(function(){
 		$("#jquery_loading").css("display", "block"); 
 	});

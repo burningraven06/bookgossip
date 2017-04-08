@@ -19,6 +19,9 @@ class User < ApplicationRecord
 	has_many :memberships
 	has_many :groups, through: :memberships
 	has_many :topics
+	has_many :authors
+	has_many :books
+	has_many :publishers
 
 	def set_gender_avatar
 		if self.gender =='Male'
@@ -28,7 +31,7 @@ class User < ApplicationRecord
 		end
 	end
 
-	has_attached_file :avatar, styles: {extralarge:"512x512>", large: "256x256>", medium: "128x128>", thumb: "64x64>"}, url: "/uploads/user/:id/:attachment/:style/:basename.:extension", 	default_url: :set_gender_avatar
+	has_attached_file :avatar, styles: {extralarge:"512x512>", large: "256x256>", medium: "128x128>", thumb: "64x64>", small: "32x32"}, url: "/uploads/user/:id/:attachment/:style/:basename.:extension", 	default_url: :set_gender_avatar
 
 	validates_attachment_content_type :avatar, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/svg"]
 	

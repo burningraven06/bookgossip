@@ -5,14 +5,14 @@ class PublishersController < ApplicationController
 	# GET /publishers
 	# GET /publishers.json
 	def index
-		params[:search] ?	@publishers=Publisher.search(params[:search]) : @publishers= Publisher.all
-		@publishers = @publishers.order(:name).paginate(page: params[:page], per_page: 18)
+		params[:search] ? @publishers=Publisher.search(params[:search]) : @publishers=Publisher.where("user_id = ?", current_user.id).order("name")
+		@publishers = @publishers.paginate(page: params[:page], per_page: 18) if @publishers
 		respond_to do |format|
 		format.html # index.html.erb
 		format.json { render json: @publishers}
 		format.js
-	 end
-  end
+	end
+end
 
 	# GET /publishers/1
 	# GET /publishers/1.json
@@ -41,9 +41,12 @@ class PublishersController < ApplicationController
 	# POST /publishers.json
 	def create
 		@publisher = Publisher.new(publisher_params)
+		@publisher.user_id = current_user.id
+
 		respond_to do |format|
 			if @publisher.save
-				@publishers = Publisher.order(:name).paginate(page: params[:page], per_page: 18)
+				@publishers=Publisher.where("user_id = ?", current_user.id).order("name")
+				@publishers = @publishers.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @publisher; flash[:success]= 'Publisher was successfully created.' }
 				format.json { render :show, status: :created, location: @publisher }
 				format.js
@@ -62,7 +65,8 @@ class PublishersController < ApplicationController
 		@publisher.cover_page.destroy if @set_def_avt
 		respond_to do |format|
 			if @publisher.update(publisher_params)
-				@publishers = Publisher.order(:name).paginate(page: params[:page], per_page: 18)
+				@publishers=Publisher.where("user_id = ?", current_user.id).order("name")
+				@publishers = @publishers.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @publisher; flash[:info]= 'Publisher was successfully updated.' }
 				format.json { render :show, status: :ok, location: @publisher }
 				format.js
@@ -93,6 +97,6 @@ class PublishersController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def publisher_params
-			params.require(:publisher).permit(:name, :address, :website, :cover_page)
+			params.require(:publisher).permit(:name, :address, :website, :twitter_username, :cover_page, :user_id)
 		end
 	end

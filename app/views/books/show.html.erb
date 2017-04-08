@@ -1,19 +1,22 @@
 <% provide(:title,@book.title)%>
-<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3'></div>
+<div id="show_flash_messages" class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3 pad-zero'></div>
 
 <div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-3 col-sm-offset-3' id='book_review_form'></div>
 
 <div class='col-md-12 col-lg-12 col-xs-12 col-sm-12' id='show_book'>
-	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4 pad-zero text-center'> 
+	<div class='col-md-4 col-lg-4 col-xs-4 col-sm-4  text-center'> 
 		<div class='marg-top2'>
 			<%= image_tag(@book.cover_page.url(:large)) %>
 		</div>
 
 		<h3 class='marg-top10' > <%= link_to @book.title, @book %> </h3>
+		<h5 class='marg-top'> Twitter Screenname: <%= @book.twitter_username %></h5>
 
 		<% if current_user.account_type='writer' %>
-		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12  marg-top10' style='padding:5%;' id='book_review_add_button_div'>
-			<%= link_to "Review <strong>#{@book.title}</strong>".html_safe, book_new_review_path, remote: true, class: "pull-left marg-top10" %>
+		<div class='well col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-top10' style='padding:0% 5% 5% 5%;' id='book_review_add_button_div'>
+			<h5 class='text-left'>
+				<%= link_to "Add Your Review for <strong>#{@book.title}</strong>".html_safe, book_new_review_path, remote: true, class: "pull-left marg-top10" %>
+			</h5>
 			
 			<%= link_to image_tag("button_icons/plus_64.png"), book_new_review_path, remote: true, id: "book_new_review_button", class: "create_new_button text-center" %>
 		</div>

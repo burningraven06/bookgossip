@@ -5,8 +5,8 @@ class GroupsController < ApplicationController
 	# GET /groups
 	# GET /groups.json
 	def index
-		params[:search] ? @groups = Group.search(params[:search]) : @groups = Group.all
-		@groups = @groups.order(:name).paginate(page: params[:page], per_page: 18)
+		params[:search] ? @groups = Group.search(params[:search]) : @groups=Group.where("user_id = ?", current_user.id).order("name")
+		@groups = @groups.paginate(page: params[:page], per_page: 18)
 		respond_to do |format|
 			format.html # index.html.erb
 			format.json { render json: @groups }
@@ -53,7 +53,8 @@ class GroupsController < ApplicationController
 				@membership = @group.memberships.create(user_id: current_user.id)
 				@membership.request_approved = true
 				@membership.save
-				@groups = Group.order(:name).paginate(page: params[:page], per_page: 18)
+				@groups=Group.where("user_id = ?", current_user.id).order("name")
+				@groups = @groups.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @group, notice: 'Group was successfully created.' }
 				format.json { render :show, status: :created, location: @group }
 				format.js
@@ -73,8 +74,8 @@ class GroupsController < ApplicationController
 
 		respond_to do |format|
 			if @group.update(group_params)
-				@groups = Group.order(:name).paginate(page: params[:page], per_page: 18)
-
+				@groups=Group.where("user_id = ?", current_user.id).order("name")
+				@groups = @groups.paginate(page: params[:page], per_page: 18)
 				format.html { redirect_to @group, notice: 'Group was successfully updated.' }
 				format.json { render :show, status: :ok, location: @group }
 				format.js

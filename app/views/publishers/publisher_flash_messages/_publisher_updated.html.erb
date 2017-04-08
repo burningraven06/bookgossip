@@ -2,6 +2,9 @@
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> <i class='fa fa-pencil fa-2x' style='padding-right:3%'> </i> Publisher <strong> <%= link_to @publisher.name, @publisher %> </strong> Updated Successfully! 
 </div>
 <script>
+	$('html, body').animate({
+		scrollTop: $('#flash_messages_div').offset().top - 300}, 200);
+	
 	window.setTimeout(function() {
 		$("#flash_messages_div").fadeTo(400, 0).slideUp(400, function(){
 			$(this).remove(); 
