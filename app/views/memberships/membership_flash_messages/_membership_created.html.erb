@@ -4,7 +4,6 @@
 <script>
 	$('html, body').animate({
 		scrollTop: $('#flash_messages_div').offset().top - 300}, 200);
-	
 	window.setTimeout(function() {
 		$("#flash_messages_div").fadeTo(400, 0).slideUp(400, function(){
 			$(this).remove(); 
