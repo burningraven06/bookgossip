@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[5.0]
       t.string :cover_page
       t.string :book_summary
       t.references :author
+      t.references :publisher
       
       t.timestamps
     end
