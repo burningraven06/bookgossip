@@ -57,6 +57,15 @@ Rails.application.configure do
 	config.action_mailer.perform_deliveries =true
 	config.action_mailer.default charset: "utf-8"
 
+	config.action_mailer.smtp_settings = {
+		address: "smtp.gmail.com",
+		port: 587,
+		user_name: "thedevmailer@gmail.com",
+		password: "konichiwa2435",
+		authentication: "plain",
+		enable_starttls_auto: true
+	}
+	
 	# config.action_mailer.smtp_settings = {
 	#   :user_name => 'testmailer@sandbox43e11c6c086b4460afbe8f5bfa9ccd99.mailgun.org',
 	#   :password => '1234qwer',
@@ -74,14 +83,5 @@ Rails.application.configure do
 	#   address: "smtp-relay.sendinblue.com",
 	#   authentication: :plain
 	# }
-
-	config.action_mailer.smtp_settings = {
-		address: "smtp.gmail.com",
-		port: 587,
-		user_name: "thedevmailer@gmail.com",
-		password: "konichiwa2435",
-		authentication: "plain",
-		enable_starttls_auto: true
-	}
 
 end
