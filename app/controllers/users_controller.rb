@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 		@user=User.new(user_params)
 		respond_to do |format|
 			if @user.save
-				cookies[:remember_token] = @user.remember_token
+				# cookies[:remember_token] = @user.remember_token
 				UserMailer.account_activation(@user).deliver
 				format.js{}
 				format.html{	redirect_to common_signup_path ; flash[:info] = "Hey #{@user.name}, An Email has been sent to you for account activation." }
