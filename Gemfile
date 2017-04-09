@@ -31,7 +31,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'twitter'
-gem 'instagram', :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
+gem 'instagram'
 gem 'faraday'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
