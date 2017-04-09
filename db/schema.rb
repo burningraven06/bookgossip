@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170408153927) do
     t.integer  "cover_page_file_size"
     t.datetime "cover_page_updated_at"
     t.boolean  "default_avatar"
-    t.integer  "publisher_id"
+    t.string   "publisher_id"
     t.integer  "user_id"
     t.string   "twitter_username"
     t.index ["author_id"], name: "index_books_on_author_id", using: :btree

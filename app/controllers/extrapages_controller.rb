@@ -5,6 +5,7 @@ class ExtrapagesController < ApplicationController
 	end
 	def root_home_page
 		@authors_of_logged_user = Author.where("user_id = ?", current_user.id)
+		
 		@books_of_logged_user = Book.where("user_id = ?", current_user.id)
 		@publishers_of_logged_user = Publisher.where("user_id = ?", current_user.id)
 		# @authors_of_logged_user.each do |author|

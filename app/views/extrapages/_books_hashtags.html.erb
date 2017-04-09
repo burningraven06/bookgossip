@@ -1,0 +1,32 @@
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 well alert alert-dismissible' role='alert' style='padding:3%;'>
+			<div class='pad-zero col-md-12 col-xs-12 col-lg-12 col-xs-12 marg-top marg-bot'>
+				<h2 style='display:inline;'> Worldwide Fan Scoops of <%= book.title %> </h2>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true"> 
+						<%= image_tag("button_icons/remove.png") %>
+					</span>
+				</button>
+			</div>
+
+			<div class='marg-bot col-md-12 col-xs-12 col-lg-12 col-sm-12'>
+				<% $twitter_client.search("#{book.twitter_username}", result_type: "recent").take(20).collect do |tweet| %>
+					<div class='well alert alert-dismissible col-md-4 marg-bot ' style='padding: 2%;'>
+						<div class='text-center col-md-12 col-xs-12 col-lg-12 col-sm-12'>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h3> 
+								<%= image_tag(tweet.user.profile_image_url_https) %> @<%= "#{tweet.user.screen_name}"%>
+							</h3>
+						</div>
+						<h6 class='text-center marg-top2 marg-bot'>
+							<%= "#{tweet.created_at.strftime("%d-%b-%Y %H:%M") }" %>
+						</h6>
+						<h5 style='line-height: 200%;'>
+							<%= "#{tweet.text}" %> 
+						</h5>
+					</div> 
+				<% end %>
+			</div>
+
+		</div>
