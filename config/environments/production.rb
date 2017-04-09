@@ -86,11 +86,12 @@ Rails.application.configure do
 
 	config.action_mailer.default charset: "utf-8"
 	config.action_mailer.perform_deliveries =true
-	# config.action_mailer.default_url_options = { :host => "bookgossip.herokuapp.com" }
+	config.action_mailer.default_url_options = { :host => "bookgossip.herokuapp.com" }
 
 	config.action_mailer.smtp_settings = {
 		address: "smtp.gmail.com",
 		port: 587,
+		domain: "heroku.com",
 		user_name: "thedevmailer@gmail.com",
 		password: "konichiwa2435",
 		authentication: "plain",
