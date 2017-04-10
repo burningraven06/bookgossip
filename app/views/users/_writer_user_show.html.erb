@@ -2,7 +2,7 @@
 	<%= image_tag(@user.avatar.url(:large), class:"text-center marg-top") %>
 	<h2 > <%= @user.name %> </h2>
 	<div class="marg-left text-left">
-		<h4 > <strong> <%= @user.account_type %></strong> </h4>
+		<h4 class='text-capitalize'> <strong> <%= @user.account_type %></strong> </h4>
 		<h6> <%= @user.gender %>, Birthday: <%= display_birthday(@user.show_birthday_status) %> </h6>
 		<h6> Joined: <%= @user.created_at.strftime("%d/%B/%Y") %></h6>
 		<h6> Reviews Written: <%= @reviews_of_user? "#{@reviews_of_user.count} Reviews" : "No Reviews Published Yet" %></h6>

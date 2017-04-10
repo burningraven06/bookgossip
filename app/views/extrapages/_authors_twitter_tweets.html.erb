@@ -1,5 +1,5 @@
 <% @authors_of_logged_user.each do |author| %>
-	<% if author.twitter_username %>
+	<% if author.twitter_username.length>0 %>
 		<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 marg-bot2 pad-zero'>
 			<h1 class='marg-zero pad-zero'>
 				@<%= author.twitter_username %> <small>SAYS</small>

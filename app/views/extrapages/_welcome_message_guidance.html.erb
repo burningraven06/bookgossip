@@ -1,0 +1,17 @@
+<style> h4{line-height: 200%;} #get_started_button{ border: 0; background-color: transparent; display:inline-block;} </style>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-zero' style='border-bottom: 1px solid lightgrey;'>
+
+	<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 pad-zero marg-bot2'>
+		<h1> Hi <%= current_user.name %></h1>
+		<h4 class='marg-top10'> It seems that you haven't added any books or authors to your collection.</h4>
+		<h4 class='marg-top'> Start by adding a book and filling some details. <br>You'll be up and running in no time!</h4>
+		<h4 class='marg-top10'> 
+			<%= link_to image_tag("button_icons/power_button64.png"),  new_book_path, id: "get_started_button" %>
+			<%= link_to "Get Started", new_book_path, class: "btn btn-default marg-zero", id: "get_started_button", style:'font-size: 200%;' %>
+		</h4>
+	</div>
+	<div class='text-center col-md-6 col-xs-6 col-lg-6 col-sm-6 pad-zero marg-top marg-bot2'>
+		<%= image_tag("home_logo/sad256.png") %>
+	</div>
+</div>

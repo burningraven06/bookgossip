@@ -1,0 +1,11 @@
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-zero'>
+	<%= render 'authors_twitter_tweets' if @authors_of_logged_user %>
+</div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot marg-top'>
+	<%= render 'books_twitter_tweets' if @books_of_logged_user %>
+</div>
+
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-bot '>
+	<%= render 'publishers_twitter_tweets' if @publishers_of_logged_user %>
+</div>

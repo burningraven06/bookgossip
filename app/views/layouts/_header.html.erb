@@ -1,7 +1,9 @@
+
 <nav class="navbar navbar-default navbar-fixed-top" id="navheader">
 	<div class="container">
 		<div class="navbar-header">
-			<%= link_to "<i class='fa fa-group'></i> BookGossip".html_safe, bookgosp_home_path, class:"navbar-brand", title:"Book Gossips" %>
+			<%= link_to "<i class='fa fa-group'></i>".html_safe, bookgosp_home_path, title:"Book Gossips", class:"navbar-brand" %>
+			<%= link_to "BookGossip", bookgosp_home_path, class:"navbar-brand", title:"Book Gossips" %>
 		</div>
 
 		<div class="collapse navbar-collapse" >
@@ -12,7 +14,6 @@
 
 			<ul class="nav navbar-nav navbar-right navbar_fontstyle" >
 				<% if current_user %>
-				<li > <%= link_to "About", about_path %> </li>
 				<li> <%= link_to "Gallery", all_items_path %> </li>
 				<li> <%= link_to "Calendar", calendar_path %> </li>
 				
@@ -22,6 +23,9 @@
 				<li class='navbar_listitem'> <%= link_to 'Settings', edit_user_path(current_user) %> </li>
 				<li class='navbar_listitem'> <%= link_to "Profile", user_path(current_user) %> </li>
 				<!-- <li role="separator" class="divider"></li> -->
+
+				<li > <%= link_to "About", about_path %> </li>
+
 				<li class='navbar_listitem'> <%= link_to "Log Out", logout_path, method: "delete" %> </li>			
 				<!-- </ul> -->
 				<!-- </li> -->

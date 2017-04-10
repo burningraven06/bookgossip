@@ -1,21 +1,23 @@
 <% provide(:title, "Calendar") %>
 <style>
-.calendar-title{
-	font-size: 200%;
-	margin-left: 3%;
-	margin-right: 3%;
-}
+	.calendar-title{
+		font-size: 200%;
+		font-weight: bold;
+		margin-left: 3%;
+		margin-right: 2%;
+	}
 </style>
 
-<%= month_calendar events: (@reviews + @books + @authors +@users) do |date, events| %>
-<%= date.day %>
-<% events.each do |event| %>
-<%= link_to event.classification, event, class: "btn btn-default", title:"#{event.description}" %>
-
-<% end %>
-<% end %>
+<div class='col-md-12 col-lg-12 col-xs-12 col-sm-12 pad-zero marg-zero'> 
+	<%= month_calendar events: (@reviews + @books + @authors +@users) do |date, events| %>
+		<%= date.day %>
+		<% events.each do |event| %>
+			<%= link_to event.classification, event, class: "btn btn-default", title:"#{event.description}" %>
+		<% end %>
+	<% end %>
+</div>
 
 <script>
-$("div .simple-calendar").prepend("<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-bot2 pad-zero'> <h1 class='pad-zero marg-zero'> Calendar </h1> </div>");
-$("div .calendar-heading").addClass("col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-bot2 pad-zero text-right");
+	$("div .simple-calendar").prepend("<div class='col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-bot2 pad-zero'> <h1 class='pad-zero marg-zero'> Calendar </h1> </div>");
+	$("div .calendar-heading").addClass("col-md-6 col-lg-6 col-xs-6 col-sm-6 marg-bot2 pad-zero text-right");
 </script>
