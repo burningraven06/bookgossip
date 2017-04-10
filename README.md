@@ -1,24 +1,41 @@
-# README
+# BookGossip
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BookGossip is an online platform for book readers to
+  - Have Discussions on notable Books 
+  - Publish Reviews of Books
+  - Get Scoops of their Favorite Books and Authors
 
-Things you may want to cover:
+### Features List
 
-* Ruby version
+  - User Roles set by User Types
+  - Account Activation via Email
+  - Clean, Materialistic Design
+  - Intuitive & Interactivce UI
+  - Calendar for Important Dates
+  - Group Creation & Message Board
 
-* System dependencies
+### Built With:
+  - TeleKinesis, Coffee, Music
+  - ... and also Ruby on Rails!
 
-* Configuration
 
-* Database creation
+### Tech
 
-* Database initialization
+BookGossip uses a number of open source projects to work properly:
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+* Ruby On Rails 5 - Awesome Web Framework that allows you to do so much!
+* PostGreSQL - Database Management
+* GitHub - Let this be the MOTHER of your app 
+* SublimeText - Text Editor for everything
+* JQuery - Just Enhance your app in ways unimaginable
+* Twitter Bootstrap - A Solid Front End Design Framework 
 
-* Deployment instructions
+### Visit
+### <http://bookgossip.herokuapp.com>
 
-* ...
+### Todos
+
+ - Write Tests
+
+**Free For All, Oh Yeah!**
