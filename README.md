@@ -12,7 +12,8 @@ BookGossip is an online platform for book readers to
   - Clean, Materialistic Design
   - Intuitive & Interactivce UI
   - Calendar for Important Dates
-  - Group Creation & Message Board
+  - Group Creation & Message Board/Forum
+  - Profiles for ALL Models
 
 ### Built With:
   - TeleKinesis, Coffee, Music
@@ -23,16 +24,28 @@ BookGossip is an online platform for book readers to
 
 BookGossip uses a number of open source projects to work properly:
 
-
 * Ruby On Rails 5 - Awesome Web Framework that allows you to do so much!
 * PostGreSQL - Database Management
 * GitHub - Let this be the MOTHER of your app 
-* SublimeText - Text Editor for everything
 * JQuery - Just Enhance your app in ways unimaginable
 * Twitter Bootstrap - A Solid Front End Design Framework 
 
+##### Languages
+To make this project I've primarily used
+* Ruby (Ruby on Rails Framework is written in Ruby)
+* HTML & CSS
+* JavaScript (JQuery Library, AJAX)
+* SQL (Database Schema Design)
+
+##### Tools
+* SublimeText - Text Editor for everything
+* GoogleChrome DevTools - Such a life saver for Front End Development
+
+##### Environment
+* Ubuntu - Working via Ubuntu, a Linux (Debian) based OS, has made tasks efficient and sensible.
+
 ### Visit
-### <http://bookgossip.herokuapp.com>
+#### <http://bookgossip.herokuapp.com>
 
 ### Todos
 
