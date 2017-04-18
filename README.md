@@ -30,19 +30,29 @@ BookGossip uses a number of open source projects to work properly:
 * JQuery - Just Enhance your app in ways unimaginable
 * Twitter Bootstrap - A Solid Front End Design Framework 
 
-##### Languages
+#### Languages
 To make this project I've primarily used
 * Ruby (Ruby on Rails Framework is written in Ruby)
 * HTML & CSS
 * JavaScript (JQuery Library, AJAX)
 * SQL (Database Schema Design)
 
-##### Tools
+#### Tools
 * SublimeText - Text Editor for everything
 * GoogleChrome DevTools - Such a life saver for Front End Development
 
-##### Environment
+#### Environment
 * Ubuntu - Working via Ubuntu, a Linux (Debian) based OS, has made tasks efficient and sensible.
+
+#### Resources
+* Stack Overflow - A Virtual Godfather for Me.
+* Wikipedia
+* Numerous Tech Blogs (For specific tasks)
+* Ruby on Rails Official Documentation
+* JQuery Official Docs
+* Heroku Official Documentation 
+
+
 
 ### Visit
 #### <http://bookgossip.herokuapp.com>
@@ -52,3 +62,5 @@ To make this project I've primarily used
  - Write Tests
 
 **Free For All, Oh Yeah!**
+
+
