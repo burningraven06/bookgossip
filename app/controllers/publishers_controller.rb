@@ -8,11 +8,11 @@ class PublishersController < ApplicationController
 		params[:search] ? @publishers=Publisher.search(params[:search]) : @publishers=Publisher.where("user_id = ?", current_user.id).order("name")
 		@publishers = @publishers.paginate(page: params[:page], per_page: 18) if @publishers
 		respond_to do |format|
-		format.html # index.html.erb
-		format.json { render json: @publishers}
-		format.js
+			format.html # index.html.erb
+			format.json { render json: @publishers}
+			format.js
+		end
 	end
-end
 
 	# GET /publishers/1
 	# GET /publishers/1.json

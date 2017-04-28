@@ -60,27 +60,11 @@ Rails.application.configure do
 		address: "smtp.gmail.com",
 		port: 587,
 		user_name: "thedevmailer@gmail.com",
-		password: "konichiwa2435",
+		password: "",
 		authentication: "plain",
 		enable_starttls_auto: true
 	}
 
-	# config.action_mailer.smtp_settings = {
-	#   :user_name => 'testmailer@sandbox43e11c6c086b4460afbe8f5bfa9ccd99.mailgun.org',
-	#   :password => '1234qwer',
-	#   :domain => 'suchwow.com',
-	#   :address => 'smtp.mailgun.org',
-	#   :port => 587,
-	#   :authentication => :plain,
-	#   # :enable_starttls_auto => true
-	# }
 
-	# config.action_mailer.smtp_settings={
-	#   user_name: "burning.raven06@gmail.com",
-	#   password: "X4W7s1xcm8PJUBkp",
-	#   port: 587, 
-	#   address: "smtp-relay.sendinblue.com",
-	#   authentication: :plain
-	# }
 
 end
