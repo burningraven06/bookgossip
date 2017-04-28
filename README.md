@@ -63,16 +63,14 @@ To make this project I've primarily used
 ###### If you want to check out this project for development, **please follow these instructions first**.
 
 1. Open **config/environments/development.rb**
-2. On Line 60, under **config.action_mailer.smtp_settings** 
-3. Find This 
+2. On Line 60, under **config.action_mailer.smtp_settings** Find
     ```ruby
         user_name:  ENV["MAILER_EMAIL"],
         password:   ENV["MAILER_PASSWORD"]
     ```
    
-4. Update Accordingly
+3. Update Accordingly
     ```ruby
         user_name:  "your gmail username goes here",
         password:   "your gmail password goes here"
     ```
-5. Save & Restart Server.
