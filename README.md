@@ -3,7 +3,7 @@
 BookGossip is an online platform for book readers to
   - Have Discussions on notable Books 
   - Publish Reviews of Books
-  - Get Scoops of their Favorite Books and Authors
+  - Get Scoops of their Favorite Books & Authors
 
 ### Features List
 
@@ -16,9 +16,8 @@ BookGossip is an online platform for book readers to
   - Profiles for ALL Models
 
 ### Built With:
-  - TeleKinesis, Coffee, Music
+  - **Telekinesis**
   - ... and also Ruby on Rails!
-
 
 ### Tech
 
@@ -32,35 +31,48 @@ BookGossip uses a number of open source projects to work properly:
 
 #### Languages
 To make this project I've primarily used
-* Ruby (Ruby on Rails Framework is written in Ruby)
-* HTML & CSS
+* Ruby (Ruby on Rails Framework is written with Ruby)
+* HTML5 & CSS3
 * JavaScript (JQuery Library, AJAX)
 * SQL (Database Schema Design)
 
 #### Tools
 * SublimeText - Text Editor for everything
-* GoogleChrome DevTools - Such a life saver for Front End Development
+* GoogleChrome DevTools - Life saver for Front End Development
 
 #### Environment
 * Ubuntu - Working via Ubuntu, a Linux (Debian) based OS, has made tasks efficient and sensible.
 
 #### Resources
-* Stack Overflow - A Virtual Godfather for Me.
+* Stack Overflow 
 * Wikipedia
 * Numerous Tech Blogs (For specific tasks)
 * Ruby on Rails Official Documentation
 * JQuery Official Docs
 * Heroku Official Documentation 
 
-
-
 ### Visit
 #### <http://bookgossip.herokuapp.com>
 
 ### Todos
-
  - Write Tests
 
 **Free For All, Oh Yeah!**
 
+### Important
+###### If you want to check out this project for development, **please follow these instructions first**.
 
+1. Open **config/environments/development.rb**
+2. On Line 60, under **config.action_mailer.smtp_settings** 
+3. Find This 
+    ```ruby
+        user_name:  ENV["MAILER_EMAIL"],
+        password:   ENV["MAILER_PASSWORD"]
+    ```
+   
+4. Update Accordingly
+    ```ruby
+        user_name:  "your gmail username goes here",
+        password:   "your gmail password goes here"
+    ```
+5. Save & Restart Server.
