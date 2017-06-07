@@ -92,9 +92,9 @@ Rails.application.configure do
 		address: "smtp.gmail.com",
 		port: 587,
 		domain: "heroku.com",
-		user_name: "",
+		user_name: ENV["MAILER_EMAIL"],
 		# Use your gmail account ex: name@gmail.com for user_name
-		password: "",
+		password: ENV["MAILER_PASSWORD"],
 		# Use your gmail account's password for password
 		authentication: "plain",
 		enable_starttls_auto: true
