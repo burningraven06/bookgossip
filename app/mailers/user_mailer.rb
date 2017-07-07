@@ -1,13 +1,13 @@
 class UserMailer < ApplicationMailer
-	default from: 'SayMyName@suchwow.com'
+	default from: 'BookGossip.Mailman@suchwow.com'
 
 	def account_activation(user)
 		@user=user
-		mail(to: @user.email, subject: "BookGosp Account Activation")
+		mail(to: @user.email, subject: "BookGossip Account Activation")
 	end
 
 	def password_reset(user)
 		@user=user
-		mail(to: @user.email, subject: "BookGosp Password Reset")
+		mail(to: @user.email, subject: "BookGossipp Password Reset")
 	end
 end
