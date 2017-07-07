@@ -58,13 +58,22 @@ Rails.application.configure do
 	config.action_mailer.default charset: "utf-8"
 	
 	# Elastic
+	# config.action_mailer.smtp_settings = {
+	# 	address: ENV['ELASTIC_ADDRESS'],
+	# 	port: 25,
+	# 	user_name: ENV["ELASTIC_MAILER_EMAIL"],
+	# 	password: ENV["ELASTIC_MAILER_PASSWORD"],
+	# 	authentication: 'plain',
+	# 	enable_starttls_auto: false,
+	# }
+
 	config.action_mailer.smtp_settings = {
-		address: ENV['ELASTIC_ADDRESS'],
-		port: 25,
-		user_name: ENV["ELASTIC_MAILER_EMAIL"],
-		password: ENV["ELASTIC_MAILER_PASSWORD"],
+		address: ENV['GMAIL_ADDRESS'],
+		port: 587,
+		user_name: ENV["GMAIL_EMAIL"],
+		password: ENV["GMAIL_PASSWORD"],
 		authentication: 'plain',
-		enable_starttls_auto: false,
+		enable_starttls_auto: true,
 	}
 
 end
