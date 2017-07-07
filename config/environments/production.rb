@@ -89,13 +89,12 @@ Rails.application.configure do
 	config.action_mailer.default_url_options = { :host => "bookgossip.herokuapp.com" }
 
 	config.action_mailer.smtp_settings = {
-		address: "smtp25.elasticemail.com",
+		address: 'smtp25.elasticemail.com',
 		port: 25,
-		domain: "heroku.com",
 		user_name: ENV["MAILER_EMAIL"],
 		password: ENV["MAILER_PASSWORD"],
-		authentication: "plain",
-		enable_starttls_auto: true
+		authentication: 'plain',
+		enable_starttls_auto: false,
 	}
 
 end
