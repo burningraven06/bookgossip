@@ -99,13 +99,13 @@ Rails.application.configure do
 	# }
 
 	config.action_mailer.smtp_settings = {
-		
+		address: "smtp.gmail.com",
+		port: "587",
+		domain: "gmail.com",
+		user_name: ENV["GMAIL_EMAIL"],
+		password: ENV["GMAIL_PASSWORD"],
 		authentication: "plain",
-		domain: "heroku.com",
-		address:"smtp.gmail.com",
-		port: 587,
-		user_name: "thedevmailer@gmail.com",
-		password: "stupidsmtp123",
+		enable_starttls_auto: true,
 	}
 
 end
