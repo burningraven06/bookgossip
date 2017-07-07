@@ -57,11 +57,12 @@ Rails.application.configure do
 	config.action_mailer.default_url_options = { :host => "localhost:3000" }
 	config.action_mailer.default charset: "utf-8"
 	
+	# Elastic
 	config.action_mailer.smtp_settings = {
-		address: 'smtp25.elasticemail.com',
+		address: ENV['ELASTIC_ADDRESS'],
 		port: 25,
-		user_name: ENV["MAILER_EMAIL"],
-		password: ENV["MAILER_PASSWORD"],
+		user_name: ENV["ELASTIC_MAILER_EMAIL"],
+		password: ENV["ELASTIC_MAILER_PASSWORD"],
 		authentication: 'plain',
 		enable_starttls_auto: false,
 	}
