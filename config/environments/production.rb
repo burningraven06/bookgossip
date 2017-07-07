@@ -95,7 +95,7 @@ Rails.application.configure do
 		user_name: ENV["ELASTIC_MAILER_EMAIL"],
 		password: ENV["ELASTIC_MAILER_PASSWORD"],
 		authentication: 'plain',
-		enable_starttls_auto: false,
+		enable_starttls_auto: true,
 	}
 
 	# config.action_mailer.smtp_settings = {
