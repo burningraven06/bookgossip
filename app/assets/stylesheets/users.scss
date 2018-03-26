@@ -1,6 +1,17 @@
 /*// Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
+
+@font-face {
+  font-family: OxygenFont;
+  src: font-url("Oxygen/Oxygen.ttf");
+}
+
+@font-face {
+  font-family: RalewayFont;
+  src: font-url("Raleway/Raleway.ttf");
+}
+
 #flash_messages_div{
 	font-size: 110%;
 }
@@ -59,7 +70,7 @@
 	color: rgba(225,237,255,1); 
 }
 .landing_page_heading {
-	font-family: Raleway;
+	font-family: RalewayFont;
 	font-size: 400%; 
 	/*margin-bottom:5%;*/
 	padding:7%; 
@@ -88,10 +99,20 @@
 }
 body {
 	/*font-family: Source Sans Pro; */
-	font-family: Nato Sans; 
+	// font-family: Nato Sans; 
+	font-family: OxygenFont;
+}
+
+.builtByText{
+	font-family: mono;
+	font-weight: bold;
+}
+.marg-left-0{
+	margin-left:0
 }
 .navbar_fontstyle {
-	font-family: Nato Sans; 
+	// font-family: Nato Sans; 
+	font-family: OxygenFont;
 	font-size: 125%; 
 } 
 .landingpg_form_background{
